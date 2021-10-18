@@ -1,0 +1,5 @@
+1. cd boy-london
+
+2. run: yarn -> install packages
+
+3. run: yarn start -> run project
