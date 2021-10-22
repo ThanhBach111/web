@@ -1,0 +1,31 @@
+.productView {
+  width: 220px;
+  height: 300px;
+  margin: 0px 20px 0px 20px;
+}
+
+.imageBox {
+  width: 100%;
+  height: 80%;
+  box-shadow: 1px 1px 1px black;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.nameBox {
+  width: 100%;
+  height: 10%;
+  text-align: center;
+}
+.nameProduct {
+  margin: 10px 0px 10px 0px;
+  font-size: 17px;
+  font-weight: bold;
+}
+.priceText {
+  font-size: 13px;
+  font-style: italic;
+}
