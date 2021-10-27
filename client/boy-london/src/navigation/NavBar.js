@@ -1,29 +1,37 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Bars, Nav, NavMenu } from "./NavbarElement";
+import { Bars, Nav, NavMenu, NavIcon, NavIconUser, NavIconCart } from "./NavbarElement";
 import { ROOT_SCREEN } from "./routes";
+import "./css/NavBar.css";
+
+
 
 function NavBar() {
   return (
     <>
       <Nav>
         <NavLink to="/">
-          <p>Home</p>
+          <img src="/logo.jpeg"
+              height="77"
+              weight="102"
+              alt="logo"
+            />
         </NavLink>
-
-        <Bars />
-
         <NavMenu>
-          <NavLink to={ROOT_SCREEN.shop} activeStyle>
-            Shop
+          <NavLink className="navBarLink" to={ROOT_SCREEN.shop} activeStyle>
+          Shop
           </NavLink>
-          <NavLink to={ROOT_SCREEN.explore} activeStyle>
-            Explore
+          <NavLink className="navBarLink" to={ROOT_SCREEN.explore} activeStyle>
+            Explore 
           </NavLink>
-          <NavLink to={ROOT_SCREEN.aboutUs} activeStyle>
+          <NavLink className="navBarLink" to={ROOT_SCREEN.aboutUs} activeStyle>
             About us
           </NavLink>
         </NavMenu>
+        <p>
+        <NavIconUser />
+        <NavIconCart />
+        </p>
       </Nav>
     </>
   );

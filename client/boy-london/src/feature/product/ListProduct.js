@@ -31,6 +31,13 @@ const data = [
     name: "Product",
     price: "200,000d",
   },
+  {
+    id: 4,
+    image:
+      "https://www.logolynx.com/images/logolynx/74/740ef38ce219d8b589c7d898ad16227a.jpeg",
+    name: "Product",
+    price: "200,000d",
+  },
 ];
 
 const ListProduct = () => {
