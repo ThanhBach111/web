@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Bars, Nav, NavMenu, NavIcon, NavIconUser, NavIconCart } from "./NavbarElement";
+import { Bars, Nav, NavMenu, NavIcon, NavIconUser, NavIconCart, NavIconSearch } from "./NavbarElement";
 import { ROOT_SCREEN } from "./routes";
 import "./css/NavBar.css";
 
@@ -28,10 +28,12 @@ function NavBar() {
             About us
           </NavLink>
         </NavMenu>
-        <p>
-        <NavIconUser />
+        <NavMenu>
+        <NavIconUser className="navBarLink" to={ROOT_SCREEN.aboutUs} activeStyle/>
         <NavIconCart />
-        </p>
+        <NavIconSearch />
+      
+        </NavMenu>
       </Nav>
     </>
   );

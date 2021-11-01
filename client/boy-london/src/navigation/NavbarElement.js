@@ -89,11 +89,16 @@ export const NavBtnLink = styled(Link)`
 
 export const NavIconUser = styled( BiUser)`
 position: absolute;
-margin-left: 150;
+margin-left: 550;
 align-items: left;
 `;
 export const NavIconCart = styled( BiCart)`
 position: absolute;
-margin-left: 150;
+margin-left: 500;
+align-items: left;
+`;
+export const NavIconSearch = styled( BiSearch)`
+position: absolute;
+margin-left: 450;
 align-items: left;
 `;
