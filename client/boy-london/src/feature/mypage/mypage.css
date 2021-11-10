@@ -1,0 +1,35 @@
+.page {
+    position: relative;
+    width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+}
+.userinfo {
+    border-left: 130px;
+    width: 50%;
+}
+.cartinfo {
+    width: 50%;
+}
+table {
+    background-color:lightgray;
+    border-collapse: collapse;
+    width: 80%;
+    border-radius: 50px;
+}
+  
+th, td {
+    height: 40px;
+    text-align: center;
+    padding: 8px;
+}
+button {
+    margin-top: 25px;
+    border-radius: 50px;
+    background-color:black;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+}
