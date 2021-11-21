@@ -42,15 +42,6 @@ const MyPage = () => {
                 <button>Cập nhật thông tin</button>
             </div>
             <div className="cartinfo">
-              <h1>Lịch sử mua hàng</h1>
-              <table>
-                <tr>
-                  <th>Mã đơn hàng</th>
-                  <th>Ngày mua</th>
-                  <th>Sản phẩm</th>
-                  <th>Tổng tiền</th>
-                </tr>
-              </table>
               <h1>Thông tin khuyến mãi</h1>
 
             </div>
