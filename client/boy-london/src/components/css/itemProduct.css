@@ -3,6 +3,9 @@
   height: 300px;
   margin: 0px 20px 0px 20px;
 }
+.productView:hover {
+  cursor: pointer;
+}
 
 .imageBox {
   width: 100%;

@@ -2,10 +2,10 @@ import React from "react";
 import "./css/itemProduct.css";
 
 const ItemProduct = (props) => {
-  const { image, name, price } = props;
+  const { image, name, price, onPress } = props;
 
   return (
-    <div className="productView">
+    <div className="productView" onClick={onPress}>
       <div className="imageBox">
         <img className="image" src={image} />
       </div>

@@ -1,7 +1,7 @@
-import RootScreen from "./navigation/RootScreen";
+import ListProduct from "./feature/product/ListProduct";
 
 function App() {
-  return <RootScreen />;
+  return <ListProduct />;
 }
 
 export default App;

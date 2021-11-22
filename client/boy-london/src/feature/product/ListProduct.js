@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import ItemProduct from "../../components/ItemProduct";
+import ItemOption from "../../components/ItemOption";
 
 const data = [
   {
@@ -40,12 +41,102 @@ const data = [
   },
 ];
 
+const TYPE_SORT = {
+  aToZ: 0,
+  zToA: 1,
+  latest: 2,
+  popular: 3,
+};
+
+const TYPE_CATEGORY = {
+  tops: 4,
+  sweaters: 5,
+  jeans: 6,
+  accessories: 7,
+};
+
 const ListProduct = () => {
+  const [listSorts, setListSorts] = useState([]);
+  const [listCategories, setListCategories] = useState([]);
+
+  const onChangeSort = (typeSort) => {
+    console.log("hahah");
+  };
+
+  const onChangeCategory = (typeCategory) => {
+    console.log("xin chao xin chao");
+  };
+
+  const onGoToDetailProduct = (productId) => {
+    console.log("Go to detail: ", productId);
+  };
+
   return (
-    <div className="listProductContainer">
-      {data.map((item) => (
-        <ItemProduct image={item.image} name={item.name} price={item.price} />
-      ))}
+    <div className="container">
+      {/* option view */}
+      <div className="optionView">
+        {/* sort */}
+        <div className="optionBox">
+          <p className="titleOption">SORT</p>
+          <ItemOption
+            title="A to Z"
+            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            isSelected={listSorts.includes(TYPE_SORT.aToZ)}
+          />
+          <ItemOption
+            title="Z to A"
+            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            isSelected={listSorts.includes(TYPE_SORT.zToA)}
+          />
+          <ItemOption
+            title="Latest"
+            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            isSelected={listSorts.includes(TYPE_SORT.latest)}
+          />
+          <ItemOption
+            title="Popular"
+            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            isSelected={listSorts.includes(TYPE_SORT.popular)}
+          />
+        </div>
+
+        {/* category */}
+        <div className="optionBox">
+          <p className="titleOption">CATEGORY</p>
+          <ItemOption
+            title="Tops"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.tops)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.tops)}
+          />
+          <ItemOption
+            title="Sweaters"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.sweaters)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.sweaters)}
+          />
+          <ItemOption
+            title="Jeans"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.jeans)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.jeans)}
+          />
+          <ItemOption
+            title="Accessories"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.accessories)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.accessories)}
+          />
+        </div>
+      </div>
+
+      {/* list product view */}
+      <div className="listProductView">
+        {data.map((item) => (
+          <ItemProduct
+            image={item.image}
+            name={item.name}
+            price={item.price}
+            onPress={() => onGoToDetailProduct(item.id)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

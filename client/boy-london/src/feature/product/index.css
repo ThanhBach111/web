@@ -1,5 +1,30 @@
-.listProductContainer {
+.container {
   width: 100%;
   display: flex;
   flex-direction: row;
+}
+.optionView {
+  width: 20%;
+  height: 700px;
+  background-color: lightblue;
+  padding: 10px 50px 0px 50px;
+}
+.optionBox {
+  width: 100%;
+  border-top-width: 1px;
+  border-top-color: black;
+  border-top-style: solid;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+.titleOption {
+  font-size: 17px;
+  font-weight: bold;
+  color: black;
+}
+.listProductView {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
