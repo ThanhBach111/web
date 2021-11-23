@@ -60,15 +60,29 @@ const ListProduct = () => {
   const [listCategories, setListCategories] = useState([]);
 
   const onChangeSort = (typeSort) => {
-    console.log("hahah");
+    const index = listSorts.indexOf(typeSort);
+    if (index !== -1) {
+      const temp = [...listSorts];
+      temp.pop(index);
+      setListSorts(temp);
+    } else {
+      setListSorts(listSorts.concat(typeSort));
+    }
   };
 
   const onChangeCategory = (typeCategory) => {
-    console.log("xin chao xin chao");
+    const index = listCategories.indexOf(typeCategory);
+    if (index !== -1) {
+      const temp = [...listCategories];
+      temp.pop(index);
+      setListCategories(temp);
+    } else {
+      setListCategories(listCategories.concat(typeCategory));
+    }
   };
 
   const onGoToDetailProduct = (productId) => {
-    console.log("Go to detail: ", productId);
+    return null;
   };
 
   return (
@@ -85,17 +99,17 @@ const ListProduct = () => {
           />
           <ItemOption
             title="Z to A"
-            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            onPress={() => onChangeSort(TYPE_SORT.zToA)}
             isSelected={listSorts.includes(TYPE_SORT.zToA)}
           />
           <ItemOption
             title="Latest"
-            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            onPress={() => onChangeSort(TYPE_SORT.latest)}
             isSelected={listSorts.includes(TYPE_SORT.latest)}
           />
           <ItemOption
             title="Popular"
-            onPress={() => onChangeSort(TYPE_SORT.aToZ)}
+            onPress={() => onChangeSort(TYPE_SORT.popular)}
             isSelected={listSorts.includes(TYPE_SORT.popular)}
           />
         </div>

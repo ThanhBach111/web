@@ -1,6 +1,4 @@
-import React from "react";
 import styled from "styled-components";
-import reactDom from "react-dom";
 
 export const userContainer = styled.nav`
   background: #fff;

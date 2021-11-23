@@ -6,7 +6,6 @@
 .optionView {
   width: 20%;
   height: 700px;
-  background-color: lightblue;
   padding: 10px 50px 0px 50px;
 }
 .optionBox {
@@ -27,4 +26,16 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.buttonDesIncNumberOrder:hover {
+  cursor: pointer;
+}
+.buttonAddToCart:hover {
+  cursor: pointer;
+}
+.buttonUseDiscount:hover {
+  cursor: pointer;
+}
+.buttonFinishBox:hover {
+  cursor: pointer;
 }

@@ -3,6 +3,7 @@ import "./css/itemOption.css";
 
 const ItemOption = (props) => {
   const { title, onPress, isSelected } = props;
+  const backgroundColor = isSelected ? "gray" : "transparent";
 
   return (
     <div className="itemOptionTouch">
@@ -10,7 +11,13 @@ const ItemOption = (props) => {
         <p>{title}</p>
       </div>
       <div className="buttonTickTouch">
-        <button className="buttonTick" onClick={onPress}></button>
+        <button
+          className="buttonTick"
+          onClick={onPress}
+          style={{ backgroundColor }}
+        >
+          {isSelected && <p className="textChooseX">x</p>}
+        </button>
       </div>
     </div>
   );

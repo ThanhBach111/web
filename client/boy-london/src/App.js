@@ -1,7 +1,8 @@
 import ListProduct from "./feature/product/ListProduct";
+import RootScreen from "./navigation/RootScreen";
 
 function App() {
-  return <ListProduct />;
+  return <RootScreen />;
 }
 
 export default App;
