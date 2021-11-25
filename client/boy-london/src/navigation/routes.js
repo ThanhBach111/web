@@ -1,7 +1,8 @@
 export const ROOT_SCREEN = {
   shop: "/shop",
   explore: "/explore",
-  aboutUs: "aboutUs",
+  aboutUs: "/aboutUs",
+  login: "/login",
 };
 
 export const SHOP_ROUTE = {
