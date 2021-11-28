@@ -5,8 +5,8 @@ import ListProduct from "../feature/product/ListProduct";
 import ProductDetail from "../feature/product/ProductDetail";
 import NavBar from "./NavBar";
 import { ROOT_SCREEN, SHOP_ROUTE } from "./routes";
-import LandingPage from "../feature/landingpage/LandingPage";
-import Register from "../feature/user/Register";
+/*import LandingPage from "../feature/landingpage/LandingPage";*/
+
 
 const RootScreen = () => {
   return (
