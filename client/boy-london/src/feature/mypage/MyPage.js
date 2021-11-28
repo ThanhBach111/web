@@ -31,6 +31,7 @@ const info = [
     
   ];
 
+
 const MyPage = () => {
     return(
         <div className="page">
@@ -40,10 +41,10 @@ const MyPage = () => {
                 <StyleInput image={item.image} name={item.name}  />
                 ))}
                 <button>Cập nhật thông tin</button>
+                
             </div>
             <div className="cartinfo">
               <h1>Thông tin khuyến mãi</h1>
-
             </div>
         </div>
     )

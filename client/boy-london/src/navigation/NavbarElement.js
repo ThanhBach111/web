@@ -11,6 +11,7 @@ export const Nav = styled.nav`
   z-index: 12;
   position: relative;
   margin: auto;
+  box-shadow: 3px 4px 5px rgba(0,0,0,0.5);
   /* Third Nav */
   /* justify-content: flex-start; */
 `;

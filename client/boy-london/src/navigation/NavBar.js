@@ -3,11 +3,14 @@ import { NavLink } from "react-router-dom";
 import Images from "../assets/images";
 import "./css/NavBar.css";
 import { Nav, NavMenu } from "./NavbarElement";
-import { ROOT_SCREEN } from "./routes";
+import { ROOT_SCREEN, USER_ROUTE } from "./routes";
 
 function NavBar() {
   const onNavigateAuthentication = () => {
-    window.location.href = ROOT_SCREEN.authentication;
+    window.location.href = ROOT_SCREEN.login;
+  };
+  const onInstruction = () => {
+    window.location.href = USER_ROUTE.instruction;
   };
 
   return (
@@ -19,13 +22,13 @@ function NavBar() {
 
         <NavMenu>
           <NavLink className="navBarLink" to={ROOT_SCREEN.shop} activeStyle>
-            Shop
+            SHOP
           </NavLink>
           <NavLink className="navBarLink" to={ROOT_SCREEN.explore} activeStyle>
-            Explore
+            EXPLORE
           </NavLink>
-          <NavLink className="navBarLink" to={ROOT_SCREEN.aboutUs} activeStyle>
-            About us
+          <NavLink className="navBarLink" to={USER_ROUTE.policyInstruc} activeStyle>
+            ABOUT US
           </NavLink>
         </NavMenu>
 
@@ -54,7 +57,7 @@ const styles = {
   },
   iconOptionView: {
     position: "absolute",
-    top: 30,
+    top: 0,
     right: 100,
     width: 160,
     display: "flex",
