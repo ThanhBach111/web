@@ -34,8 +34,7 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.instruction} component={Instruction} />
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
-        {/* <Route path={ROOT_SCREEN.aboutUs} component={register} />
-        <Route path={ROOT_SCREEN.register} component={register} /> */}
+      
       </Switch>
     </BrowserRouter>
   );
