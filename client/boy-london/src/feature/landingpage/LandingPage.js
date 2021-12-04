@@ -1,88 +1,123 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import request from "request";
 import { ROOT_SCREEN } from "../../navigation/routes";
-import StyleProduct from "../../components/StyleProduct";
-import Images from "../../assets/images";
 
 const newProduct = [
-    {
-      id: 0,
-      image:  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 1,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 2,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 3,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    
-  ]
-  const bestSaleProduct = [
-    {
-      id: 0,
-      image:  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 1,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 2,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    {
-      id: 3,
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-      name: "Product",
-      price: "200,000d",
-    },
-    
-  ]
-  const Banner ="https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg" 
+  {
+    id: 0,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 1,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 2,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 3,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+];
+const bestSaleProduct = [
+  {
+    id: 0,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 1,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 2,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+  {
+    id: 3,
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    name: "Product",
+    price: "200,000d",
+  },
+];
+const Banner =
+  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
 
-  const Banner2 ="https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg" 
+const Banner2 =
+  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
 
 const ProductStyle = [
   {
-      image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
   },
   {
-    image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
   },
   {
-    image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
   },
   {
-    image: "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  }
-]
+    image:
+      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  },
+];
 
 const LandingPage = () => {
+  const [value, setValue] = useState();
+
   const openListProduct = () => {
     window.location.href = ROOT_SCREEN.shop;
   };
-    return(
-        <>
-        <div style={Style.page}>
+
+  const increaseValue = () => {
+    setValue(20);
+  };
+
+  const getData = async () => {
+    try {
+      const response = await request.get("/api/address/random_address");
+      setValue(response.data.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  return (
+    <>
+      <p style={{ fontSize: 100, fontWeight: "bold" }}>{value}</p>
+      <button onClick={increaseValue}>
+        <p>Increase value</p>
+      </button>
+      {/* <div style={Style.page}>
             <div style={Style.banner}>
               <img src={Banner} style={Style.imageStyle}></img>
             </div>
@@ -135,90 +170,88 @@ const LandingPage = () => {
                 
               </div>
             </div>
-        </div>
-        </>
-        
-    )
-}
+        </div> */}
+    </>
+  );
+};
 
 const Style = {
   imageStyle: {
     width: "100%",
-    height: "100%"
+    height: "100%",
   },
   showmore: {
     backgroundColor: "transparent",
     borderWidth: 0,
-    marginLeft : "auto",
+    marginLeft: "auto",
     marginRight: "auto",
     fontSize: "x-large",
     textDecoration: "underline",
   },
   page: {
     display: "block",
-position: "relative",
+    position: "relative",
     width: "1440px",
     margin: "auto",
-    backgroundSize: "cover"
-},
-banner: { 
-    width:1400,
+    backgroundSize: "cover",
+  },
+  banner: {
+    width: 1400,
     height: 538,
-    
-},
-style: {
-  marginTop: 50,
-  height: 450,
-  display: "flex",
-  flexDirection: "row"
-},
-imageStyle2 :{
-  marginTop: 5,
-  marginBottom: 5,
-  marginLeft: 5,
-  marginRight: 5,
-  width: 340
-},
-text: {
-  margin: 10,
-  textAlign: "center",
-  fontSize: "x-large",
-  fontFamily:"Verdana, Geneva, Tahoma, sans-serif"
-},
-newarrival: {
-  height: 535,
-  display: "flex",
-  flexWrap: "wrap",
-},
-bestSale: {
-  width: "100%",
-  height: 1100,
-  display: "flex",
-  flexDirection: "row"
-},
-bestsaleproduct: {
-  width: 700,
-  height: 1100,
-  display: "flex",
-  flexWrap: "wrap"
-},
-imgView: {
-  width: 680,
-  height: 1050,
-  marginLeft: 10,
-  marginRight: 10
-},
-contact: {
-  paddingLeft: 10,
-  marginTop: 20,
-  marginBottom: 10,
-  display: "flex",
-  flexDirection: "row"
-},
-contactblock: {
-  paddingRight: 10,
-  fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-  width: "25%"
-}
-}
+  },
+  style: {
+    marginTop: 50,
+    height: 450,
+    display: "flex",
+    flexDirection: "row",
+  },
+  imageStyle2: {
+    marginTop: 5,
+    marginBottom: 5,
+    marginLeft: 5,
+    marginRight: 5,
+    width: 340,
+  },
+  text: {
+    margin: 10,
+    textAlign: "center",
+    fontSize: "x-large",
+    fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+  },
+  newarrival: {
+    height: 535,
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  bestSale: {
+    width: "100%",
+    height: 1100,
+    display: "flex",
+    flexDirection: "row",
+  },
+  bestsaleproduct: {
+    width: 700,
+    height: 1100,
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  imgView: {
+    width: 680,
+    height: 1050,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  contact: {
+    paddingLeft: 10,
+    marginTop: 20,
+    marginBottom: 10,
+    display: "flex",
+    flexDirection: "row",
+  },
+  contactblock: {
+    paddingRight: 10,
+    fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+    width: "25%",
+  },
+};
 export default LandingPage;
