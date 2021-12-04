@@ -2,7 +2,7 @@ import axios from "axios";
 
 const request = axios.create({
   baseURL: "https://random-data-api.com",
-  timeout: 15000,
+  timeout: 5000,
   headers: { Accept: "*/*" },
 });
 
@@ -11,7 +11,7 @@ request.interceptors.request.use(
     config.headers.Authorization = `Bearer ${"token__backend"}`;
     return config;
   },
-  async (error) => Promise.reject(error)
+  (error) => Promise.reject(error)
 );
 
 request.interceptors.response.use(

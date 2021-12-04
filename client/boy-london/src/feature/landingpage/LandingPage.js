@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import request from "request";
 import { ROOT_SCREEN } from "../../navigation/routes";
+import request from "../../api/request";
 
 const newProduct = [
   {
@@ -100,8 +100,8 @@ const LandingPage = () => {
 
   const getData = async () => {
     try {
-      const response = await request.get("/api/address/random_address");
-      setValue(response.data.id);
+      const res = await request.get("/api/address/random_address");
+      setValue(res.id);
     } catch (err) {
       console.log(err);
     }
