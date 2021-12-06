@@ -11,6 +11,7 @@ import Back from "./ic_back.png";
 import AddProduct from "./ic_add_product.png";
 import backgroundInstruction from "./img_instruction.png";
 import backgroundPolicy from "./img_policy.png";
+
 const Images = {
   logo: Logo,
   search: Search,
@@ -23,7 +24,7 @@ const Images = {
   home: Home,
   back: Back,
   addP: AddProduct,
-  backIns : backgroundInstruction,
+  backIns: backgroundInstruction,
   backPoli: backgroundPolicy,
 };
 

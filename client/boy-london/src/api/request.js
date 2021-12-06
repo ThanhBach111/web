@@ -1,4 +1,5 @@
 import axios from "axios";
+import appStore from "../app-redux/store";
 
 const request = axios.create({
   baseURL: "https://random-data-api.com",
@@ -8,7 +9,8 @@ const request = axios.create({
 
 request.interceptors.request.use(
   async (config) => {
-    config.headers.Authorization = `Bearer ${"token__backend"}`;
+    const token = appStore.getState().accountSlice.token;
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   (error) => Promise.reject(error)
