@@ -2,9 +2,17 @@ import React from "react";
 import "./css/styleinput.css";
 
 const StyleInput = (props) => {
-  const { icon, placeholder, value, setValue, type } = props;
+  const {
+    icon,
+    placeholder,
+    value,
+    setValue,
+    type,
+    containerStyle = {},
+  } = props;
+
   return (
-    <div style={styles.container}>
+    <div style={{ ...styles.container, containerStyle }}>
       <img src={icon} style={{ width: 15, height: "auto", marginLeft: 15 }} />
       <input
         type={type || "text"}
