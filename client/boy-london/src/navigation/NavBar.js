@@ -27,7 +27,11 @@ function NavBar() {
           <NavLink className="navBarLink" to={ROOT_SCREEN.explore} activeStyle>
             EXPLORE
           </NavLink>
-          <NavLink className="navBarLink" to={USER_ROUTE.policyInstruc} activeStyle>
+          <NavLink
+            className="navBarLink"
+            to={USER_ROUTE.policyInstruc}
+            activeStyle
+          >
             ABOUT US
           </NavLink>
         </NavMenu>
@@ -57,7 +61,7 @@ const styles = {
   },
   iconOptionView: {
     position: "absolute",
-    top: 0,
+    top: 30,
     right: 100,
     width: 160,
     display: "flex",
