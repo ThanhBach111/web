@@ -1,29 +1,6 @@
 import React, { useState } from "react";
-import { ROOT_SCREEN } from "../../navigation/routes";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
-
-const info = [
-  {
-    id: 0,
-    image: "../assets/ic_mail.png",
-    name: "Email",
-  },
-  {
-    id: 1,
-    image: "../assets/ic_lock.png",
-    name: "Password",
-  },
-  {
-    id: 2,
-    image: "../assets/ic_lock.png",
-    name: "Confirm Password",
-  },
-];
-
-const backLogin = () => {
-  window.location.href = ROOT_SCREEN.login;
-};
 
 const ForgotPass = () => {
   const [email, setEmail] = useState("");
@@ -96,7 +73,7 @@ const styles = {
   },
   buttonLogin: {
     width: 280,
-    height: 36,
+    height: 45,
     marginTop: 70,
     marginLeft: 100,
     borderRadius: 25,

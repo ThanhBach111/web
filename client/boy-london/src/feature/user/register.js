@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { apiRegister } from "../../api/modules";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 
@@ -11,7 +12,13 @@ const Register = () => {
 
   const onRegister = async () => {
     try {
-      console.log("register");
+      const res = await apiRegister("auth/register", {
+        email,
+        name,
+        phoneNumber: phone,
+        password,
+        address,
+      });
     } catch (err) {
       alert(err);
     }
@@ -22,19 +29,45 @@ const Register = () => {
       <h1 style={styles.textBanner}>ĐĂNG KÝ</h1>
 
       <div style={styles.inputView}>
-        <StyleInput icon={Images.userText} placeholder="Họ và tên" />
+        <StyleInput
+          icon={Images.userText}
+          placeholder="Họ và tên"
+          value={name}
+          setValue={setName}
+        />
 
         <div style={{ marginTop: 40 }}></div>
-        <StyleInput icon={Images.mail} placeholder="Email" />
+        <StyleInput
+          icon={Images.mail}
+          placeholder="Email"
+          value={email}
+          setValue={setEmail}
+        />
 
         <div style={{ marginTop: 40 }}></div>
-        <StyleInput icon={Images.phone} placeholder="Phone" />
+        <StyleInput
+          icon={Images.phone}
+          placeholder="Phone"
+          value={phone}
+          setValue={setPhone}
+        />
 
         <div style={{ marginTop: 40 }}></div>
-        <StyleInput icon={Images.home} placeholder="Địa chỉ" />
+        <StyleInput
+          icon={Images.home}
+          placeholder="Địa chỉ"
+          value={address}
+          setValue={setAddress}
+        />
 
         <div style={{ marginTop: 40 }}></div>
-        <StyleInput icon={Images.lock} placeholder="Mật khẩu" type="password" />
+        <StyleInput
+          icon={Images.lock}
+          placeholder="Mật khẩu"
+          type="password"
+          value={password}
+          setValue={setPassword}
+        />
 
         <button style={styles.btnLogin} onClick={onRegister}>
           ĐĂNG KÝ

@@ -4,10 +4,14 @@ const accountSlice = createSlice({
   name: "accountSlice",
   initialState: {
     token: null,
+    userInfo: {},
   },
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
+    },
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
     },
   },
 });

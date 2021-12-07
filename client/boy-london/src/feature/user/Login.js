@@ -1,25 +1,39 @@
 import React, { useState } from "react";
-import { USER_ROUTE } from "../../navigation/routes";
+import { apiLogin } from "../../api/modules";
+import { accountSliceAction } from "../../app-redux/accountSlice";
+import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
-import appStore from "../../app-redux/store";
+import { USER_ROUTE } from "../../navigation/routes";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onRegister = () => {
+  const [isFailLogin, setIsFailLogin] = useState(false);
+
+  const onNavigateRegister = () => {
     window.location.href = USER_ROUTE.register;
   };
-  const onForgotPass = () => {
+  const onNavigateForgotPassword = () => {
     window.location.href = USER_ROUTE.forgotPass;
+  };
+
+  const onRequestLogin = async () => {
+    try {
+      const res = await apiLogin({ username: email, password });
+      appStore.dispatch(accountSliceAction.setToken(res.access_token));
+    } catch (err) {
+      setIsFailLogin(true);
+      alert(err);
+    }
   };
 
   return (
     <div style={styles.page}>
       <h1 style={styles.textBanner}>ĐĂNG NHẬP</h1>
 
-      <div style={styles.userInfoView}>
+      <div style={styles.inputView}>
         <StyleInput
           icon={Images.mail}
           placeholder="Email"
@@ -35,13 +49,20 @@ const Login = () => {
           setValue={setPassword}
         />
 
-        <button style={styles.btnLogin}>ĐĂNG NHẬP</button>
+        {isFailLogin && <p style={styles.textLoginFail}>Đăng nhập thất bại</p>}
 
-        <button style={styles.btnRegister} onClick={onRegister}>
+        <button style={styles.btnLogin} onClick={onRequestLogin}>
+          ĐĂNG NHẬP
+        </button>
+
+        <button style={styles.btnRegister} onClick={onNavigateRegister}>
           <p style={{ fontSize: 16 }}>Đăng ký</p>
         </button>
 
-        <button style={styles.btnChangePassword} onClick={onForgotPass}>
+        <button
+          style={styles.btnChangePassword}
+          onClick={onNavigateForgotPassword}
+        >
           <p style={{ fontSize: 15 }}>Đổi mật khẩu?</p>
         </button>
       </div>
@@ -58,8 +79,8 @@ const styles = {
     display: "flex",
     flexDirection: "row",
   },
-  userInfoView: {
-    width: 50,
+  inputView: {
+    width: 500,
     margin: "auto",
     marginTop: 100,
     marginRight: 100,
@@ -105,6 +126,13 @@ const styles = {
     border: "none",
     backgroundColor: "transparent",
     textDecoration: "underline",
+  },
+  textLoginFail: {
+    fontSize: 13,
+    color: "red",
+    fontStyle: "italic",
+    marginLeft: 20,
+    marginTop: 20,
   },
 };
 
