@@ -21,3 +21,12 @@ export const apiRegister = (params) => {
     role: "user",
   });
 };
+
+export const apiChangeInfo = (params) => {
+  return request.post("/account/10", {
+    name: params.name,
+    email: params.email,
+    phoneNumber: params.phoneNumber,
+    address: params.address,
+  });
+};

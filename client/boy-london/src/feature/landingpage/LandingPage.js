@@ -1,67 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ROOT_SCREEN } from "../../navigation/routes";
 import request from "../../api/request";
+import StyleProduct from "../../components/StyleProduct"
 
-const newProduct = [
-  {
-    id: 0,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 1,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 2,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 3,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-];
-const bestSaleProduct = [
-  {
-    id: 0,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 1,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 2,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 3,
-    image:
-      "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-];
+
 const Banner =
   "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
 
@@ -69,39 +11,34 @@ const Banner2 =
   "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
 
 const ProductStyle = [
-  {
-    image:
+  
       "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  },
-  {
-    image:
+  
       "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  },
-  {
-    image:
+ 
       "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  },
-  {
-    image:
+
       "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  },
+ 
 ];
 
 const LandingPage = () => {
-  const [value, setValue] = useState();
+  const [listProduct, setListProduct] = useState([])
 
   const openListProduct = () => {
     window.location.href = ROOT_SCREEN.shop;
   };
 
-  const increaseValue = () => {
-    setValue(20);
+  const onGoToDetailProduct = (productId) => {
+    return null;
   };
 
   const getData = async () => {
     try {
-      const res = await request.get("/api/address/random_address");
-      setValue(res.id);
+      
+      const res = await request.get("/get-landingpage");
+      setListProduct(res)
+      
     } catch (err) {
       console.log(err);
     }
@@ -113,17 +50,13 @@ const LandingPage = () => {
 
   return (
     <>
-      <p style={{ fontSize: 100, fontWeight: "bold" }}>{value}</p>
-      <button onClick={increaseValue}>
-        <p>Increase value</p>
-      </button>
-      {/* <div style={Style.page}>
+       <div style={Style.page}>
             <div style={Style.banner}>
               <img src={Banner} style={Style.imageStyle}></img>
             </div>
             <div style={Style.style}>
             {ProductStyle.map((item) => (
-                <img src={item.image} style={Style.imageStyle2}/>
+                <img src={item} style={Style.imageStyle2}/>
                 ))}
             </div>
             <div style={Style.text}>
@@ -131,9 +64,14 @@ const LandingPage = () => {
               <button style={Style.showmore} onClick={openListProduct}>show more</button>
             </div>
             <div style={Style.newarrival}>
-                {newProduct.map((item) => (
-                <StyleProduct image={item.image} name={item.name} price={item.price} />
-                ))}
+              {listProduct.slice(0,4).map((item) => (
+                <StyleProduct
+                  image={item.image}
+                  name={item.name}
+                  price={item.price}
+                  onPress={() => onGoToDetailProduct(item.id)}
+                />
+              ))}
             </div>
             
             <div style={Style.text}>
@@ -142,8 +80,13 @@ const LandingPage = () => {
             </div>
             <div style={Style.bestSale}>
               <div style={Style.bestsaleproduct}>
-                  {bestSaleProduct.map((item) => (
-                  <StyleProduct image={item.image} name={item.name} price={item.price} />
+                  {listProduct.slice(4,8).map((item) => (
+                      <StyleProduct
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      onPress={() => onGoToDetailProduct(item.id)}
+                    />
                   ))}
               </div>
               <div style={Style.imgView}>
@@ -170,7 +113,7 @@ const LandingPage = () => {
                 
               </div>
             </div>
-        </div> */}
+        </div> 
     </>
   );
 };
@@ -219,7 +162,7 @@ const Style = {
     fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
   },
   newarrival: {
-    height: 535,
+    height: 530,
     display: "flex",
     flexWrap: "wrap",
   },
@@ -231,7 +174,7 @@ const Style = {
   },
   bestsaleproduct: {
     width: 700,
-    height: 1100,
+    height: 1050,
     display: "flex",
     flexWrap: "wrap",
   },
