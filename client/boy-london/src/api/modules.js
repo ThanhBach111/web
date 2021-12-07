@@ -22,6 +22,13 @@ export const apiRegister = (params) => {
   });
 };
 
+export const apiChangePassword = (params) => {
+  return request.put("/account/change-password", params);
+};
+
+/**
+ * Profile
+ */
 export const apiChangeInfo = (params) => {
   return request.post("/account/10", {
     name: params.name,
@@ -29,4 +36,8 @@ export const apiChangeInfo = (params) => {
     phoneNumber: params.phoneNumber,
     address: params.address,
   });
+};
+
+export const apiGetProfile = () => {
+  return request.get("/account");
 };

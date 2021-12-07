@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { apiChangePassword } from "../../api/modules";
+import { accountSliceAction } from "../../app-redux/accountSlice";
+import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 
@@ -6,6 +9,25 @@ const ForgotPass = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const onChangePassword = async () => {
+    try {
+      await apiChangePassword({
+        email,
+        newPassword: password,
+        confirmPassword,
+      });
+
+      appStore.dispatch(
+        accountSliceAction.setUserInfo({
+          ...appStore.getState().accountSlice.userInfo,
+          password: newPassword,
+        })
+      );
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -37,7 +59,9 @@ const ForgotPass = () => {
           type="password"
         />
 
-        <button style={styles.buttonLogin}>ĐỔI MẬT KHẨU</button>
+        <button style={styles.buttonLogin} onClick={onChangePassword}>
+          ĐỔI MẬT KHẨU
+        </button>
       </div>
     </div>
   );

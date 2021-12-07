@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { apiLogin } from "../../api/modules";
+import { apiGetProfile, apiLogin } from "../../api/modules";
 import { accountSliceAction } from "../../app-redux/accountSlice";
 import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
@@ -22,7 +22,10 @@ const Login = () => {
   const onRequestLogin = async () => {
     try {
       const res = await apiLogin({ username: email, password });
+      const info = await apiGetProfile();
+
       appStore.dispatch(accountSliceAction.setToken(res.access_token));
+      appStore.dispatch(accountSliceAction.setUserInfo(info));
     } catch (err) {
       setIsFailLogin(true);
       alert(err);

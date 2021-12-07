@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import LandingPage from "../feature/landingpage/LandingPage";
+import Manager from "../feature/manage/Manager";
+import MyPage from "../feature/mypage/MyPage";
 import CartPayment from "../feature/product/CartPayment";
 import ListProduct from "../feature/product/ListProduct";
 import ProductDetail from "../feature/product/ProductDetail";
-import NavBar from "./NavBar";
-import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
-import LandingPage from "../feature/landingpage/LandingPage";
-import Login from "../feature/user/Login";
-import ForgotPass from "../feature/user/ForgotPass";
-import Manager from "../feature/manage/Manager";
-import MyPage from "../feature/mypage/MyPage";
+import ChangePassword from "../feature/user/ChangePassword";
 import Instruction from "../feature/user/Instruction";
+import Login from "../feature/user/Login";
 import Policy from "../feature/user/Policy";
 import PolicyHomePage from "../feature/user/PolicyInstruct";
-import Register from "../feature/user/Register";
+import Register from "../feature/user/register";
+import NavBar from "./NavBar";
+import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
 const RootScreen = () => {
   return (
@@ -27,7 +27,7 @@ const RootScreen = () => {
         <Route path={SHOP_ROUTE.cartPayment} component={CartPayment} />
         <Route path={ROOT_SCREEN.login} component={Login} />
         <Route path={USER_ROUTE.register} component={Register} />
-        <Route path={USER_ROUTE.forgotPass} component={ForgotPass} />
+        <Route path={USER_ROUTE.forgotPass} component={ChangePassword} />
         <Route path={ADMIN_ROUTE.productManage} component={Manager} />
         <Route path={USER_ROUTE.myPage} component={MyPage} />
         <Route path={USER_ROUTE.instruction} component={Instruction} />
