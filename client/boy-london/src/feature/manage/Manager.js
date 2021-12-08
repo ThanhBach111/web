@@ -6,16 +6,47 @@ const fakeDate = [
     id: 1,
     username: "ducdat",
     customerName: "Duc Dat Pham",
-    phoneNumber: "23423423",
-    totalMoney: "23422",
+    phoneNumber: "091247882312",
+    totalMoney: "12,290,000 VND",
   },
   {
     id: 2,
-    username: "ducdat02",
-    customerName: "Duc Dat Pham 02",
-    phoneNumber: "23423423",
-    totalMoney: "23422",
+    username: "tdung352009",
+    customerName: "Nguyễn Tùng Dương",
+    phoneNumber: "091247882312",
+    totalMoney: "7,003,003 VND",
   },
+];
+
+const orderData = [
+  {
+    id: 1,
+    orderid: "tdung352009",
+    date: "12/5/2021",
+    username: "Nguyễn Tùng Dương",
+    address: "12, Q.Linh Đàm, Hà Nội",
+    orderMoney: "12,290,000 VND",
+    status: "Đang giao",
+  },
+  {
+    id: 2,
+    orderid: "tdung352009",
+    date: "12/5/2021",
+    username: "Nguyễn Tùng Dương",
+    address: "12, Q.Linh Đàm, Hà Nội",
+    orderMoney: "12,290,000 VND",
+    status: "Đang giao",
+  },
+  {
+    id: 3,
+    orderid: "tdung352009",
+    date: "12/5/2021",
+    username: "Nguyễn Tùng Dương",
+    address: "12, Q.Linh Đàm, Hà Nội",
+    orderMoney: "12,290,000 VND",
+    status: "Đang giao",
+  }
+
 ];
 
 class Manager extends Component {
@@ -124,119 +155,134 @@ class Manager extends Component {
     //   </div>
     // );
     return (
+      
+        
+     <div>
+       <h1 style={{marginLeft:100}}>
+          Danh sách khách hàng
+        </h1>
       <div
-        style={{
-          width: 1000,
-          height: "auto",
-          backgroundColor: "red",
-          padding: 10,
-        }}
+        style={styles.table}
       >
+        
         {/* title */}
         <div
-          style={{
-            width: "100%",
-            backgroundColor: "lightblue",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            paddingTop: 10,
-            paddingBottom: 10,
-          }}
+          style={styles.tableHeader}
         >
-          <p>Ten dang nhap</p>
-          <p>Ten khach hang</p>
-          <p>so dien thoai</p>
-          <p>Tong tien</p>
+          <p>TÊN ĐĂNG NHẬP</p>
+          <p>TÊN KHÁCH HÀNG</p>
+          <p>SỐ ĐIỆN THOẠI</p>
+          <p>TỔNG TIỀN</p>
         </div>
 
         {/* data */}
         {fakeDate.map((item) => (
           <div
-            style={{
-              width: "100%",
-              backgroundColor: "lightblue",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingTop: 10,
-              paddingBottom: 10,
-            }}
+            style={styles.dataTable}
           >
-            <p>{item.username}</p>
-            <p>{item.customerName}</p>
-            <p>{item.phoneNumber}</p>
-            <p>{item.totalMoney}</p>
+            <div style={styles.data}>{item.username}</div>
+            <div  style={styles.data}>{item.customerName}</div>
+            <div  style={styles.data}>{item.phoneNumber}</div>
+            <div  style={styles.data}>{item.totalMoney}</div>
           </div>
         ))}
+      </div>
+      <h1 style={{marginLeft:100}}>
+          Danh sách đơn hàng
+        </h1>
+        <button style={styles.button}>Toàn bộ trạng thái</button>
+        <button style={styles.unbutton}>Đang giao</button>
+        <button style={styles.unbutton}> Đã nhận</button>
+        <div
+        style={styles.table}
+      >
+        
+        {/* title */}
+        <div
+          style={styles.tableHeader}
+        >
+          <p>MÃ ĐƠN HÀNG</p>
+          <p>NGÀY</p>
+          <p>TÊN KHÁCH HÀNG</p>
+          <p>ĐỊA CHỈ</p>
+          <p>TỔNG TIỀN</p>
+          <p>TÌNH TRẠNG</p>
+        </div>
+
+        {/* data */}
+        {orderData.map((item) => (
+          <div
+            style={styles.dataTable}
+          >
+            <div style={styles.data}>{item. id}</div>
+            <div  style={styles.data}>{item.orderid}</div>
+            <div  style={styles.data}>{item.date}</div>
+            <div  style={styles.data}>{item.username}</div>
+            <div  style={styles.data}>{item.address}</div>
+            <div  style={styles.data}>{item.orderMoney}</div>
+            <div  style={styles.data}>{item.status}</div>
+        ))}
+      </div>
+      </div>
       </div>
     );
   }
 }
 
+
 const styles = {
   table: {
-    width: 1200,
+    width: 1300,
     marginLeft: "auto",
     marginRight: "auto",
     borderRadius: 10,
     backgroundColor: "#E0DEDE",
     textAlign: "center",
     marginTop: 20,
+    
   },
   tableHeader: {
     borderBottom: 1,
     borderBottomStyle: "solid",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft:10,
+    paddingRight: 10,
+    fontWeight: "bold",
+    flex: 1,
+    
   },
-  banner: {
-    marginLeft: 100,
+  dataTable: {
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: "center",
   },
-  checkBox: {
-    marginRight: 0,
-    width: 60,
+  data: {
+    paddingLeft: 10,
   },
-  submit: {
-    marginTop: 0,
-    backgroundColor: "black",
-    color: "white",
-    borderRadius: 25,
-    width: 183,
-    marginLeft: 750,
-    height: 49,
-  },
-  label: {
-    marginRight: 0,
-    marginTop: 0,
-  },
-  listInput: {
-    marginLeft: 10,
-    width: 280,
-    listStyle: "none",
-
-    borderRadius: 15,
-    borderStyle: "solid",
-    height: 45,
-    padding: 10,
-  },
-  form: {
-    marginLeft: 100,
-  },
-  smallBanner: {
-    marginLeft: 100,
-    fontWeight: "lighter",
-  },
-  listCheck: {
-    marginLeft: 20,
-    width: 200,
-    listStyle: "none",
-    marginTop: 16,
-  },
-  liDelete: {
-    listStyle: "none",
-  },
-  addButton: {
+  button: {
     backgroundColor: "transparent",
     borderColor: "transparent",
-  },
+    fontWeight:"bold",
+    marginLeft: 100,
+    fontSize: 24,
+    borderBottom: 2,
+    borderStyle: "solid",
+    marginBottom: 10,
+},
+  unbutton: {
+    backgroundColor: "transparent",
+    borderColor: "transparent",
+    fontWeight:"normal",
+    marginLeft: 10,
+    fontSize: 24,
+},
 };
 export default Manager;
