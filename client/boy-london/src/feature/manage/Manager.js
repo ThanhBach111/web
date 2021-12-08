@@ -156,26 +156,18 @@ class Manager extends Component {
     // );
     return (
       
-        
+    <div>
      <div>
        <h1 style={{marginLeft:100}}>
           Danh sách khách hàng
         </h1>
-      <div
-        style={styles.table}
-      >
-        
-        {/* title */}
-        <div
-          style={styles.tableHeader}
-        >
+      <div style={styles.table}>
+        <div style={styles.tableHeader}>
           <p>TÊN ĐĂNG NHẬP</p>
           <p>TÊN KHÁCH HÀNG</p>
           <p>SỐ ĐIỆN THOẠI</p>
           <p>TỔNG TIỀN</p>
         </div>
-
-        {/* data */}
         {fakeDate.map((item) => (
           <div
             style={styles.dataTable}
@@ -186,48 +178,42 @@ class Manager extends Component {
             <div  style={styles.data}>{item.totalMoney}</div>
           </div>
         ))}
-      </div>
-      <h1 style={{marginLeft:100}}>
-          Danh sách đơn hàng
-        </h1>
+        </div>
+        </div>
+        <div>
+        <h1 style={{marginLeft:100}}>Danh sách đơn hàng</h1>
         <button style={styles.button}>Toàn bộ trạng thái</button>
         <button style={styles.unbutton}>Đang giao</button>
         <button style={styles.unbutton}> Đã nhận</button>
-        <div
-        style={styles.table}
-      >
-        
-        {/* title */}
-        <div
-          style={styles.tableHeader}
-        >
-          <p>MÃ ĐƠN HÀNG</p>
-          <p>NGÀY</p>
-          <p>TÊN KHÁCH HÀNG</p>
-          <p>ĐỊA CHỈ</p>
-          <p>TỔNG TIỀN</p>
-          <p>TÌNH TRẠNG</p>
+      <div style={styles.table}>
+        <div style={styles.tableHeader}>
+          <p>Mã đơn hàng</p>
+          <p>Ngày</p>
+          <p>Tên khách hàng</p>
+          <p>Địa chỉ</p>
+          <p>Tổng tiền</p>
+          <p>Tình trạng</p>
         </div>
-
-        {/* data */}
-        {orderData.map((item) => (
+        {fakeDate.map((item) => (
           <div
             style={styles.dataTable}
           >
-            <div style={styles.data}>{item. id}</div>
+      
             <div  style={styles.data}>{item.orderid}</div>
             <div  style={styles.data}>{item.date}</div>
             <div  style={styles.data}>{item.username}</div>
             <div  style={styles.data}>{item.address}</div>
             <div  style={styles.data}>{item.orderMoney}</div>
             <div  style={styles.data}>{item.status}</div>
+          </div>
         ))}
-      </div>
-      </div>
+        </div>
+        </div>
       </div>
     );
   }
 }
+
 
 
 const styles = {
@@ -263,9 +249,11 @@ const styles = {
     paddingLeft: 10,
     paddingRight: 10,
     textAlign: "center",
+    justifyContent: "center",
   },
   data: {
     paddingLeft: 10,
+    justifyContent: "center",
   },
   button: {
     backgroundColor: "transparent",
