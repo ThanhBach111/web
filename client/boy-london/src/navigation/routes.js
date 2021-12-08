@@ -11,7 +11,7 @@ export const SHOP_ROUTE = {
 };
 
 export const USER_ROUTE = {
-  register: "/register",
+  register: "/Register",
   forgotPass: "/forgotPass",
   myPage: "/myPage",
   instruction: "/instruction",
@@ -21,4 +21,5 @@ export const USER_ROUTE = {
 
 export const ADMIN_ROUTE = {
   productManage: "/product&usermanage",
+  trackingOrder: "/trackingorder",
 };

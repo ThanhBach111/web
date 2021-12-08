@@ -96,9 +96,9 @@ const LandingPage = () => {
             <div style={Style.contact}>
               <div style={Style.contactblock}>
               <b> Store location</b>
-              <p>111 Trầnn Quốcc Toảnn, Q. Bắcc Từ Liêmm,</p>
-              <p>HN145 Hai Bà Trưnng, Q. Bắcc Từ Liêmm, HN</p>
-              <p>951 Đổnng Triềuu, Q. 1, HCM</p>
+              <p>111 Trần Quốc Toản, Q. Bắc Từ Liêm,</p>
+              <p>HN145 Hai Bà Trưng, Q. Bắc Từ Liêm, HN</p>
+              <p>951 Đổng Triều, Q. 1, HCM</p>
               </div>
               <div style={Style.contactblock}>
               <b>Hỗ trợ mua hàng</b>
@@ -106,8 +106,8 @@ const LandingPage = () => {
               </div>
               <div style={Style.contactblock}>
               <b>Contact us</b>
-              <p>Hotline tư vấnn : 0912981249</p>
-              <p>Hotline khiếuu nạii: 091237124</p>
+              <p>Hotline tư vấn : 0912981249</p>
+              <p>Hotline khiếu nại: 091237124</p>
               </div>
               <div style={Style.contactblock}>
                 

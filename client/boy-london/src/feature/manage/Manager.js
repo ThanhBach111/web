@@ -70,17 +70,17 @@ class Manager extends Component {
                 </label>
                 </li>
                 </ul>
-                <ul>
+                <div style={{display:"inline"}}>
                 <button style={styles.addButton}>
                 <img src={Images.addP} width="141" height="141"/></button>
-                <li style={styles.liDelete}>
+               
                 <input style={styles.listInput} type="text" name="name" placeholder="Tên sản phẩm"/>
-                </li>
-                <li  style={styles.liDelete}>
+              
+              
                 <input style={styles.listInput} type="text" name="price" placeholder="Giá sản phẩm"/>
-                </li>
+               
                 <input type="submit" value="THÊM SẢN PHẨM" style={styles.submit}/>
-                </ul>
+                </div>
                 </form>
                
                 
@@ -91,10 +91,13 @@ class Manager extends Component {
 
 const styles = {
     table: {
-        width: 1000,
+        width: 1200,
         marginLeft: "auto",
         marginRight: "auto",
         borderRadius: 10,
+        backgroundColor: "#E0DEDE",
+        textAlign: "center",
+        marginTop: 20,
         },
     tableHeader: {
         borderBottom: 1,
@@ -121,10 +124,10 @@ const styles = {
         marginTop:0,
     },
     listInput: {
-        marginLeft: 180,
+        marginLeft: 10,
         width: 280,
         listStyle: "none",
-        marginTop: 10,
+        
         borderRadius: 15,
         borderStyle: "solid",
         height: 45,
@@ -138,7 +141,7 @@ const styles = {
         fontWeight: "lighter",
     },
     listCheck: {
-        marginLeft: 280,
+        marginLeft: 20,
         width: 200,
         listStyle: "none",
         marginTop: 16,
@@ -149,6 +152,7 @@ const styles = {
     addButton: {
         backgroundColor: "transparent",
         borderColor: "transparent",
+        
     },
 }
 export default Manager;

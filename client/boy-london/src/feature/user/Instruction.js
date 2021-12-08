@@ -6,7 +6,7 @@ const Instruction = () => {
         return (
             <div style={styles.page}>
                 <h1 style={styles.banner}> Hướng dẫn mua hàng</h1>
-                <img src={Images.backIns} style={styles.image}/>
+                <img src={Images.backPoli} style={styles.image}/>
                 <p style={styles.para}>Quý khách vui lòng tham khảo thông tin chi tiết về từng bước đặt hàng như sau:</p>
                 <h4 style={styles.section}>BƯỚC 1: TÌM KIẾM VÀ CHỌN SẢN PHẨM YÊU THÍCH TRÊN WEBSITE</h4>
                 <ol style={styles.sectionIn}>

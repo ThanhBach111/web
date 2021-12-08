@@ -6,7 +6,7 @@ const Policy = () => {
         return (
             <div style={styles.page}>
                 <h1 style={styles.banner}>CHÍNH SÁCH ĐỔI TRẢ VÀ BẢO HÀNH</h1>
-                <img src={Images.backPoli} style={styles.image}/>
+                <img src={Images.backIns} style={styles.image}/>
             
                 <h4 style={styles.section}>CHÍNH SÁCH BẢO HÀNH</h4>
                 <ol style={styles.sectionIn}>
