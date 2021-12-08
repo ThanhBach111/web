@@ -30,7 +30,7 @@ export const apiChangePassword = (params) => {
  * Profile
  */
 export const apiChangeInfo = (params) => {
-  return request.post("/account/10", {
+  return request.post("/account/change-informartion", {
     name: params.name,
     email: params.email,
     phoneNumber: params.phoneNumber,

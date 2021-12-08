@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StyleInput from "../../components/StyleInput";
 import Images from "../../assets/images";
-import { ADMIN_ROUTE } from "../../navigation/routes";
+import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE} from "../../navigation/routes";
 import request from "../../api/request";
 
 const listPromotion = [
@@ -19,13 +19,15 @@ const MyPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [role, setRole] = useState("");
   const getData = async () => {
     try {
       const res = await request.get("/account");
       setName(res.name);
       setEmail(res.mail);
-      setPhone(res.phone);
+      setPhone(res.phoneNumber);
       setAddress(res.address);
+      setRole(res.role);
     } catch (err) {
       console.log(err);
     }
@@ -37,7 +39,7 @@ const MyPage = () => {
 
   const onChangeInfo = async () => {
     try {
-      const res = await apiChangeInfo("/account/change-information/10", {
+      const res = await apiChangeInfo("/account/change-information", {
         name: name,
         email: email,
         phoneNumber: phone,
@@ -52,6 +54,25 @@ const MyPage = () => {
     window.location.href = ADMIN_ROUTE.productManage;
   };
 
+  const logOut = () => {
+    window.location.href = ROOT_SCREEN.login;
+  }
+
+  const changePassword = () => {
+    window.location.href = USER_ROUTE.forgotPass;
+  }
+
+  const checkRole = () => {
+    if(role == "admin")
+      return (
+        <div style={{marginLeft: 150}}>
+        <button style={Style.button1} onClick={gotoMangerPage}>
+            Quản lý thông tin
+        </button>
+        </div>
+      )
+  }
+  
   return (
     <div style={Style.page}>
       <div style={Style.userinfo}>
@@ -86,14 +107,20 @@ const MyPage = () => {
           value={address}
           setValue={setAddress}
         />
-        <p>
-          <button style={Style.button1} onClick={onChangeInfo}>
-            Cập nhật thông tin
+        
+        <button style={Style.button1} onClick={onChangeInfo}>
+           Cập nhật thông tin
           </button>
-        </p>
-        <button style={Style.button1} onClick={gotoMangerPage}>
-          Quản lý
+        
+        
+        <button style={Style.button1} onClick={changePassword}>
+          Đổi mật khẩu
         </button>
+        
+        <button style={Style.button1} onClick={logOut}>
+          Đăng xuất
+        </button>
+        {checkRole()}
       </div>
       <div style={Style.cartinfo}>
         <h1>Thông tin khuyến mãi</h1>
@@ -130,8 +157,7 @@ const Style = {
   },
 
   button1: {
-    width: 200,
-    marginLeft: 125,
+    marginLeft: 20,
     marginTop: 25,
     borderRadius: 50,
     backgroundColor: "black",
