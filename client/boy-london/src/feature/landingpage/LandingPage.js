@@ -36,7 +36,7 @@ const LandingPage = () => {
   const getData = async () => {
     try {
       
-      const res = await request.get("/get-landingpage");
+      const res = await request.get("/get-landing-page");
       setListProduct(res)
       
     } catch (err) {
@@ -66,7 +66,7 @@ const LandingPage = () => {
             <div style={Style.newarrival}>
               {listProduct.slice(0,4).map((item) => (
                 <StyleProduct
-                  image={item.image}
+                  image={item.image1}
                   name={item.name}
                   price={item.price}
                   onPress={() => onGoToDetailProduct(item.id)}
@@ -82,7 +82,7 @@ const LandingPage = () => {
               <div style={Style.bestsaleproduct}>
                   {listProduct.slice(4,8).map((item) => (
                       <StyleProduct
-                      image={item.image}
+                      image={item.image1}
                       name={item.name}
                       price={item.price}
                       onPress={() => onGoToDetailProduct(item.id)}

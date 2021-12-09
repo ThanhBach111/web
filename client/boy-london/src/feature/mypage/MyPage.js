@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StyleInput from "../../components/StyleInput";
 import Images from "../../assets/images";
-import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE} from "../../navigation/routes";
+import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 
 const listPromotion = [
@@ -28,6 +28,7 @@ const MyPage = () => {
       setPhone(res.phoneNumber);
       setAddress(res.address);
       setRole(res.role);
+
     } catch (err) {
       console.log(err);
     }
@@ -63,16 +64,16 @@ const MyPage = () => {
   }
 
   const checkRole = () => {
-    if(role == "admin")
+    if (role == "admin")
       return (
-        <div style={{marginLeft: 150}}>
-        <button style={Style.button1} onClick={gotoMangerPage}>
+        
+          <button style={Style.button1} onClick={gotoMangerPage}>
             Quản lý thông tin
-        </button>
-        </div>
+          </button>
+        
       )
   }
-  
+
   return (
     <div style={Style.page}>
       <div style={Style.userinfo}>
@@ -107,19 +108,20 @@ const MyPage = () => {
           value={address}
           setValue={setAddress}
         />
-        
+
         <button style={Style.button1} onClick={onChangeInfo}>
-           Cập nhật thông tin
-          </button>
-        
-        
-        <button style={Style.button1} onClick={changePassword}>
+          Cập nhật thông tin
+        </button>
+
+        <div>
+        <button style={Style.button2} onClick={changePassword}>
           Đổi mật khẩu
         </button>
-        
-        <button style={Style.button1} onClick={logOut}>
+
+        <button style={Style.button2} onClick={logOut}>
           Đăng xuất
         </button>
+        </div>
         {checkRole()}
       </div>
       <div style={Style.cartinfo}>
@@ -133,6 +135,14 @@ const MyPage = () => {
 };
 
 const Style = {
+  button2: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    marginLeft: 80,
+    marginTop:30,
+    fontSize: "x-large",
+    textDecoration: "underline",
+  },
   promotion: {
     marginTop: 5,
     marginBottom: 5,
@@ -157,7 +167,8 @@ const Style = {
   },
 
   button1: {
-    marginLeft: 20,
+    width:200,
+    marginLeft: 145,
     marginTop: 25,
     borderRadius: 50,
     backgroundColor: "black",
