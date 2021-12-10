@@ -4,25 +4,25 @@ import { Link } from "react-router-dom";
 import { SHOP_ROUTE } from "../navigation/routes";
 
 const StyleProduct = (props) => {
-  const { image, name, price, onPress } = props;
+  const { image, name, price,ID, onPress } = props;
 
   return (
     <Link
-      className="productView"
+      className="productViewLP"
       to={{
         pathname: SHOP_ROUTE.productDetail,
         state: {
-          idProduct: 1000,
+          idProduct: ID,
         },
       }}
       onClick={onPress}
     >
-      <div className="imageBox">
-        <img className="image" src={image} />
+      <div className="imageBoxLP">
+        <img className="imageLP" src={image} />
       </div>
-      <div className="nameBox">
-        <p className="nameProduct">{name}</p>
-        <p className="priceText">{price}</p>
+      <div className="nameBoxLP">
+        <p className="nameProductLP">{name}</p>
+        <p className="priceTextLP">{price}</p>
       </div>
     </Link>
   );
