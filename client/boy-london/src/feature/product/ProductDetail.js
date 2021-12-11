@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { apiGetProductDetail } from "../../api/modules";
 import { SHOP_ROUTE } from "../../navigation/routes";
 import "./index.css";
 
 const fakeData = {
-  id: 10,
-  images: [
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  ],
-  name: "Casual hip-hop Imp print T-shirt",
-  price: "200000",
-  status: 1,
+  productID: 1,
+  image1:
+    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_23.jpg",
+  category: "Top",
+  price: 200000,
+  name: "Áo Armor",
+  description: null,
+  image2:
+    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_35.jpg",
+  quantityInStock: 100,
 };
 
 const ProductDetail = ({ location }) => {
@@ -21,10 +23,21 @@ const ProductDetail = ({ location }) => {
   const [productDetail, setProductDetail] = useState();
   const [numberOrders, setNumberOrders] = useState(1);
 
-  const status = productDetail?.status ? "Còn hàng" : "Hết hàng";
+  const { userInfo } = useSelector((state) => state.accountSlice);
+
+  const status = productDetail?.quantityInStock ? "Còn hàng" : "Hết hàng";
+
+  const getData = async () => {
+    try {
+      const res = await apiGetProductDetail(idProduct);
+      setProductDetail(res);
+    } catch (err) {
+      alert(err);
+    }
+  };
 
   useEffect(() => {
-    setProductDetail(fakeData);
+    getData();
   }, []);
 
   const onDesOrIncNumberOrders = (numberAdd) => {
@@ -44,9 +57,8 @@ const ProductDetail = ({ location }) => {
   return (
     <div style={styles.container}>
       <div style={styles.imagesView}>
-        {productDetail?.images?.map((item, index) => {
-          return <img src={item} key={index} style={styles.image} />;
-        })}
+        <img src={productDetail?.image1} style={styles.image} />
+        <img src={productDetail?.image2} style={styles.image} />
       </div>
 
       <div style={styles.priceOrderView}>
@@ -113,9 +125,10 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-around",
+    marginTop: 20,
   },
   image: {
-    width: "45%",
+    width: "48%",
     marginBottom: 30,
   },
   priceOrderView: {
