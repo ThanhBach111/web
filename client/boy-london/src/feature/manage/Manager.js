@@ -36,22 +36,22 @@ const Manager = () => {
         </h1>
         <div style={styles.table}>
           <div style={styles.tableHeader}>
-            <p style={styles.data1}>MÃ SẢN PHẨM</p>
-            <p style={styles.data1}>LOẠI SẢN PHẨM</p>
-            <p style={styles.data1}>TÊN SẢN PHẨM</p>
-            <p style={styles.data1}>GIÁ BÁN </p>
-            <p style={styles.data1}>SỐ LƯỢNG TỒN KHO</p>
+            <p style={styles.data}>MÃ SẢN PHẨM</p>
+            <p style={styles.data}>LOẠI SẢN PHẨM</p>
+            <p style={styles.data}>TÊN SẢN PHẨM</p>
+            <p style={styles.data}>GIÁ BÁN </p>
+            
           </div>
           <div style={styles.dataView}>
           {listProduct.map((item) => (
             <div
               style={styles.dataTable}
             >
-              <div style={styles.data1}>{item.productID}</div>
-              <div style={styles.data1}>{item.category}</div>
-              <div style={styles.data1}>{item.name}</div>
-              <div style={styles.data1}>{item.price}</div>
-              <div style={styles.data1}>{item.quantityInStock}</div>
+              <div style={styles.data}>{item.productID}</div>
+              <div style={styles.data}>{item.category}</div>
+              <div style={styles.data}>{item.name}</div>
+              <div style={styles.data}>{item.price}</div>
+              
             </div>
           ))}
           </div>
@@ -63,20 +63,22 @@ const Manager = () => {
         </h1>
         <div style={styles.table}>
           <div style={styles.tableHeader}>
-            <p style={styles.data}>TÊN ĐĂNG NHẬP</p>
-            <p style={styles.data}>TÊN KHÁCH HÀNG</p>
-            <p style={styles.data}>SỐ ĐIỆN THOẠI</p>
-            <p style={styles.data}>ĐỊA CHỈ</p>
+            <p style={styles.data1}>MÃ KHÁCH HÀNG</p>
+            <p style={styles.data1}>TÊN ĐĂNG NHẬP</p>
+            <p style={styles.data1}>TÊN KHÁCH HÀNG</p>
+            <p style={styles.data1}>SỐ ĐIỆN THOẠI</p>
+            <p style={styles.data1}>ĐỊA CHỈ</p>
           </div>
           <div style={styles.dataView}>
           {listUser.map((item) => (
             <div
               style={styles.dataTable}
             >
-              <div style={styles.data}>{item.email}</div>
-              <div style={styles.data}>{item.name}</div>
-              <div style={styles.data}>{item.phoneNumber}</div>
-              <div style={styles.data}>{item.address}</div>
+              <div style={styles.data1}>{item.userId}</div>
+              <div style={styles.data1}>{item.email}</div>
+              <div style={styles.data1}>{item.name}</div>
+              <div style={styles.data1}>{item.phoneNumber}</div>
+              <div style={styles.data1}>{item.address}</div>
             </div>
           ))}
           </div>
@@ -88,7 +90,7 @@ const Manager = () => {
           <div style={styles.tableHeader}>
             <p style={styles.data2}>Mã đơn hàng</p>
             <p style={styles.data2}>Ngày</p>
-            <p style={styles.data2}>Tên khách hàng</p>
+            <p style={styles.data2}>Mã khách hàng</p>
             <p style={styles.data2}>Địa chỉ</p>
             <p style={styles.data2}>Tổng tiền</p>
             <p style={styles.data2}>Tình trạng</p>
@@ -99,9 +101,9 @@ const Manager = () => {
               style={styles.dataTable}
             >
 
-              <div style={styles.data2}>{item.orderid}</div>
+              <div style={styles.data2}>{item.orderId}</div>
               <div style={styles.data2}>{item.date}</div>
-              <div style={styles.data2}>{item.username}</div>
+              <div style={styles.data2}>{item.userId}</div>
               <div style={styles.data2}>{item.address}</div>
               <div style={styles.data2}>{item.orderMoney}</div>
               <div style={styles.data2}>{item.status}</div>
