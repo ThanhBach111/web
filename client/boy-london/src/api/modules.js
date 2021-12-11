@@ -4,7 +4,7 @@ import request from "./request";
  * Authentication
  */
 export const apiLogin = ({ username, password }) => {
-  console.log(username, ' - ', password)
+  console.log(username, " - ", password);
   const formData = new FormData();
   formData.append("username", username);
   formData.append("password", password);
@@ -41,4 +41,20 @@ export const apiChangeInfo = (params) => {
 
 export const apiGetProfile = () => {
   return request.get("/account");
+};
+
+/**
+ * Product
+ */
+
+//  "productID": 1,
+//  "image1": "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_23.jpg",
+//  "category": "Top",
+//  "price": 200000,
+//  "name": "Áo Armor",
+//  "description": null,
+//  "image2": "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_35.jpg",
+//  "quantityInStock": 100
+export const apiGetProductDetail = (productId) => {
+  return request.get(`/product/get-detail/${productId}`);
 };
