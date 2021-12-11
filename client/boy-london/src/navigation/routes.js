@@ -1,4 +1,5 @@
 export const ROOT_SCREEN = {
+  root: '',
   shop: "/shop",
   explore: "/explore",
   aboutUs: "/aboutUs",
