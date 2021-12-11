@@ -37,7 +37,7 @@ const ProductDetail = ({ location }) => {
   };
 
   useEffect(() => {
-    setProductDetail(fakeData);
+    getData();
   }, []);
 
   const onDesOrIncNumberOrders = (numberAdd) => {
