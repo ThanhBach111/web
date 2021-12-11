@@ -132,15 +132,51 @@ const MyPage = () => {
       </div>
       <div style={Style.cartinfo}>
         <h1>Thông tin khuyến mãi</h1>
-        {listPromotion.map((item) => (
-          <img src={item} style={Style.promotion} />
-        ))}
+        <div style={Style.table}>
+          <p><b>MÃ KHUYẾN MÃI</b></p>
+          <div style={Style.text}>
+            
+          <p>
+          Mã khuyến mãi DRBCHI1
+          </p>
+          <p>
+          Giảm 10% trong hóa đơn
+          </p>
+          </div>
+          <div style={Style.text}>
+          <p>
+          Mã khuyến mãi : SUMFUH 
+          </p>
+          <p>
+          Giảm 30% cho hóa đơn khi tổng hóa đơn hơn 300.000 VND
+          </p>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 const Style = {
+  table: {
+    width: 600,
+    borderRadius: 10,
+    backgroundColor: "#E0DEDE",
+    textAlign: "center",
+    marginTop: 20,
+    border: 1,
+    
+    fontSize: 20,
+    
+  },
+  text: {
+    border: "solid",
+    
+
+    marginTop: 10,
+    borderRadius:10,
+    textAlign: "left",
+  },
   button2: {
     backgroundColor: "transparent",
     borderWidth: 0,
