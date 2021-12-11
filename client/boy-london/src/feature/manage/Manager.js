@@ -11,9 +11,9 @@ const Manager = () => {
     try {
       const res = await request.get("/get-landing-page");
       setListProduct(res);
-      const res1 = await request.get("/get-list-user");
+      const res1 = await request.get("/get-userlist");
       setListUser(res1);
-      const res2 = await request.get("/get-list-order");
+      const res2 = await request.get("/get-orderlist");
       setListOrder(res2);
     } catch (err) {
       console.log(err);
@@ -88,12 +88,12 @@ const Manager = () => {
         <h1 style={{ marginLeft: 100 }}>Danh sách đơn hàng</h1>
         <div style={styles.table}>
           <div style={styles.tableHeader}>
-            <p style={styles.data2}>Mã đơn hàng</p>
-            <p style={styles.data2}>Ngày</p>
-            <p style={styles.data2}>Mã khách hàng</p>
-            <p style={styles.data2}>Địa chỉ</p>
-            <p style={styles.data2}>Tổng tiền</p>
-            <p style={styles.data2}>Tình trạng</p>
+            <p style={styles.data1}>MÃ ĐƠN HÀNG</p>
+            
+            <p style={styles.data1}>MÃ KHÁCH HÀNG</p>
+            <p style={styles.data1}>NGÀY ĐẶT HÀNG</p>
+            <p style={styles.data1}>NGÀY CHUYỂN HÀNG </p>
+            <p style={styles.data1}>TÌNH TRẠNG</p>
           </div>
           <div style={styles.dataView}>
           {listOrder.map((item) => (
@@ -101,12 +101,12 @@ const Manager = () => {
               style={styles.dataTable}
             >
 
-              <div style={styles.data2}>{item.orderId}</div>
-              <div style={styles.data2}>{item.date}</div>
-              <div style={styles.data2}>{item.userId}</div>
-              <div style={styles.data2}>{item.address}</div>
-              <div style={styles.data2}>{item.orderMoney}</div>
-              <div style={styles.data2}>{item.status}</div>
+              <div style={styles.data1}>{item.orderId}</div>
+          
+              <div style={styles.data1}>{item.userId}</div>
+              <div style={styles.data1}>{item.orderDate}</div>
+              <div style={styles.data1}>{item.shippedDate}</div>
+              <div style={styles.data1}>{item.status}</div>
             </div>
           ))}
           </div>
