@@ -25,9 +25,9 @@ const Login = () => {
   const onRequestLogin = async () => {
     try {
       const res = await apiLogin({ username: email, password });
-      const info = await apiGetProfile();
-
       appStore.dispatch(accountSliceAction.setToken(res.access_token));
+
+      const info = await apiGetProfile();
       appStore.dispatch(accountSliceAction.setUserInfo(info));
 
       onNavgiateLandingPage();
