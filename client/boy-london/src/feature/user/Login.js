@@ -4,7 +4,7 @@ import { accountSliceAction } from "../../app-redux/accountSlice";
 import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
-import { USER_ROUTE } from "../../navigation/routes";
+import { ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -18,14 +18,19 @@ const Login = () => {
   const onNavigateForgotPassword = () => {
     window.location.href = USER_ROUTE.forgotPass;
   };
+  const onNavgiateLandingPage = () => {
+    window.location.href = ROOT_SCREEN.root;
+  }
 
   const onRequestLogin = async () => {
     try {
       const res = await apiLogin({ username: email, password });
-      const info = await apiGetProfile();
-
       appStore.dispatch(accountSliceAction.setToken(res.access_token));
+
+      const info = await apiGetProfile();
       appStore.dispatch(accountSliceAction.setUserInfo(info));
+
+      onNavgiateLandingPage();
     } catch (err) {
       setIsFailLogin(true);
       alert(err);
@@ -62,12 +67,12 @@ const Login = () => {
           <p style={{ fontSize: 16 }}>Đăng ký</p>
         </button>
 
-        <button
+        {/* <button
           style={styles.btnChangePassword}
           onClick={onNavigateForgotPassword}
         >
           <p style={{ fontSize: 15 }}>Đổi mật khẩu?</p>
-        </button>
+        </button> */}
       </div>
     </div>
   );

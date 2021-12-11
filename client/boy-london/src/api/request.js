@@ -2,7 +2,7 @@ import axios from "axios";
 import appStore from "../app-redux/store";
 
 const request = axios.create({
-  baseURL: "https://localhost:8000",
+  baseURL: "http://localhost:8000",
   timeout: 5000,
   headers: { Accept: "*/*" },
 });

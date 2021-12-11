@@ -4,10 +4,11 @@ import request from "./request";
  * Authentication
  */
 export const apiLogin = ({ username, password }) => {
-  return request.post("/auth/login", {
-    username,
-    password,
-  });
+  console.log(username, ' - ', password)
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("password", password);
+  return request.post("/auth", formData);
 };
 
 export const apiRegister = (params) => {
