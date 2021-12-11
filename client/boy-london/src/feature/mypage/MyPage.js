@@ -55,9 +55,15 @@ const MyPage = () => {
     window.location.href = ADMIN_ROUTE.productManage;
   };
 
-  const logOut = () => {
-    window.location.href = ROOT_SCREEN.login;
-  }
+  const logOut = async () => {
+    try {
+      const res= await request.get("/logout");
+      window.location.href = ROOT_SCREEN.login;
+    } catch(err){
+      alert(err)
+    }
+  } 
+  
 
   const changePassword = () => {
     window.location.href = USER_ROUTE.forgotPass;
