@@ -104,7 +104,7 @@ const Manager = () => {
 
               <div style={styles.data1}>{item.orderID}</div>
           
-              <div style={styles.data1}>{item.user_id}</div>
+              <div style={styles.data1}>{item.userID}</div>
               <div style={styles.data1}>{item.orderDate}</div>
               <div style={styles.data1}>{item.shippedDate}</div>
               <div style={styles.data1}>{item.status}</div>
