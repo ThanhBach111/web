@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
+import Images from "../../assets/images";
+import StyleInput from "../../components/StyleInput";
 
 const fakeData = {
   name: "Teach wear hoodie",
@@ -29,7 +31,7 @@ const CartPayment = () => {
   return (
     <div style={styles.container}>
       <div style={styles.logoView}>
-        <img src="../../assets/img_logo.png" style={styles.logo} />
+        <img src={Images.shoppingCart} style={styles.logo} />
         <h1>Giỏ hàng</h1>
       </div>
 
@@ -43,12 +45,9 @@ const CartPayment = () => {
         <div style={styles.lineDivide}></div>
 
         <div style={styles.inputDiscountBox}>
-          <div style={styles.inputTouch}>
-            <img
-              src="../../assets/ic_discount.png"
-              style={{ marginRight: 10 }}
-            />
-            <input
+          
+            <StyleInput
+              icon={Images.discount}
               value={discountInput}
               type="text"
               style={styles.input}
@@ -57,7 +56,7 @@ const CartPayment = () => {
                 setDiscountInput(evt.target.value);
               }}
             />
-          </div>
+          
 
           <button style={styles.buttonUseBox} className="buttonUseDiscount">
             <p style={{ color: "white" }}>Use</p>
@@ -97,7 +96,7 @@ const CartPayment = () => {
 const styles = {
   container: {
     width: "100%",
-    height: 800,
+    
     display: "flex",
     flexDirection: "row",
     marginTop: 20,
@@ -113,6 +112,8 @@ const styles = {
   logoView: {
     flex: 1,
     textAlign: "center",
+    fontSize: 50,
+    
   },
   logo: {
     width: 200,

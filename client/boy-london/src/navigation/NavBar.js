@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import Images from "../assets/images";
 import "./css/NavBar.css";
 import { Nav, NavMenu } from "./NavbarElement";
-import { ROOT_SCREEN, USER_ROUTE } from "./routes";
+import { ROOT_SCREEN, USER_ROUTE, SHOP_ROUTE } from "./routes";
+import StyleInput from "../components/StyleInput";
 
 function NavBar() {
   const onNavigateAuthentication = () => {
@@ -13,6 +14,12 @@ function NavBar() {
     window.location.href = USER_ROUTE.instruction;
   };
 
+  const onCart = () => {
+    window.location.href = SHOP_ROUTE.cartPayment;
+  }
+  const openSearch = () => {
+    
+  }
   return (
     <>
       <Nav>
@@ -38,7 +45,7 @@ function NavBar() {
 
         <div style={styles.iconOptionView}>
           <button style={styles.iconNavMenu}>
-            <img src={Images.search} width={20} />
+            <img src={Images.search} width={20} onClick={openSearch}/>
           </button>
 
           <button style={styles.iconNavMenu} onClick={onNavigateAuthentication}>
@@ -46,7 +53,7 @@ function NavBar() {
           </button>
 
           <button style={styles.iconNavMenu}>
-            <img src={Images.shoppingCart} width={20} />
+            <img src={Images.shoppingCart} width={20} onClick={onCart}/>
           </button>
         </div>
       </Nav>

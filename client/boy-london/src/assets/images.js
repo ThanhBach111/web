@@ -11,8 +11,9 @@ import Back from "./ic_back.png";
 import AddProduct from "./ic_add_product.png";
 import backgroundInstruction from "./img_instruction.png";
 import backgroundPolicy from "./img_policy.png";
-
+import discount from "./ic_discount.png"
 const Images = {
+  discount: discount,
   logo: Logo,
   search: Search,
   shoppingCart: ShoppingCart,
