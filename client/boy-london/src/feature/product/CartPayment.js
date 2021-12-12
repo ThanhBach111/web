@@ -1,15 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
+import request from "../../api/request";
 
-const fakeData = {
+const fakeData = [
+  {
+    productID: 1,
   name: "Teach wear hoodie",
-  image:
+  image1 :
     "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: "720000",
-  deliveryFee: "20000",
-};
+  price: 720000,
+  quantityOrdered: 2
+},
+{
+  productID: 1,
+  name: "Teach wear hoodie",
+  image1 :
+    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  price: 720000,
+  quantityOrdered: 2
+},
+{
+  productID: 1,
+  name: "Teach wear hoodie",
+  image1 :
+    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  price: 720000,
+  quantityOrdered: 2
+},
+{
+  productID: 1,
+  name: "Teach wear hoodie",
+  image1 :
+    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  price: 720000,
+  quantityOrdered: 2
+},
+]
 
 const InformationComponent = ({ title, value, fontSize }) => {
   return (
@@ -21,13 +49,49 @@ const InformationComponent = ({ title, value, fontSize }) => {
 };
 
 const CartPayment = () => {
-  const [itemProduct, setItemProduct] = useState(fakeData);
+  
   const [discountInput, setDiscountInput] = useState("");
+  const [listCart, setListCart] = useState([]);
+  const [value, setValue] = useState(0);
+  const getData = async () => {
+    try {
+      const res = await request.get("/product/get-list-cart");
+      setListCart(res);
+      //setListCart(fakeData)
+      orderValue();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
+  useEffect(() => {
+    getData();
+    
+  }, []);
   const onFinishPayment = () => {
     console.log("finish payment");
   };
-
+  
+  const orderValue = () => {
+    var a=0;
+    listCart.map((item)=> (
+      a = a+ item.price*item.quantityOrdered
+    ))
+    setValue(a);
+    
+  }
+  const deleteFromCart = async (productID) => {
+    try {
+      const res1 = await request.delete("/delete-cart/", {
+        productID
+      })
+      const res = await request.get("/product/get-list-cart");
+    setListCart(res);
+    orderValue();
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
     <div style={styles.container}>
       <div style={styles.logoView}>
@@ -36,11 +100,14 @@ const CartPayment = () => {
       </div>
 
       <div style={styles.contentView}>
-        <div style={styles.productBox}>
-          <img src={itemProduct.image} style={styles.imageProduct} />
-          <p>{itemProduct.name}</p>
-          <p style={styles.textPrice}>{itemProduct.price}</p>
-        </div>
+        {listCart.map((item) => (
+            <div style={styles.productBox}>
+            <img src={item.image1} style={styles.imageProduct} />
+            <p>{item.name}</p>
+            <p style={styles.textPrice}>{item.price} x {item.quantityOrdered}</p>
+            <button style={styles.button} onClick={deleteFromCart(item.productID)}>X</button>
+          </div>
+        ))}
 
         <div style={styles.lineDivide}></div>
 
@@ -65,10 +132,10 @@ const CartPayment = () => {
 
         <div style={styles.lineDivide}></div>
 
-        <InformationComponent title="Tạm tính" value={itemProduct.price} />
+        <InformationComponent title="Tạm tính" value={value} />
         <InformationComponent
           title="Phí vận chuyển"
-          value={itemProduct.deliveryFee}
+          value={20000}
         />
 
         <div style={styles.lineDivide}></div>
@@ -76,7 +143,7 @@ const CartPayment = () => {
         <InformationComponent
           title="Tổng cộng"
           value={
-            parseFloat(itemProduct.price) + parseFloat(itemProduct.deliveryFee)
+            value + 20000
           }
           fontSize={17}
         />
@@ -88,6 +155,7 @@ const CartPayment = () => {
         >
           <p style={styles.textFinish}>Hoàn tất đơn hàng</p>
         </button>
+        
       </div>
     </div>
   );
@@ -95,8 +163,8 @@ const CartPayment = () => {
 
 const styles = {
   container: {
-    width: "100%",
-    
+    width: 1400,
+    margin: "auto",
     display: "flex",
     flexDirection: "row",
     marginTop: 20,
@@ -110,6 +178,8 @@ const styles = {
     marginBottom: 20,
   },
   logoView: {
+
+    marginTop: 20,
     flex: 1,
     textAlign: "center",
     fontSize: 50,
@@ -127,10 +197,11 @@ const styles = {
     paddingTop: 20,
   },
   productBox: {
-    width: "100%",
+    position: "relative",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 10,
   },
   imageProduct: {
     width: 80,
@@ -139,7 +210,12 @@ const styles = {
   },
   textPrice: {
     position: "absolute",
-    right: 60,
+    right:40,
+  },
+  button: {
+    backgroundColor: "red",
+    position: "absolute",
+    right:0,
   },
   inputDiscountBox: {
     width: "100%",
