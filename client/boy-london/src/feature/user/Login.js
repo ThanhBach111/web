@@ -30,7 +30,7 @@ const Login = () => {
       const info = await apiGetProfile();
       appStore.dispatch(accountSliceAction.setUserInfo(info));
 
-      onNavgiateLandingPage();
+      // onNavgiateLandingPage();
     } catch (err) {
       setIsFailLogin(true);
       alert(err);
