@@ -1,10 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Login from "../user/Login";
+import MyPage from "./MyPage";
 
 const CheckRole = () => {
-  const role = useSelector((state) => state.accountSlice.userInfo?.role);
+  const token = useSelector((state) => state.accountSlice.token);
 
-  return <div></div>;
+  if (!token) {
+    return <Login />;
+  }
+
+  return <MyPage />;
 };
 
 export default CheckRole;

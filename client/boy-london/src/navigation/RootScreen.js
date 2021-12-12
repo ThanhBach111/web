@@ -2,18 +2,17 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "../feature/landingpage/LandingPage";
 import Manager from "../feature/manage/Manager";
-import MyPage from "../feature/mypage/MyPage";
+import CheckRole from "../feature/mypage/CheckRole";
 import CartPayment from "../feature/product/CartPayment";
 import ListProduct from "../feature/product/ListProduct";
 import ProductDetail from "../feature/product/ProductDetail";
 import ChangePassword from "../feature/user/ChangePassword";
 import Instruction from "../feature/user/Instruction";
-import Login from "../feature/user/Login";
 import Policy from "../feature/user/Policy";
 import PolicyHomePage from "../feature/user/PolicyInstruct";
-import Register from "../feature/user/Register";
-import NavBar from "./NavBar";
+import RegisterScreen from "../feature/user/RegisterScreen";
 import Tracking from "../feature/user/TrackingOrder";
+import NavBar from "./NavBar";
 import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
 const RootScreen = () => {
@@ -26,11 +25,10 @@ const RootScreen = () => {
         <Route path={ROOT_SCREEN.explore} component={ListProduct} />
         <Route path={SHOP_ROUTE.productDetail} component={ProductDetail} />
         <Route path={SHOP_ROUTE.cartPayment} component={CartPayment} />
-        <Route path={ROOT_SCREEN.login} component={Login} />
-        <Route path={USER_ROUTE.register} component={Register} />
+        <Route path={ROOT_SCREEN.mypage} component={CheckRole} />
+        <Route path={USER_ROUTE.register} component={RegisterScreen} />
         <Route path={USER_ROUTE.forgotPass} component={ChangePassword} />
         <Route path={ADMIN_ROUTE.productManage} component={Manager} />
-        <Route path={USER_ROUTE.myPage} component={MyPage} />
         <Route path={USER_ROUTE.instruction} component={Instruction} />
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />

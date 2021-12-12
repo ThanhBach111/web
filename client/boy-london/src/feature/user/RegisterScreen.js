@@ -3,7 +3,7 @@ import { apiRegister } from "../../api/modules";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 
-const Register = () => {
+const RegisterScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -116,4 +116,4 @@ const styles = {
   },
 };
 
-export default Register;
+export default RegisterScreen;

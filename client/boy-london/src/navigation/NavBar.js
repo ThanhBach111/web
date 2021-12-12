@@ -7,7 +7,7 @@ import { ROOT_SCREEN, USER_ROUTE } from "./routes";
 
 function NavBar() {
   const onNavigateAuthentication = () => {
-    window.location.href = ROOT_SCREEN.login;
+    window.location.href = ROOT_SCREEN.mypage;
   };
   const onInstruction = () => {
     window.location.href = USER_ROUTE.instruction;

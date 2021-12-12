@@ -1,9 +1,9 @@
 export const ROOT_SCREEN = {
-  root: '/',
+  root: "/",
   shop: "/shop",
   explore: "/explore",
   aboutUs: "/aboutUs",
-  login: "/login",
+  mypage: "/mypage",
 };
 
 export const SHOP_ROUTE = {
@@ -14,7 +14,6 @@ export const SHOP_ROUTE = {
 export const USER_ROUTE = {
   register: "/Register",
   forgotPass: "/forgotPass",
-  myPage: "/myPage",
   instruction: "/instruction",
   policy: "/policy",
   policyInstruc: "/routePolicy&Instruction",
