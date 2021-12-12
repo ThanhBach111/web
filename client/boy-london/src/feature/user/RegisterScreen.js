@@ -12,7 +12,7 @@ const RegisterScreen = () => {
 
   const onRegister = async () => {
     try {
-      const res = await apiRegister("auth/register", {
+      const res = await apiRegister({
         email,
         name,
         phoneNumber: phone,

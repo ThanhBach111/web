@@ -18,6 +18,7 @@ export const apiRegister = (params) => {
     phoneNumber: params.phoneNumber,
     isActive: true,
     password: params.password,
+    confirmPassword: params.password,
     address: params.address,
     role: "user",
   });
