@@ -1,6 +1,6 @@
 import { React, Component } from "react";
 import Images from "../../assets/images";
-import { USER_ROUTE } from "../../navigation/routes";
+import { ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import { useEffect, useState } from "react";
 import request from "../../api/request";
 
@@ -26,7 +26,7 @@ const Manager = () => {
   }, []);
   
  const returnMyPage = () => {
-   window.location.href = USER_ROUTE.myPage;
+   window.location.href = ROOT_SCREEN.mypage;
  }
   return (
 
