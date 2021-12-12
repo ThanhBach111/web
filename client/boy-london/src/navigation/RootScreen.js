@@ -11,7 +11,7 @@ import Instruction from "../feature/user/Instruction";
 import Login from "../feature/user/Login";
 import Policy from "../feature/user/Policy";
 import PolicyHomePage from "../feature/user/PolicyInstruct";
-import Register from "../feature/user/register";
+import Register from "../feature/user/Register";
 import NavBar from "./NavBar";
 import Tracking from "../feature/user/TrackingOrder";
 import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";

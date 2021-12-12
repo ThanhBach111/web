@@ -73,9 +73,7 @@ const styles = {
         borderBottomStyle: "solid",
         borderColor: "black",
     },
-    banner: {
-        marginLeft: 100,
-    },
+    
   
     button: {
         backgroundColor: "transparent",
