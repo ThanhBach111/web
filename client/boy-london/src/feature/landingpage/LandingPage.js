@@ -5,20 +5,20 @@ import StyleProduct from "../../components/StyleProduct"
 
 
 const Banner =
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
+  "https://m.boylondon-ltd.com/web/product/medium/201809/20f90323d8b58d0d335df6c673919d2a.jpg";
 
 const Banner2 =
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg";
+  "http://www.njtsales.com/wp-content/uploads/2021/06/boy-london-womensmens-t-shirts-boy-london-tee-blackwhite_1.jpg";
 
 const ProductStyle = [
 
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  "https://images.asos-media.com/products/boy-london-patch-sweater/6505038-1-black?$n_640w$&wid=513&fit=constrain",
 
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  "https://cbu01.alicdn.com/img/ibank/2013/783/318/1069813387_788585301.400x400.jpg",
 
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  "https://i.pinimg.com/originals/05/3c/22/053c22845098045994aabefe77b457c7.jpg",
 
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
+  "https://dynamic.zacdn.com/Vq7LJgCSgR4PEesSxzJIa-Sckd0=/fit-in/346x500/filters:quality(95):fill(ffffff)/https://static-sg.zacdn.com/p/boy-london-2035-1175191-1.jpg",
 
 ];
 
@@ -124,7 +124,7 @@ const LandingPage = () => {
 const Style = {
   imageStyle: {
     width: "100%",
-    height: "100%",
+    
   },
   showmore: {
     backgroundColor: "transparent",
@@ -143,20 +143,18 @@ const Style = {
   },
   banner: {
     width: 1400,
-    height: 538,
+    
   },
   style: {
+    width: 1400,
     marginTop: 50,
-    height: 450,
+    
     display: "flex",
     flexDirection: "row",
   },
   imageStyle2: {
-    marginTop: 5,
-    marginBottom: 5,
-    marginLeft: 5,
-    marginRight: 5,
-    width: 340,
+    margin: "auto",
+    width: 320,
   },
   text: {
     margin: 10,
@@ -165,27 +163,29 @@ const Style = {
     fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
   },
   newarrival: {
-    height: 530,
+    width: 1400,
     display: "flex",
     flexWrap: "wrap",
   },
   bestSale: {
-    width: "100%",
-    height: 1100,
+    width: 1400,
+    
     display: "flex",
     flexDirection: "row",
   },
   bestsaleproduct: {
     width: 700,
-    height: 1050,
+    
     display: "flex",
     flexWrap: "wrap",
   },
   imgView: {
     width: 680,
-    height: 1050,
+    
     marginLeft: 10,
     marginRight: 10,
+    marginTop: "auto",
+    marginBottom: "auto",
   },
   contact: {
     paddingLeft: 10,
