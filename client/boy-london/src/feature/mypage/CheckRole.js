@@ -1,10 +1,11 @@
+import Cookies from "js-cookie";
 import React from "react";
 import { useSelector } from "react-redux";
 import Login from "../user/Login";
 import MyPage from "./MyPage";
 
 const CheckRole = () => {
-  const token = useSelector((state) => state.accountSlice.token);
+  const token = Cookies.get("token");
 
   if (!token) {
     return <Login />;

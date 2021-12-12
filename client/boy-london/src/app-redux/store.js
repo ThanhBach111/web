@@ -5,7 +5,6 @@ const appStore = configureStore({
   reducer: {
     accountSlice,
   },
-
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
