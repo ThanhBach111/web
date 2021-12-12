@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { SHOP_ROUTE } from "../navigation/routes";
 
 const ItemProduct = (props) => {
-  const { image, name, price, onPress } = props;
+  const { image, name, price, onPress, idProduct } = props;
 
   return (
     <Link
@@ -12,7 +12,7 @@ const ItemProduct = (props) => {
       to={{
         pathname: SHOP_ROUTE.productDetail,
         state: {
-          idProduct: 1000,
+          idProduct,
         },
       }}
       onClick={onPress}
