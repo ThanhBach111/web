@@ -2,6 +2,7 @@ import { React, Component } from "react";
 import Images from "../../assets/images";
 import { USER_ROUTE } from "../../navigation/routes";
 import { useEffect, useState } from "react";
+import request from "../../api/request";
 
 const Manager = () => {
   const [listProduct, setListProduct] = useState([]);
@@ -74,7 +75,7 @@ const Manager = () => {
             <div
               style={styles.dataTable}
             >
-              <div style={styles.data1}>{item.userId}</div>
+              <div style={styles.data1}>{item.userID}</div>
               <div style={styles.data1}>{item.email}</div>
               <div style={styles.data1}>{item.name}</div>
               <div style={styles.data1}>{item.phoneNumber}</div>
@@ -101,9 +102,9 @@ const Manager = () => {
               style={styles.dataTable}
             >
 
-              <div style={styles.data1}>{item.orderId}</div>
+              <div style={styles.data1}>{item.orderID}</div>
           
-              <div style={styles.data1}>{item.userId}</div>
+              <div style={styles.data1}>{item.user_id}</div>
               <div style={styles.data1}>{item.orderDate}</div>
               <div style={styles.data1}>{item.shippedDate}</div>
               <div style={styles.data1}>{item.status}</div>

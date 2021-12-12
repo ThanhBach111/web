@@ -86,6 +86,7 @@ const styles = {
     flexDirection: "row",
     display: "flex",
     flexDirection: "row",
+    margin: "auto",
   },
   inputView: {
     width: 500,
