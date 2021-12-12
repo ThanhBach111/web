@@ -52,13 +52,12 @@ const CartPayment = () => {
   
   const [discountInput, setDiscountInput] = useState("");
   const [listCart, setListCart] = useState([]);
-  const [value, setValue] = useState(0);
+
+
   const getData = async () => {
     try {
       const res = await request.get("/product/get-list-cart");
       setListCart(res);
-      //setListCart(fakeData)
-      orderValue();
     } catch (err) {
       console.log(err);
     }
@@ -71,21 +70,18 @@ const CartPayment = () => {
   const onFinishPayment = () => {
     console.log("finish payment");
   };
-  
-  const orderValue = () => {
-    var a=0;
-    listCart.map((item)=> (
-      a = a+ item.Products.price*item.Cart.quantityOrdered
-    ))
-    setValue(a);
-    
-  }
+
+
+  let orderValue = 0;
+  listCart.forEach(item => {
+    orderValue += item.Products.price*item.Cart.quantityOrdered;
+  })
+
   const deleteFromCart = async (productID) => {
     try {
       await request.delete(`/delete-cart/${productID}`)
       const res = await request.get("/product/get-list-cart");
       setListCart(res);
-      orderValue();
     } catch (err) {
       console.log(err)
     }
@@ -130,7 +126,7 @@ const CartPayment = () => {
 
         <div style={styles.lineDivide}></div>
 
-        <InformationComponent title="Tạm tính" value={value} />
+        <InformationComponent title="Tạm tính" value={orderValue} />
         <InformationComponent
           title="Phí vận chuyển"
           value={20000}
@@ -140,9 +136,7 @@ const CartPayment = () => {
 
         <InformationComponent
           title="Tổng cộng"
-          value={
-            value + 20000
-          }
+          value={orderValue + 20000}
           fontSize={17}
         />
 
