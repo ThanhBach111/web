@@ -4,15 +4,7 @@ import Images from "../../assets/images";
 import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 
-const listPromotion = [
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
 
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-
-  "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-];
 
 const MyPage = () => {
   const [name, setName] = useState("");
@@ -24,7 +16,7 @@ const MyPage = () => {
     try {
       const res = await request.get("/account");
       setName(res.name);
-      setEmail(res.mail);
+      setEmail(res.email);
       setPhone(res.phoneNumber);
       setAddress(res.address);
       setRole(res.role);

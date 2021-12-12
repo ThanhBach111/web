@@ -1,5 +1,9 @@
 .navBarLink {
-    margin: 5px;
+    margin: 10px;
+    font:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    font-size: 17px;
   }
 .navIconLink {
     margin: 5px;

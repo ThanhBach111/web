@@ -22,17 +22,17 @@ function NavBar() {
 
         <NavMenu>
           <NavLink className="navBarLink" to={ROOT_SCREEN.shop} activeStyle>
-            SHOP
+            <b>SHOP</b>
           </NavLink>
           <NavLink className="navBarLink" to={ROOT_SCREEN.explore} activeStyle>
-            EXPLORE
+            <b>EXPLORE</b>
           </NavLink>
           <NavLink
             className="navBarLink"
             to={USER_ROUTE.policyInstruc}
             activeStyle
           >
-            ABOUT US
+            <b>ABOUT US</b>
           </NavLink>
         </NavMenu>
 
