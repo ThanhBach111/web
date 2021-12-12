@@ -75,7 +75,7 @@ const CartPayment = () => {
   const orderValue = () => {
     var a=0;
     listCart.map((item)=> (
-      a = a+ item.price*item.quantityOrdered
+      a = a+ item.Products.price*item.Cart.quantityOrdered
     ))
     setValue(a);
     
@@ -102,9 +102,9 @@ const CartPayment = () => {
       <div style={styles.contentView}>
         {listCart.map((item) => (
             <div style={styles.productBox}>
-            <img src={item.image1} style={styles.imageProduct} />
-            <p>{item.name}</p>
-            <p style={styles.textPrice}>{item.price} x {item.quantityOrdered}</p>
+            <img src={item.Products.image1} style={styles.imageProduct} />
+            <p>{item.Products.name}</p>
+            <p style={styles.textPrice}>{item.Products.price} x {item.Cart.quantityOrdered}</p>
             <button style={styles.button} onClick={deleteFromCart(item.productID)}>X</button>
           </div>
         ))}
