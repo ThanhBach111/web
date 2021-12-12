@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import ItemProduct from "../../components/ItemProduct";
 import ItemOption from "../../components/ItemOption";
+import request from '../../api/request'
 
 // const data = [
 //   {

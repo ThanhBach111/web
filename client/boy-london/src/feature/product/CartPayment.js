@@ -82,12 +82,10 @@ const CartPayment = () => {
   }
   const deleteFromCart = async (productID) => {
     try {
-      const res1 = await request.delete("/delete-cart/", {
-        productID
-      })
+      await request.delete(`/delete-cart/${productID}`)
       const res = await request.get("/product/get-list-cart");
-    setListCart(res);
-    orderValue();
+      setListCart(res);
+      orderValue();
     } catch (err) {
       console.log(err)
     }
@@ -105,7 +103,7 @@ const CartPayment = () => {
             <img src={item.Products.image1} style={styles.imageProduct} />
             <p>{item.Products.name}</p>
             <p style={styles.textPrice}>{item.Products.price} x {item.Cart.quantityOrdered}</p>
-            <button style={styles.button} onClick={deleteFromCart(item.productID)}>X</button>
+            <button style={styles.button} onClick={() => deleteFromCart(item.Products.productID)}>X</button>
           </div>
         ))}
 
