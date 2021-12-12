@@ -7,6 +7,8 @@ import MyPage from "./MyPage";
 const CheckRole = () => {
   const token = Cookies.get("token");
 
+  console.log('token: ', token)
+
   if (!token) {
     return <Login />;
   }

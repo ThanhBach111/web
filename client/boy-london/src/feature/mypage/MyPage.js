@@ -3,6 +3,7 @@ import StyleInput from "../../components/StyleInput";
 import Images from "../../assets/images";
 import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
+import Cookies from "js-cookie";
 
 
 
@@ -49,8 +50,8 @@ const MyPage = () => {
 
   const logOut = async () => {
     try {
-      const res= await request.get("/logout");
-      window.location.href = ROOT_SCREEN.login;
+      Cookies.remove('token')
+      window.location.reload()
     } catch(err){
       alert(err)
     }

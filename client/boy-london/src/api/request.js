@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 import appStore from "../app-redux/store";
 
 const request = axios.create({
@@ -9,7 +10,7 @@ const request = axios.create({
 
 request.interceptors.request.use(
   async (config) => {
-    const token = appStore.getState().accountSlice.token;
+    const token = Cookies.get('token')
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
