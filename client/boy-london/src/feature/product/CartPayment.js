@@ -39,6 +39,8 @@ const CartPayment = () => {
       await request.post("/orders/finish", 
         listProductOrder
       );
+      setListCart([]);
+      alert("đặt hàng thành công");
     } catch (err) {
       console.log(err);
     }
