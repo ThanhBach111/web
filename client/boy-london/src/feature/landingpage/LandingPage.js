@@ -133,6 +133,7 @@ const Style = {
     marginRight: "auto",
     fontSize: "x-large",
     textDecoration: "underline",
+    marginBottom:10,
   },
   page: {
     display: "block",
@@ -157,6 +158,7 @@ const Style = {
     width: 320,
   },
   text: {
+    marginTop: 20,
     margin: 10,
     textAlign: "center",
     fontSize: "x-large",
