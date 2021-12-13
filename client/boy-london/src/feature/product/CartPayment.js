@@ -36,9 +36,9 @@ const CartPayment = () => {
   }, []);
   const onFinishPayment = async () => {
     try {
-      await request.post("/orders/finish", {
+      await request.post("/orders/finish", 
         listProductOrder
-      });
+      );
     } catch (err) {
       console.log(err);
     }
