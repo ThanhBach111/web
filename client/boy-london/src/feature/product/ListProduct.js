@@ -2,22 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import ItemProduct from "../../components/ItemProduct";
 import ItemOption from "../../components/ItemOption";
-import request from '../../api/request'
-
-// const data = [
-//   {
-//     category: "Top",
-//     description: null,
-//     image1:
-//       "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_23.jpg",
-//     image2:
-//       "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_35.jpg",
-//     name: "Áo Floral",
-//     price: 200000,
-//     productID: 1,
-//     quantityInStock: 100,
-//   },
-// ];
+import request from "../../api/request";
 
 const TYPE_SORT = {
   aToZ: 0,
@@ -49,11 +34,19 @@ const ListProduct = () => {
       setListSorts([typeSort]);
       if (typeSort === TYPE_SORT.aToZ) {
         const temp = [...listProducts];
-        temp.sort((a, b) => a.name.localeCompare(b.name));
+        temp.sort((a, b) => {
+          if (a < b) return -1;
+          if (a > b) return 1;
+          return 0;
+        });
         setListProducts(temp);
       } else {
         const temp = [...listProducts];
-        temp.sort((a, b) => !a.name.localeCompare(b.name));
+        temp.sort((a, b) => {
+          if (a > b) return -1;
+          if (a < b) return 1;
+          return 0;
+        });
         setListProducts(temp);
       }
     }

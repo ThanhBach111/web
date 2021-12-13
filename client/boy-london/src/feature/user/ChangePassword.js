@@ -1,29 +1,22 @@
 import React, { useState } from "react";
 import { apiChangePassword } from "../../api/modules";
-import { accountSliceAction } from "../../app-redux/accountSlice";
-import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 
 const ForgotPass = () => {
-  const [email, setEmail] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const onChangePassword = async () => {
     try {
       await apiChangePassword({
-        email,
+        oldPassword,
         newPassword: password,
         confirmPassword,
       });
-
-      appStore.dispatch(
-        accountSliceAction.setUserInfo({
-          ...appStore.getState().accountSlice.userInfo,
-          password: newPassword,
-        })
-      );
+      alert("Đổi mật khẩu thành công");
+      window.location.reload();
     } catch (err) {
       alert(err);
     }
@@ -35,17 +28,18 @@ const ForgotPass = () => {
 
       <div style={styles.inputView}>
         <StyleInput
-          value={email}
-          setValue={setEmail}
-          placeholder="Email"
-          icon={Images.mail}
+          value={oldPassword}
+          setValue={setOldPassword}
+          placeholder="Mật khẩu cũ"
+          icon={Images.lock}
+          type="password"
         />
 
         <div style={{ marginTop: 40 }}></div>
         <StyleInput
           value={password}
           setValue={setPassword}
-          placeholder="Mật khẩu"
+          placeholder="Mật khẩu mới"
           icon={Images.lock}
           type="password"
         />
