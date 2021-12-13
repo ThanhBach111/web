@@ -25,9 +25,9 @@ const Manager = () => {
     getData();
   }, []);
 
-  const setStatus = async (orderID) => {
+  const setStatus = async (ID) => {
     try {
-      await request.put(`/update-order/${orderID}`)
+      await request.put(`/update-order/${ID}`)
       const res2 = await request.get("/get-orderlist");
       setListOrder(res2);
     } catch (err) {
@@ -42,8 +42,7 @@ const Manager = () => {
       )
     } else {
       return(
-        <div style={styles.data1}><button onClick={setStatus(orderID)}>{status}</button></div>
-        
+        <div style={styles.data1}><button onClick={() => this.setStatus(orderID)}>{status}</button></div>
       )
     }
   }
