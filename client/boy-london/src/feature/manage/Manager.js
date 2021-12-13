@@ -24,7 +24,27 @@ const Manager = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const setStatus = async (orderID) => {
+    try {
+      await request.put(`/update-order/${orderID}`)
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
+  const checkStatus = (status, orderID) => {
+    if(status=="shipped") {
+      return (
+        <div style={styles.data1}>{status}</div>
+      )
+    } else {
+      return(
+        <div style={styles.data1}><button onClick={setStatus(orderID)}>{status}</button></div>
+        
+      )
+    }
+  }
  const returnMyPage = () => {
    window.location.href = ROOT_SCREEN.mypage;
  }
@@ -107,7 +127,7 @@ const Manager = () => {
               <div style={styles.data1}>{item.userID}</div>
               <div style={styles.data1}>{item.orderDate}</div>
               <div style={styles.data1}>{item.shippedDate}</div>
-              <div style={styles.data1}>{item.status}</div>
+              {checkStatus(item.status, item.orderID)}
             </div>
           ))}
           </div>
