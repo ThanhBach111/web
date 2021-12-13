@@ -4,40 +4,7 @@ import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import request from "../../api/request";
 
-const fakeData = [
-  {
-    productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-]
+
 
 const InformationComponent = ({ title, value, fontSize }) => {
   return (
@@ -52,7 +19,7 @@ const CartPayment = () => {
   
   const [discountInput, setDiscountInput] = useState("");
   const [listCart, setListCart] = useState([]);
-
+  
 
   const getData = async () => {
     try {
@@ -67,11 +34,27 @@ const CartPayment = () => {
     getData();
     
   }, []);
-  const onFinishPayment = () => {
-    console.log("finish payment");
+  const onFinishPayment = async () => {
+    try {
+      await request.post("/orders/finish", 
+        listProductOrder
+      );
+      setListCart([]);
+      alert("đặt hàng thành công");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-
+  let listProductOrder = [];
+  listCart.forEach(item => {
+    let product = {
+      productID: item.Products.productID,
+      quantityOrdered: item.Cart.quantityOrdered,
+      priceEach: item.Products.price,
+    }
+    listProductOrder.push(product);
+  })
   let orderValue = 0;
   listCart.forEach(item => {
     orderValue += item.Products.price*item.Cart.quantityOrdered;
@@ -205,6 +188,7 @@ const styles = {
     right:40,
   },
   button: {
+    borderWidth: 0,
     backgroundColor: "red",
     position: "absolute",
     right:0,
