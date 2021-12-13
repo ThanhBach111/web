@@ -4,40 +4,7 @@ import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import request from "../../api/request";
 
-const fakeData = [
-  {
-    productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-{
-  productID: 1,
-  name: "Teach wear hoodie",
-  image1 :
-    "https://media.vov.vn/sites/default/files/styles/large/public/2021-02/p21_0055_a5_rgb.jpg",
-  price: 720000,
-  quantityOrdered: 2
-},
-]
+
 
 const InformationComponent = ({ title, value, fontSize }) => {
   return (
@@ -67,8 +34,12 @@ const CartPayment = () => {
     getData();
     
   }, []);
-  const onFinishPayment = () => {
-    console.log("finish payment");
+  const onFinishPayment = async () => {
+    try {
+      await request.post("/orders/finish");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
 
@@ -205,6 +176,7 @@ const styles = {
     right:40,
   },
   button: {
+    borderWidth: 0,
     backgroundColor: "red",
     position: "absolute",
     right:0,
