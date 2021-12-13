@@ -19,7 +19,7 @@ const CartPayment = () => {
   
   const [discountInput, setDiscountInput] = useState("");
   const [listCart, setListCart] = useState([]);
-
+  
 
   const getData = async () => {
     try {
@@ -36,13 +36,23 @@ const CartPayment = () => {
   }, []);
   const onFinishPayment = async () => {
     try {
-      await request.post("/orders/finish");
+      await request.post("/orders/finish", {
+        listProductOrder
+      });
     } catch (err) {
       console.log(err);
     }
   };
 
-
+  let listProductOrder = [];
+  listCart.forEach(item => {
+    let product = {
+      productId: item.Products.productID,
+      quantityOrdered: item.Cart.quantityOrdered,
+      priceEach: item.Products.price,
+    }
+    listProductOrder.append(product);
+  })
   let orderValue = 0;
   listCart.forEach(item => {
     orderValue += item.Products.price*item.Cart.quantityOrdered;
