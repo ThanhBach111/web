@@ -42,7 +42,7 @@ const Manager = () => {
       )
     } else {
       return(
-        <div style={styles.data1}><button onClick={() => this.setStatus(orderID)}>{status}</button></div>
+        <div style={styles.data1}><button onClick={() => setStatus(orderID)}>{status}</button></div>
       )
     }
   }
