@@ -51,7 +51,7 @@ const CartPayment = () => {
       quantityOrdered: item.Cart.quantityOrdered,
       priceEach: item.Products.price,
     }
-    listProductOrder.append(product);
+    listProductOrder.push(product);
   })
   let orderValue = 0;
   listCart.forEach(item => {
