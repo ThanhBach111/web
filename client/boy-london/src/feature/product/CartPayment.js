@@ -47,7 +47,7 @@ const CartPayment = () => {
   let listProductOrder = [];
   listCart.forEach(item => {
     let product = {
-      productId: item.Products.productID,
+      productID: item.Products.productID,
       quantityOrdered: item.Cart.quantityOrdered,
       priceEach: item.Products.price,
     }

@@ -34,7 +34,7 @@ const Manager = () => {
   }
   
   const checkStatus = (status, orderID) => {
-    if(status=="shipped") {
+    if(status == "Shipped") {
       return (
         <div style={styles.data1}>{status}</div>
       )
