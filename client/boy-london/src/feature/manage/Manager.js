@@ -28,6 +28,8 @@ const Manager = () => {
   const setStatus = async (orderID) => {
     try {
       await request.put(`/update-order/${orderID}`)
+      const res2 = await request.get("/get-orderlist");
+      setListOrder(res2);
     } catch (err) {
       console.log(err);
     }
