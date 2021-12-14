@@ -14,7 +14,6 @@ const MyPage = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [role, setRole] = useState("");
   const [listOrder, setListOrder]= useState([]);
   const getData = async () => {
     try {
@@ -23,7 +22,7 @@ const MyPage = () => {
       setEmail(res.email);
       setPhone(res.phoneNumber);
       setAddress(res.address);
-      setRole(res.role);
+      
       const res2= await request.get("/get-user-orderlist");
       setListOrder(res2);
     } catch (err) {
@@ -67,28 +66,9 @@ const MyPage = () => {
     window.location.href = USER_ROUTE.forgotPass;
   }
 
-  const checkRole = () => {
-    if (role == "admin")
-      return (
-        
-          <button style={Style.button1} onClick={gotoMangerPage}>
-            Quản lý thông tin
-          </button>
-        
-      )
-  }
+  
 
-  const checkStatus = (status, orderID) => {
-    if(status == "checking") {
-      return (
-        <div style={styles.data1}><button>{status}</button></div>
-      )
-    } else {
-      return (
-        <div style={Style.data1}>{status}</div>
-      )
-    }
-  }
+ 
 
   return (
     <div style={Style.page}>
@@ -138,7 +118,6 @@ const MyPage = () => {
           Đăng xuất
         </button>
         </div>
-        {checkRole()}
       </div>
       <div style={Style.cartinfo}>
       <h1 style={{marginLeft: 10}}>Danh sách đơn hàng</h1>
@@ -157,11 +136,11 @@ const MyPage = () => {
               style={Style.dataTable}
             >
 
-              <div style={Style.data1}>{item.orderID}</div>
-              <div style={Style.data1}>{item.name}</div>
-              <div style={Style.data1}>{item.orderDate}</div>
-              <div style={Style.data1}>{item.shippedDate}</div>
-              {checkStatus(item.status, item.orderID)}
+              <div style={Style.data1}>{item.Orders.orderID}</div>
+              <div style={Style.data1}>{item.Products.name}</div>
+              <div style={Style.data1}>{item.Orders.orderDate}</div>
+              <div style={Style.data1}>{item.Orders.shippedDate}</div>
+              <div style={Style.data1}>{item.Orders.status}</div>
             </div>
           ))}
           </div>

@@ -2,8 +2,6 @@ import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import request from "../../api/request";
 import StyleProduct from "../../components/StyleProduct";
-import { ROOT_SCREEN } from "../../navigation/routes";
-import ControlFrame from "./ControlFrame";
 
 const Banner =
   "https://m.boylondon-ltd.com/web/product/medium/201809/20f90323d8b58d0d335df6c673919d2a.jpg";
@@ -118,6 +116,7 @@ const LandingPage = () => {
             <p>Hotline tư vấn : 0912981249</p>
             <p>Hotline khiếu nại: 091237124</p>
           </div>
+          <div></div>
           <div style={Style.contactblock}></div>
         </div>
       </div>
@@ -197,11 +196,12 @@ const Style = {
     marginBottom: 10,
     display: "flex",
     flexDirection: "row",
+    width: "100%",
   },
   contactblock: {
     paddingRight: 10,
     fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-    width: "25%",
+    width: "45%",
   },
 };
 export default LandingPage;

@@ -1,0 +1,11 @@
+
+  img.hover-zoom:hover {
+    transform: scale(0.75);
+  }
+  img.hover-zoom {
+    transition: all 0.3s ease 0s;
+    width: 100%;
+  }
+ 
+  
+ 
