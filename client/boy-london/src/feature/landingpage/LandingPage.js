@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ROOT_SCREEN ,SHOP_ROUTE} from "../../navigation/routes";
 import request from "../../api/request";
-import StyleProduct from "../../components/StyleProduct"
+import StyleProduct from "../../components/StyleProduct";
+import Images from "../../assets/images";
 
 
 const Banner =
@@ -112,6 +113,10 @@ const LandingPage = () => {
             <p>Hotline tư vấn : 0912981249</p>
             <p>Hotline khiếu nại: 091237124</p>
           </div>
+          <div>
+        
+            
+          </div>
           <div style={Style.contactblock}>
 
           </div>
@@ -193,11 +198,12 @@ const Style = {
     marginBottom: 10,
     display: "flex",
     flexDirection: "row",
+    width: "100%",
   },
   contactblock: {
     paddingRight: 10,
     fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
-    width: "25%",
+    width: "45%",
   },
 };
 export default LandingPage;

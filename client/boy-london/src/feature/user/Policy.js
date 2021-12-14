@@ -6,9 +6,13 @@ const Policy = () => {
         return (
             <div style={styles.page}>
                 <h1 style={styles.banner}>CHÍNH SÁCH ĐỔI TRẢ VÀ BẢO HÀNH</h1>
+                <div style={{textAlign:"center", marginBottom: 30, fontSize: 18,}}>
+                    <span>12/12/2021</span>
+                </div>
                 <img src={Images.backIns} style={styles.image}/>
             
                 <h4 style={styles.section}>CHÍNH SÁCH BẢO HÀNH</h4>
+               
                 <ol style={styles.sectionIn}>
                     <li> Thời hạn bảo hành: <strong>07</strong> ngày kể từ ngày nhận hàng</li>
                     <li> Điều kiện bảo hành</li>
@@ -68,6 +72,26 @@ const Policy = () => {
                     Không áp dụng đổi hàng với các sản phẩm khuyến mãi, giảm giá.
                     </li>
                 </ul>
+                <div style={styles.contact}>
+          <div style={styles.contactblock}>
+            <b> Store location</b>
+            <p>-111 Trần Quốc Toản, Q. Bắc Từ Liêm,</p>
+            <p>-HN145 Hai Bà Trưng, Q. Bắc Từ Liêm, HN</p>
+            <p>-951 Đổng Triều, Q. 1, HCM</p>
+          </div>
+          <div style={styles.contactblock}>
+            <b>-Hỗ trợ mua hàng</b>
+            <p>-Hướng dẫn mua hàng tại website</p>
+          </div>
+          <div style={styles.contactblock}>
+            <b>-Contact us</b>
+            <p>-Hotline tư vấn : 0912981249</p>
+            <p>-Hotline khiếu nại: 091237124</p>
+          </div>
+          <div style={styles.contactblock}>
+
+          </div>
+          </div>
             </div>
         )
     
@@ -75,9 +99,12 @@ const Policy = () => {
 const styles = {
     banner: {
         marginLeft: 100,
+        textAlign: "center",
     },
     image: {
-        marginLeft: 150,
+        display: "block",
+        marginRight: "auto",
+        marginLeft: "auto",
         borderRadius: 10,
         width: 650,
         height: 350,
@@ -97,5 +124,20 @@ const styles = {
         marginRight:30,
         marginBottom: 20,
     },
+    contact: {
+        paddingLeft: 10,
+        marginTop: 20,
+        marginBottom: 10,
+        display: "flex",
+        flexDirection: "row",
+        marginTop: 60,
+      },
+      contactblock: {
+        paddingRight: 10,
+        fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+        width: "25%",
+        marginLeft: 25,
+        marginTop: 15,
+      },
 }
 export default Policy;

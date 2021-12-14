@@ -12,6 +12,7 @@ import Policy from "../feature/user/Policy";
 import PolicyHomePage from "../feature/user/PolicyInstruct";
 import RegisterScreen from "../feature/user/RegisterScreen";
 import Tracking from "../feature/user/TrackingOrder";
+import Admin from "../feature/manage/Admin";
 import NavBar from "./NavBar";
 import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
@@ -33,6 +34,7 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
+        <Route path={ADMIN_ROUTE.adminDashboard} component={Admin} />
       </Switch>
     </BrowserRouter>
   );

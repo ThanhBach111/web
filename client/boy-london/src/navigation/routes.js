@@ -22,4 +22,5 @@ export const USER_ROUTE = {
 export const ADMIN_ROUTE = {
   productManage: "/product&usermanage",
   trackingOrder: "/trackingorder",
+  adminDashboard: "/productdashboard",
 };

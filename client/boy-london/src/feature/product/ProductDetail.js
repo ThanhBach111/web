@@ -48,7 +48,7 @@ const ProductDetail = ({ location }) => {
 
   const onAddToCart = () => {
     window.location.href = SHOP_ROUTE.cartPayment;
-  };
+  };g
 
   const onDeleteProduct = () => {
     console.log("delete product");

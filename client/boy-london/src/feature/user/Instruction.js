@@ -5,7 +5,10 @@ const Instruction = () => {
     
         return (
             <div style={styles.page}>
-                <h1 style={styles.banner}> Hướng dẫn mua hàng</h1>
+                <h1 style={styles.banner}> HƯỚNG DẪN MUA HÀNG</h1>
+                <div style={{textAlign:"center", marginBottom: 30, fontSize: 18,}}>
+                    <span>12/12/2021</span>
+                </div>
                 <img src={Images.backPoli} style={styles.image}/>
                 <p style={styles.para}>Quý khách vui lòng tham khảo thông tin chi tiết về từng bước đặt hàng như sau:</p>
                 <h4 style={styles.section}>BƯỚC 1: TÌM KIẾM VÀ CHỌN SẢN PHẨM YÊU THÍCH TRÊN WEBSITE</h4>
@@ -43,22 +46,49 @@ const Instruction = () => {
                     </li>
                 </ol>
                 <p style={styles.para} ><strong>STK: 085348138413</strong></p>
-                <p style={styles.para}><strong>Chủ TK: Tuấn Hoa Hồng</strong></p>
+                <p style={styles.para}><strong>Chủ TK: Nguyễn Tùng Dương</strong></p>
                 <p style={styles.para}><strong>Tại Vietcombank chi nhánh Hoàn Kiếm</strong></p>
                 <h4 style={styles.section} >BƯỚC 3: XÁC NHẬN ĐƠN HÀNG</h4>
                 <p style={styles.para} >London Boy sẽ liên hệ xác nhận đơn đặt hàng thành công trực tiếp qua điện thoại hoặc qua email.</p>
                 <p style={styles.para}>Sau khi xác nhận đơn hàng, London Boy sẽ tiến hành đóng gói và gửi đơn hàng trong thời gian sớm nhất.</p>
+                <div style={styles.contact}>
+          <div style={styles.contactblock}>
+            <b> Store location</b>
+            <p>-111 Trần Quốc Toản, Q. Bắc Từ Liêm,</p>
+            <p>-HN145 Hai Bà Trưng, Q. Bắc Từ Liêm, HN</p>
+            <p>-951 Đổng Triều, Q. 1, HCM</p>
+          </div>
+          <div style={styles.contactblock}>
+            <b>-Hỗ trợ mua hàng</b>
+            <p>-Hướng dẫn mua hàng tại website</p>
+          </div>
+          <div style={styles.contactblock}>
+            <b>-Contact us</b>
+            <p>-Hotline tư vấn : 0912981249</p>
+            <p>-Hotline khiếu nại: 091237124</p>
+          </div>
+          <div style={styles.contactblock}>
+
+          </div>
+          </div>
             </div>
+            
+            
         )
     
 }
 const styles = {
     banner: {
         marginLeft: 100,
+        textAlign: "center",
     },
     image: {
-        marginLeft: 150,
+        display: "block",
+        marginRight: "auto",
+        marginLeft: "auto",
         borderRadius: 10,
+        width: 650,
+        height: 350,
     },
     para: {
         marginTop: 15,
@@ -75,5 +105,20 @@ const styles = {
         marginRight:30,
         marginBottom: 20,
     },
+    contact: {
+        paddingLeft: 10,
+        marginTop: 20,
+        marginBottom: 10,
+        display: "flex",
+        flexDirection: "row",
+        marginTop: 60,
+      },
+      contactblock: {
+        paddingRight: 10,
+        fontFamily: "Verdana, Geneva, Tahoma, sans-serif",
+        width: "25%",
+        marginLeft: 25,
+        marginTop: 15,
+      },
 }
 export default Instruction;
