@@ -1,11 +1,11 @@
+import Cookies from "js-cookie";
 import React, { useState } from "react";
 import { apiGetProfile, apiLogin } from "../../api/modules";
 import { accountSliceAction } from "../../app-redux/accountSlice";
 import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
-import { ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
-import Cookies from "js-cookie";
+import { USER_ROUTE } from "../../navigation/routes";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -16,18 +16,13 @@ const Login = () => {
   const onNavigateRegister = () => {
     window.location.href = USER_ROUTE.register;
   };
-  const onNavigateForgotPassword = () => {
-    window.location.href = USER_ROUTE.forgotPass;
-  };
-  const onNavgiateLandingPage = () => {
-    window.location.href = ROOT_SCREEN.root;
-  };
 
   const onRequestLogin = async () => {
     try {
       const res = await apiLogin({ username: email, password });
       appStore.dispatch(accountSliceAction.setToken(res.access_token));
       Cookies.set("token", res.access_token);
+      Cookies.set("role", res.role);
 
       const info = await apiGetProfile();
       appStore.dispatch(accountSliceAction.setUserInfo(info));

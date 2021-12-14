@@ -1,29 +1,30 @@
+import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
-import { ROOT_SCREEN ,SHOP_ROUTE} from "../../navigation/routes";
 import request from "../../api/request";
-import StyleProduct from "../../components/StyleProduct"
-
+import StyleProduct from "../../components/StyleProduct";
+import { ROOT_SCREEN } from "../../navigation/routes";
+import ControlFrame from "./ControlFrame";
 
 const Banner =
   "https://m.boylondon-ltd.com/web/product/medium/201809/20f90323d8b58d0d335df6c673919d2a.jpg";
 
-const Banner2 =
-  "https://i.ibb.co/w0RFhdV/banner.png";
+const Banner2 = "https://i.ibb.co/w0RFhdV/banner.png";
 
 const ProductStyle = [
-
   "https://i.ibb.co/G3G1DjX/banner-small-1.png",
-
   "https://i.ibb.co/wzxPXky/banner-small-2.png",
-
   "https://i.ibb.co/3hLqj3Z/banner-small-3.png",
-
   "https://i.ibb.co/TwyvM8z/banner-small-4.jpg",
-
 ];
 
 const LandingPage = () => {
-  const [listProduct, setListProduct] = useState([])
+  const isUser = Cookies.get("role") !== "user";
+
+  if (isUser) {
+    return <ControlFrame />;
+  }
+
+  const [listProduct, setListProduct] = useState([]);
 
   const openListProduct = () => {
     window.location.href = ROOT_SCREEN.shop;
@@ -31,15 +32,12 @@ const LandingPage = () => {
 
   const onGoToDetailProduct = (productID) => {
     return productID;
-
   };
 
   const getData = async () => {
     try {
-
       const res = await request.get("/get-landing-page");
       setListProduct(res);
-
     } catch (err) {
       console.log(err);
     }
@@ -61,8 +59,12 @@ const LandingPage = () => {
           ))}
         </div>
         <div style={Style.text}>
-          <p><b>NEW ARRIVAL</b></p>
-          <button style={Style.showmore} onClick={openListProduct}>show more</button>
+          <p>
+            <b>NEW ARRIVAL</b>
+          </p>
+          <button style={Style.showmore} onClick={openListProduct}>
+            show more
+          </button>
         </div>
         <div style={Style.newarrival}>
           {listProduct.slice(0, 4).map((item) => (
@@ -77,8 +79,12 @@ const LandingPage = () => {
         </div>
 
         <div style={Style.text}>
-          <p><b>Best Sale Product</b></p>
-          <button style={Style.showmore} onClick={openListProduct}>show more</button>
+          <p>
+            <b>Best Sale Product</b>
+          </p>
+          <button style={Style.showmore} onClick={openListProduct}>
+            show more
+          </button>
         </div>
         <div style={Style.bestSale}>
           <div style={Style.bestsaleproduct}>
@@ -112,9 +118,7 @@ const LandingPage = () => {
             <p>Hotline tư vấn : 0912981249</p>
             <p>Hotline khiếu nại: 091237124</p>
           </div>
-          <div style={Style.contactblock}>
-
-          </div>
+          <div style={Style.contactblock}></div>
         </div>
       </div>
     </>
@@ -124,7 +128,6 @@ const LandingPage = () => {
 const Style = {
   imageStyle: {
     width: "100%",
-    
   },
   showmore: {
     backgroundColor: "transparent",
@@ -133,7 +136,7 @@ const Style = {
     marginRight: "auto",
     fontSize: "x-large",
     textDecoration: "underline",
-    marginBottom:10,
+    marginBottom: 10,
   },
   page: {
     display: "block",
@@ -144,12 +147,11 @@ const Style = {
   },
   banner: {
     width: 1400,
-    
   },
   style: {
     width: 1400,
     marginTop: 50,
-    
+
     display: "flex",
     flexDirection: "row",
   },
@@ -171,19 +173,19 @@ const Style = {
   },
   bestSale: {
     width: 1400,
-    
+
     display: "flex",
     flexDirection: "row",
   },
   bestsaleproduct: {
     width: 700,
-    
+
     display: "flex",
     flexWrap: "wrap",
   },
   imgView: {
     width: 680,
-    
+
     marginLeft: 10,
     marginRight: 10,
     marginTop: "auto",

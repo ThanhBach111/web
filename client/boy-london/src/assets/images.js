@@ -11,7 +11,11 @@ import Back from "./ic_back.png";
 import AddProduct from "./ic_add_product.png";
 import backgroundInstruction from "./img_instruction.png";
 import backgroundPolicy from "./img_policy.png";
-import discount from "./ic_discount.png"
+import discount from "./ic_discount.png";
+import Truck from "./ic_truck.png";
+import Database from "./ic_database.png";
+import Customer from "./ic_customer.png";
+
 const Images = {
   discount: discount,
   logo: Logo,
@@ -27,6 +31,9 @@ const Images = {
   addP: AddProduct,
   backIns: backgroundInstruction,
   backPoli: backgroundPolicy,
+  truck: Truck,
+  database: Database,
+  customer: Customer,
 };
 
 export default Images;
