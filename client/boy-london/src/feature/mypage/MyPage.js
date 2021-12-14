@@ -15,7 +15,7 @@ const MyPage = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
-  const [lisOrder, setListOrder]= useState([]);
+  const [listOrder, setListOrder]= useState([]);
   const getData = async () => {
     try {
       const res = await request.get("/account");
@@ -24,7 +24,8 @@ const MyPage = () => {
       setPhone(res.phoneNumber);
       setAddress(res.address);
       setRole(res.role);
-
+      const res2= await request.get("/get-user-orderlist");
+      setListOrder(res2);
     } catch (err) {
       console.log(err);
     }
@@ -42,8 +43,7 @@ const MyPage = () => {
         phoneNumber: phone,
         address: address,
       });
-      const res2= await request.get("");
-      setListOrder(res2);
+      
     } catch (err) {
       alert(err);
     }
@@ -85,7 +85,7 @@ const MyPage = () => {
       )
     } else {
       return (
-        <div style={styles.data1}>{status}</div>
+        <div style={Style.data1}>{status}</div>
       )
     }
   }
@@ -141,7 +141,7 @@ const MyPage = () => {
         {checkRole()}
       </div>
       <div style={Style.cartinfo}>
-      <h1 >Danh sách đơn đặt hàng</h1>
+      <h1 >Danh sách đơn hàng</h1>
         <div style={Style.table}>
           <div style={Style.tableHeader}>
             <p style={Style.data1}>MÃ ĐƠN HÀNG</p>
