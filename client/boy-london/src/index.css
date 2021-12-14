@@ -15,3 +15,25 @@ code {
 p {
   margin: 0px;
 }
+
+.hoverAnimation:hover {
+  transition-duration: 0.3s;
+  margin-top: -5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.cursorPointer:hover {
+  cursor: pointer;
+}
+
+.hoverScale:hover {
+  transform: scale(1.5, 1.5);
+  transition-duration: 0.3s;
+}
+.hoverSmallScale:hover {
+  transform: scale(1.03, 1.03);
+  transition-duration: 0.3s; 
+}
+.scaleText:hover {
+  font-size: 20px;
+  transition-duration: 0.3s;
+}

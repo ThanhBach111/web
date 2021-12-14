@@ -3,23 +3,25 @@ import { NavLink } from "react-router-dom";
 import Images from "../assets/images";
 import "./css/NavBar.css";
 import { Nav, NavMenu } from "./NavbarElement";
-import { ROOT_SCREEN, USER_ROUTE, SHOP_ROUTE } from "./routes";
-import StyleInput from "../components/StyleInput";
+import { ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
-function NavBar() {
+const NavBar = () => {
   const onNavigateAuthentication = () => {
     window.location.href = ROOT_SCREEN.mypage;
   };
+
   const onInstruction = () => {
     window.location.href = USER_ROUTE.instruction;
   };
 
   const onCart = () => {
     window.location.href = SHOP_ROUTE.cartPayment;
-  }
+  };
+
   const openSearch = () => {
-    
-  }
+    window.location.href = ROOT_SCREEN.search;
+  };
+
   return (
     <>
       <Nav>
@@ -28,38 +30,62 @@ function NavBar() {
         </NavLink>
 
         <NavMenu>
-          <NavLink className="navBarLink" to={ROOT_SCREEN.shop} activeStyle>
-            <b>SHOP</b>
-          </NavLink>
-          <NavLink className="navBarLink" to={ROOT_SCREEN.explore} activeStyle>
-            <b>EXPLORE</b>
+          <NavLink
+            className="navBarLink cursorPointer"
+            to={ROOT_SCREEN.shop}
+            activeStyle
+          >
+            <b className="scaleText" style={styles.textNavBar}>
+              SHOP
+            </b>
           </NavLink>
           <NavLink
-            className="navBarLink"
+            className="navBarLink cursorPointer"
+            to={ROOT_SCREEN.explore}
+            activeStyle
+          >
+            <b className="scaleText" style={styles.textNavBar}>
+              EXPLORE
+            </b>
+          </NavLink>
+          <NavLink
+            className="navBarLink cursorPointer"
             to={USER_ROUTE.policyInstruc}
             activeStyle
           >
-            <b>ABOUT US</b>
+            <b className="scaleText" style={styles.textNavBar}>
+              ABOUT US
+            </b>
           </NavLink>
         </NavMenu>
 
         <div style={styles.iconOptionView}>
-          <button style={styles.iconNavMenu}>
-            <img src={Images.search} width={20} onClick={openSearch}/>
+          <button
+            style={styles.iconNavMenu}
+            className="cursorPointer hoverScale"
+          >
+            <img src={Images.search} width={20} onClick={openSearch} />
           </button>
 
-          <button style={styles.iconNavMenu} onClick={onNavigateAuthentication}>
+          <button
+            style={styles.iconNavMenu}
+            onClick={onNavigateAuthentication}
+            className="cursorPointer hoverScale"
+          >
             <img src={Images.user} width={22} />
           </button>
 
-          <button style={styles.iconNavMenu}>
-            <img src={Images.shoppingCart} width={20} onClick={onCart}/>
+          <button
+            style={styles.iconNavMenu}
+            className="cursorPointer hoverScale"
+          >
+            <img src={Images.shoppingCart} width={20} onClick={onCart} />
           </button>
         </div>
       </Nav>
     </>
   );
-}
+};
 
 const styles = {
   iconNavMenu: {
@@ -73,6 +99,10 @@ const styles = {
     width: 160,
     display: "flex",
     justifyContent: "space-between",
+  },
+  textNavBar: {
+    marginLeft: 30,
+    marginRight: 30,
   },
 };
 

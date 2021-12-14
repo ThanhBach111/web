@@ -9,17 +9,17 @@ const Banner =
   "https://m.boylondon-ltd.com/web/product/medium/201809/20f90323d8b58d0d335df6c673919d2a.jpg";
 
 const Banner2 =
-  "http://www.njtsales.com/wp-content/uploads/2021/06/boy-london-womensmens-t-shirts-boy-london-tee-blackwhite_1.jpg";
+  "https://i.ibb.co/w0RFhdV/banner.png";
 
 const ProductStyle = [
 
-  "https://images.asos-media.com/products/boy-london-patch-sweater/6505038-1-black?$n_640w$&wid=513&fit=constrain",
+  "https://i.ibb.co/G3G1DjX/banner-small-1.png",
 
-  "https://cbu01.alicdn.com/img/ibank/2013/783/318/1069813387_788585301.400x400.jpg",
+  "https://i.ibb.co/wzxPXky/banner-small-2.png",
 
-  "https://i.pinimg.com/originals/05/3c/22/053c22845098045994aabefe77b457c7.jpg",
+  "https://i.ibb.co/3hLqj3Z/banner-small-3.png",
 
-  "https://dynamic.zacdn.com/Vq7LJgCSgR4PEesSxzJIa-Sckd0=/fit-in/346x500/filters:quality(95):fill(ffffff)/https://static-sg.zacdn.com/p/boy-london-2035-1175191-1.jpg",
+  "https://i.ibb.co/TwyvM8z/banner-small-4.jpg",
 
 ];
 
@@ -138,6 +138,7 @@ const Style = {
     marginRight: "auto",
     fontSize: "x-large",
     textDecoration: "underline",
+    marginBottom:10,
   },
   page: {
     display: "block",
@@ -162,6 +163,7 @@ const Style = {
     width: 320,
   },
   text: {
+    marginTop: 20,
     margin: 10,
     textAlign: "center",
     fontSize: "x-large",

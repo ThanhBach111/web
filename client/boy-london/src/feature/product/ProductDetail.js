@@ -1,29 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { apiGetProductDetail } from "../../api/modules";
-import { SHOP_ROUTE } from "../../navigation/routes";
+import { apiAddToCart, apiGetProductDetail } from "../../api/modules";
 import "./index.css";
-
-const fakeData = {
-  productID: 1,
-  image1:
-    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_23.jpg",
-  category: "Top",
-  price: 200000,
-  name: "Áo Armor",
-  description: null,
-  image2:
-    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_35.jpg",
-  quantityInStock: 100,
-};
 
 const ProductDetail = ({ location }) => {
   const { idProduct } = location.state;
 
   const [productDetail, setProductDetail] = useState();
   const [numberOrders, setNumberOrders] = useState(1);
-
-  const { userInfo } = useSelector((state) => state.accountSlice);
 
   const status = productDetail?.quantityInStock ? "Còn hàng" : "Hết hàng";
 
@@ -46,9 +29,24 @@ const ProductDetail = ({ location }) => {
     setNumberOrders(temp);
   };
 
+<<<<<<< HEAD
   const onAddToCart = () => {
     window.location.href = SHOP_ROUTE.cartPayment;
   };g
+=======
+  const onAddToCart = async () => {
+    try {
+      await apiAddToCart({
+        productId: idProduct,
+        quantityOrdered: numberOrders,
+      });
+      alert("Thêm vào giỏ hàng thành công");
+      window.location.reload();
+    } catch (err) {
+      alert(err);
+    }
+  };
+>>>>>>> 0f96937f5f1e772a35b3548a136fb6cb371cac07
 
   const onDeleteProduct = () => {
     console.log("delete product");

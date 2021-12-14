@@ -1,51 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import ItemProduct from "../../components/ItemProduct";
 import ItemOption from "../../components/ItemOption";
-
-const data = [
-  {
-    id: 0,
-    image:
-      "https://i.pinimg.com/564x/20/6a/7b/206a7b1acab097f8b864497c81d05b66.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 1,
-    image:
-      "https://i.pinimg.com/564x/20/6a/7b/206a7b1acab097f8b864497c81d05b66.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 2,
-    image:
-      "https://i.pinimg.com/564x/20/6a/7b/206a7b1acab097f8b864497c81d05b66.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 3,
-    image:
-      "https://i.pinimg.com/564x/20/6a/7b/206a7b1acab097f8b864497c81d05b66.jpg",
-    name: "Product",
-    price: "200,000d",
-  },
-  {
-    id: 4,
-    image:
-      "https://www.logolynx.com/images/logolynx/74/740ef38ce219d8b589c7d898ad16227a.jpeg",
-    name: "Product",
-    price: "200,000d",
-  },
-];
+import request from "../../api/request";
 
 const TYPE_SORT = {
   aToZ: 0,
   zToA: 1,
-  latest: 2,
-  popular: 3,
+  // latest: 2,
+  // popular: 3,
 };
 
 const TYPE_CATEGORY = {
@@ -59,6 +22,8 @@ const ListProduct = () => {
   const [listSorts, setListSorts] = useState([]);
   const [listCategories, setListCategories] = useState([]);
 
+  const [listProducts, setListProducts] = useState([]);
+
   const onChangeSort = (typeSort) => {
     const index = listSorts.indexOf(typeSort);
     if (index !== -1) {
@@ -66,7 +31,24 @@ const ListProduct = () => {
       temp.pop(index);
       setListSorts(temp);
     } else {
-      setListSorts(listSorts.concat(typeSort));
+      setListSorts([typeSort]);
+      if (typeSort === TYPE_SORT.aToZ) {
+        const temp = [...listProducts];
+        temp.sort((a, b) => {
+          if (a < b) return -1;
+          if (a > b) return 1;
+          return 0;
+        });
+        setListProducts(temp);
+      } else {
+        const temp = [...listProducts];
+        temp.sort((a, b) => {
+          if (a > b) return -1;
+          if (a < b) return 1;
+          return 0;
+        });
+        setListProducts(temp);
+      }
     }
   };
 
@@ -81,9 +63,18 @@ const ListProduct = () => {
     }
   };
 
-  const onGoToDetailProduct = (productId) => {
-    return null;
+  const getData = async () => {
+    try {
+      const res = await request.get("/get-landing-page");
+      setListProducts(res);
+    } catch (err) {
+      alert(err);
+    }
   };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <div className="container">
@@ -102,7 +93,7 @@ const ListProduct = () => {
             onPress={() => onChangeSort(TYPE_SORT.zToA)}
             isSelected={listSorts.includes(TYPE_SORT.zToA)}
           />
-          <ItemOption
+          {/* <ItemOption
             title="Latest"
             onPress={() => onChangeSort(TYPE_SORT.latest)}
             isSelected={listSorts.includes(TYPE_SORT.latest)}
@@ -111,7 +102,7 @@ const ListProduct = () => {
             title="Popular"
             onPress={() => onChangeSort(TYPE_SORT.popular)}
             isSelected={listSorts.includes(TYPE_SORT.popular)}
-          />
+          /> */}
         </div>
 
         {/* category */}
@@ -142,12 +133,14 @@ const ListProduct = () => {
 
       {/* list product view */}
       <div className="listProductView">
-        {data.map((item) => (
+        {listProducts.map((item) => (
           <ItemProduct
-            image={item.image}
+            key={item.productID}
+            image={item.image1}
             name={item.name}
             price={item.price}
-            onPress={() => onGoToDetailProduct(item.id)}
+            idProduct={item.productID}
+            onPress={() => null}
           />
         ))}
       </div>

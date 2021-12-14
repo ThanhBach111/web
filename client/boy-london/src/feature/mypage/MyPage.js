@@ -5,14 +5,16 @@ import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 import Cookies from "js-cookie";
 
+const listOrder = [{
 
+}]
 
 const MyPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [role, setRole] = useState("");
+  const [listOrder, setListOrder]= useState([]);
   const getData = async () => {
     try {
       const res = await request.get("/account");
@@ -21,7 +23,8 @@ const MyPage = () => {
       setPhone(res.phoneNumber);
       setAddress(res.address);
       setRole(res.role);
-
+      const res2= await request.get("/get-user-orderlist");
+      setListOrder(res2);
     } catch (err) {
       console.log(err);
     }
@@ -39,6 +42,7 @@ const MyPage = () => {
         phoneNumber: phone,
         address: address,
       });
+      
     } catch (err) {
       alert(err);
     }
@@ -62,16 +66,9 @@ const MyPage = () => {
     window.location.href = USER_ROUTE.forgotPass;
   }
 
-  const checkRole = () => {
-    if (role == "admin")
-      return (
-        
-          <button style={Style.button1} onClick={gotoMangerPage}>
-            Quản lý thông tin
-          </button>
-        
-      )
-  }
+  
+
+ 
 
   return (
     <div style={Style.page}>
@@ -121,28 +118,31 @@ const MyPage = () => {
           Đăng xuất
         </button>
         </div>
-        {checkRole()}
       </div>
       <div style={Style.cartinfo}>
-        <h1>Thông tin khuyến mãi</h1>
+      <h1 style={{marginLeft: 10}}>Danh sách đơn hàng</h1>
         <div style={Style.table}>
-          <p><b>MÃ KHUYẾN MÃI</b></p>
-          <div style={Style.text}>
+          <div style={Style.tableHeader}>
+            <p style={Style.data1}>MÃ ĐƠN HÀNG</p>
             
-          <p>
-          Mã khuyến mãi DRBCHI1
-          </p>
-          <p>
-          Giảm 10% trong hóa đơn
-          </p>
+            <p style={Style.data1}>SẢN PHẨM</p>
+            <p style={Style.data1}>NGÀY ĐẶT HÀNG</p>
+            <p style={Style.data1}>NGÀY CHUYỂN HÀNG </p>
+            <p style={Style.data1}>TÌNH TRẠNG</p>
           </div>
-          <div style={Style.text}>
-          <p>
-          Mã khuyến mãi : SUMFUH 
-          </p>
-          <p>
-          Giảm 30% cho hóa đơn khi tổng hóa đơn hơn 300.000 VND
-          </p>
+          <div style={Style.dataView}>
+          {listOrder.map((item) => (
+            <div
+              style={Style.dataTable}
+            >
+
+              <div style={Style.data1}>{item.Orders.orderID}</div>
+              <div style={Style.data1}>{item.Products.name}</div>
+              <div style={Style.data1}>{item.Orders.orderDate}</div>
+              <div style={Style.data1}>{item.Orders.shippedDate}</div>
+              <div style={Style.data1}>{item.Orders.status}</div>
+            </div>
+          ))}
           </div>
         </div>
       </div>
@@ -151,17 +151,54 @@ const MyPage = () => {
 };
 
 const Style = {
+  dataView:{
+    overflow: "auto",
+    height:300
+  },
   table: {
-    width: 600,
+    width: 700,
+    marginLeft: "auto",
+    marginRight: "auto",
     borderRadius: 10,
     backgroundColor: "#E0DEDE",
     textAlign: "center",
     marginTop: 20,
-    border: 1,
-    
-    fontSize: 20,
     
   },
+  tableHeader: {
+    borderBottom: 1,
+    borderBottomStyle: "solid",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontWeight: "bold",
+    flex: 1,
+
+  },
+  dataTable: {
+    
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: "center",
+    justifyContent: "center",
+    
+    
+  },
+  
+  data1: {
+    paddingLeft: 10,
+    justifyContent: "center",
+    width: "20%",
+  },
+  
   text: {
     border: "solid",
     
