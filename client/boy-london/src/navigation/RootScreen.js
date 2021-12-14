@@ -39,7 +39,7 @@ const RootScreen = () => {
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
         <Route path={ADMIN_ROUTE.adminDashboard} component={Admin} />
         <Route path={ADMIN_ROUTE.changeProduct} component={ChangeProduct} />
-        <Route path={ADMIN_ROUTE.adđProduct} component={AddProduct} />
+        <Route path={ADMIN_ROUTE.addProduct} component={AddProduct} />
         <Route path={ROOT_SCREEN.search} component={SearchProduct} />
       </Switch>
     </BrowserRouter>

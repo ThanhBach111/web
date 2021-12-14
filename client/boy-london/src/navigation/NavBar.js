@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import React from "react";
 import { ROLE_USER } from "../assets/enums";
 import Images from "../assets/images";
-import "./css/NavBar.css";
+
 import { ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
 const NavBar = () => {
