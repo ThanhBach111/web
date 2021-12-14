@@ -29,11 +29,6 @@ const ProductDetail = ({ location }) => {
     setNumberOrders(temp);
   };
 
-<<<<<<< HEAD
-  const onAddToCart = () => {
-    window.location.href = SHOP_ROUTE.cartPayment;
-  };g
-=======
   const onAddToCart = async () => {
     try {
       await apiAddToCart({
@@ -46,7 +41,6 @@ const ProductDetail = ({ location }) => {
       alert(err);
     }
   };
->>>>>>> 0f96937f5f1e772a35b3548a136fb6cb371cac07
 
   const onDeleteProduct = () => {
     console.log("delete product");

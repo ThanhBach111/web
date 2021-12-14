@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "../feature/landingpage/LandingPage";
+import AddProduct from "../feature/manage/AddProduct";
 import ChangeProduct from "../feature/manage/ChangeProduct";
 import Manager from "../feature/manage/Manager";
 import CheckRole from "../feature/mypage/CheckRole";
@@ -36,12 +37,10 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
-<<<<<<< HEAD
         <Route path={ADMIN_ROUTE.adminDashboard} component={Admin} />
-=======
         <Route path={ADMIN_ROUTE.changeProduct} component={ChangeProduct} />
+        <Route path={ADMIN_ROUTE.adđProduct} component={AddProduct} />
         <Route path={ROOT_SCREEN.search} component={SearchProduct} />
->>>>>>> 0f96937f5f1e772a35b3548a136fb6cb371cac07
       </Switch>
     </BrowserRouter>
   );

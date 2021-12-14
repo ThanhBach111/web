@@ -22,7 +22,7 @@ const MyPage = () => {
       setEmail(res.email);
       setPhone(res.phoneNumber);
       setAddress(res.address);
-      setRole(res.role);
+      
       const res2= await request.get("/get-user-orderlist");
       setListOrder(res2);
     } catch (err) {
