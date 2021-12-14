@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LandingPage from "../feature/landingpage/LandingPage";
+import ChangeProduct from "../feature/manage/ChangeProduct";
 import Manager from "../feature/manage/Manager";
 import CheckRole from "../feature/mypage/CheckRole";
 import CartPayment from "../feature/product/CartPayment";
@@ -34,6 +35,7 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
+        <Route path={ADMIN_ROUTE.changeProduct} component={ChangeProduct} />
         <Route path={ROOT_SCREEN.search} component={SearchProduct} />
       </Switch>
     </BrowserRouter>
