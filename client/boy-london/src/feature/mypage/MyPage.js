@@ -141,7 +141,7 @@ const MyPage = () => {
         {checkRole()}
       </div>
       <div style={Style.cartinfo}>
-      <h1 >Danh sách đơn hàng</h1>
+      <h1 style={{marginLeft: 10}}>Danh sách đơn hàng</h1>
         <div style={Style.table}>
           <div style={Style.tableHeader}>
             <p style={Style.data1}>MÃ ĐƠN HÀNG</p>
