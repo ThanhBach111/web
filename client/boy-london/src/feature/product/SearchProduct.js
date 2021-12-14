@@ -14,8 +14,8 @@ const SearchProduct = () => {
 
   const getData = async () => {
     try {
-     // const res = await request.get("/get-landing-page")
-       // setListProduct(res);
+     const res = await request.get("/get-landing-page")
+       setListProduct(res);
       
     } catch (err) {
      
