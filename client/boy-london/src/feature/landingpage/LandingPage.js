@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import request from "../../api/request";
 import StyleProduct from "../../components/StyleProduct";
+import ControlFrame from "./ControlFrame";
 
 const Banner =
   "https://m.boylondon-ltd.com/web/product/medium/201809/20f90323d8b58d0d335df6c673919d2a.jpg";
