@@ -6,6 +6,7 @@ import CheckRole from "../feature/mypage/CheckRole";
 import CartPayment from "../feature/product/CartPayment";
 import ListProduct from "../feature/product/ListProduct";
 import ProductDetail from "../feature/product/ProductDetail";
+import SearchProduct from "../feature/product/SearchProduct";
 import ChangePassword from "../feature/user/ChangePassword";
 import Instruction from "../feature/user/Instruction";
 import Policy from "../feature/user/Policy";
@@ -33,6 +34,7 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.policy} component={Policy} />
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
+        <Route path={ROOT_SCREEN.search} component={SearchProduct} />
       </Switch>
     </BrowserRouter>
   );

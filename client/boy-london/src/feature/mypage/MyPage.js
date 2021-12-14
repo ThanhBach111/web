@@ -5,7 +5,9 @@ import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 import Cookies from "js-cookie";
 
+const listOrder = [{
 
+}]
 
 const MyPage = () => {
   const [name, setName] = useState("");
@@ -13,6 +15,7 @@ const MyPage = () => {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [role, setRole] = useState("");
+  const [lisOrder, setListOrder]= useState([]);
   const getData = async () => {
     try {
       const res = await request.get("/account");
@@ -39,6 +42,8 @@ const MyPage = () => {
         phoneNumber: phone,
         address: address,
       });
+      const res2= await request.get("");
+      setListOrder(res2);
     } catch (err) {
       alert(err);
     }
@@ -71,6 +76,18 @@ const MyPage = () => {
           </button>
         
       )
+  }
+
+  const checkStatus = (status, orderID) => {
+    if(status == "checking") {
+      return (
+        <div style={styles.data1}><button>{status}</button></div>
+      )
+    } else {
+      return (
+        <div style={styles.data1}>{status}</div>
+      )
+    }
   }
 
   return (
@@ -124,25 +141,29 @@ const MyPage = () => {
         {checkRole()}
       </div>
       <div style={Style.cartinfo}>
-        <h1>Thông tin khuyến mãi</h1>
+      <h1 >Danh sách đơn đặt hàng</h1>
         <div style={Style.table}>
-          <p><b>MÃ KHUYẾN MÃI</b></p>
-          <div style={Style.text}>
+          <div style={Style.tableHeader}>
+            <p style={Style.data1}>MÃ ĐƠN HÀNG</p>
             
-          <p>
-          Mã khuyến mãi DRBCHI1
-          </p>
-          <p>
-          Giảm 10% trong hóa đơn
-          </p>
+            <p style={Style.data1}>SẢN PHẨM</p>
+            <p style={Style.data1}>NGÀY ĐẶT HÀNG</p>
+            <p style={Style.data1}>NGÀY CHUYỂN HÀNG </p>
+            <p style={Style.data1}>TÌNH TRẠNG</p>
           </div>
-          <div style={Style.text}>
-          <p>
-          Mã khuyến mãi : SUMFUH 
-          </p>
-          <p>
-          Giảm 30% cho hóa đơn khi tổng hóa đơn hơn 300.000 VND
-          </p>
+          <div style={Style.dataView}>
+          {listOrder.map((item) => (
+            <div
+              style={Style.dataTable}
+            >
+
+              <div style={Style.data1}>{item.orderID}</div>
+              <div style={Style.data1}>{item.name}</div>
+              <div style={Style.data1}>{item.orderDate}</div>
+              <div style={Style.data1}>{item.shippedDate}</div>
+              {checkStatus(item.status, item.orderID)}
+            </div>
+          ))}
           </div>
         </div>
       </div>
@@ -151,17 +172,54 @@ const MyPage = () => {
 };
 
 const Style = {
+  dataView:{
+    overflow: "auto",
+    height:500
+  },
   table: {
-    width: 600,
+    width: 700,
+    marginLeft: "auto",
+    marginRight: "auto",
     borderRadius: 10,
     backgroundColor: "#E0DEDE",
     textAlign: "center",
     marginTop: 20,
-    border: 1,
-    
-    fontSize: 20,
     
   },
+  tableHeader: {
+    borderBottom: 1,
+    borderBottomStyle: "solid",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontWeight: "bold",
+    flex: 1,
+
+  },
+  dataTable: {
+    
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    textAlign: "center",
+    justifyContent: "center",
+    
+    
+  },
+  
+  data1: {
+    paddingLeft: 10,
+    justifyContent: "center",
+    width: "20%",
+  },
+  
   text: {
     border: "solid",
     

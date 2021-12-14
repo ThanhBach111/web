@@ -4,6 +4,7 @@ export const ROOT_SCREEN = {
   explore: "/explore",
   aboutUs: "/aboutUs",
   mypage: "/mypage",
+  search: "/search",
 };
 
 export const SHOP_ROUTE = {

@@ -18,7 +18,9 @@ const NavBar = () => {
     window.location.href = SHOP_ROUTE.cartPayment;
   };
 
-  const openSearch = () => null;
+  const openSearch = () => {
+    window.location.href = ROOT_SCREEN.search;
+  };
 
   return (
     <>
