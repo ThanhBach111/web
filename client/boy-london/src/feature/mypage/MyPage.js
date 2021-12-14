@@ -174,7 +174,7 @@ const MyPage = () => {
 const Style = {
   dataView:{
     overflow: "auto",
-    height:500
+    height:300
   },
   table: {
     width: 700,
