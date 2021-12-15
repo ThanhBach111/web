@@ -42,7 +42,7 @@ const ListCustomerAdmin = () => {
     try {
       
       const res1 = await request.get("/get-userlist");
-      setListUser(res1);
+      setListCustomerAdmin(res1);
      
     } catch (err) {
       console.log(err);
@@ -55,7 +55,7 @@ const ListCustomerAdmin = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Danh sách sản phẩm</h2>
+      <h2>Danh sách khách hàng</h2>
 
       <div style={styles.tableView}>
         <div style={styles.tableHeader}>
