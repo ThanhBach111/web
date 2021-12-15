@@ -109,13 +109,7 @@ const ListCustomerAdmin = () => {
               <p>{item.address}</p>
             </div>
             <div style={styles.tableElement}>
-            <button
-              style={styles.buttonBox}
-              className="cursorpointer"
-              onClick={onBlockCustomer(item.userID)}
-            >
-              <img src={Images.trash} style={{ width: 50 }} />
-            </button>
+            {checkBanAcc(item.isActive)}
             </div>
           </div>
         ))}
