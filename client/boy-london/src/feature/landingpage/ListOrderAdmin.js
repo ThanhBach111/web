@@ -1,5 +1,7 @@
 import React from "react";
 import Images from "../../assets/images";
+import { useEffect, useState } from "react";
+import request from "../../api/request";
 
 const fakeData = [
   {

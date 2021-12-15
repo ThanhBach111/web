@@ -26,4 +26,5 @@ export const ADMIN_ROUTE = {
   adminDashboard: "/productdashboard",
   changeProduct: "/changeProduct",
   addProduct:"/addProduct",
+  controlframe: "/controlframe",
 };

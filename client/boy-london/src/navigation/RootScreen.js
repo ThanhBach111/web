@@ -15,7 +15,8 @@ import Policy from "../feature/user/Policy";
 import PolicyHomePage from "../feature/user/PolicyInstruct";
 import RegisterScreen from "../feature/user/RegisterScreen";
 import Tracking from "../feature/user/TrackingOrder";
-import Admin from "../feature/manage/Admin";
+import Admin from "../feature/landingpage/ListProductAdmin";
+import ControlFrame from "../feature/landingpage/ControlFrame";
 import NavBar from "./NavBar";
 import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
@@ -38,6 +39,7 @@ const RootScreen = () => {
         <Route path={USER_ROUTE.policyInstruc} component={PolicyHomePage} />
         <Route path={ADMIN_ROUTE.trackingOrder} component={Tracking} />
         <Route path={ADMIN_ROUTE.adminDashboard} component={Admin} />
+        <Route path={ADMIN_ROUTE.controlframe} component={ControlFrame} />
         <Route path={ADMIN_ROUTE.changeProduct} component={ChangeProduct} />
         <Route path={ADMIN_ROUTE.addProduct} component={AddProduct} />
         <Route path={ROOT_SCREEN.search} component={SearchProduct} />

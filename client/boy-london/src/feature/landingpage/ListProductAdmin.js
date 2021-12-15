@@ -1,6 +1,7 @@
 import React from "react";
 import Images from "../../assets/images";
-
+import { useEffect, useState } from "react";
+import request from "../../api/request";
 import ItemAdmin from "../../components/ItemAdmin";
 
 const data = [
@@ -80,12 +81,23 @@ const Admin = () => {
 }
 
 const styles = {
+  container: {
+    display: "flex",
+    flex: 1,
+    backgroundColor: "white",
+    paddingLeft: 70,
+    paddingRight: 140,
+    flexDirection: "column",
+    borderRadius: 10,
+  },
+
     search: {
         width: 235,
         height: 40,
         marginLeft: 30,
         display: "block",
         marginTop: 30,
+        
     },
     buttonI : {
         backgroundColor: "transparent",
@@ -114,15 +126,7 @@ const styles = {
         display: "flex",
         marginLeft: 10,
     },
-    listProductView: {
-        width: "80%",
-        height: 1150,
-        marginLeft: 220,
-        marginTop: 100,
-        borderStyle: "solid",
-        borderRadius: 2,
-        borderColor: "black",
-    },
+    
     view :{
         width: "100%",
         display: "inline-flex",

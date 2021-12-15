@@ -5,6 +5,7 @@ import { TYPE_CONTROL } from "../../assets/enums";
 import Cookies from "js-cookie";
 import ListCustomerAdmin from "./ListCustomerAdmin";
 import ListOrderAdmin from "./ListOrderAdmin";
+import Admin from "./ListProductAdmin";
 import { ROOT_SCREEN } from "../../navigation/routes";
 
 const ControlFrame = () => {
@@ -31,13 +32,13 @@ const ControlFrame = () => {
         />
         <ItemControl
           icon={Images.customer}
-          title="DSSP"
+          title="DSKH"
           isSelected={controlSelected === TYPE_CONTROL.customer}
           onPress={() => setControlSelected(TYPE_CONTROL.customer)}
         />
         <ItemControl
           icon={Images.truck}
-          title="DSSP"
+          title="DSĐH"
           isSelected={controlSelected === TYPE_CONTROL.order}
           onPress={() => setControlSelected(TYPE_CONTROL.order)}
         />
@@ -52,6 +53,8 @@ const ControlFrame = () => {
       </div>
 
       {/* product view */}
+      {controlSelected === TYPE_CONTROL.product && <Admin />}
+
       {controlSelected === TYPE_CONTROL.customer && <ListCustomerAdmin />}
 
       {controlSelected === TYPE_CONTROL.order && <ListOrderAdmin />}

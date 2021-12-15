@@ -1,5 +1,7 @@
 import React from "react";
 import Images from "../../assets/images";
+import { useEffect, useState } from "react";
+import request from "../../api/request";
 
 const listCustomer = [
   {
@@ -34,6 +36,23 @@ const ListCustomerAdmin = () => {
     }
   };
 
+  const [listCustomerAdmin, setListCustomerAdmin] = useState([]);
+
+  const getData = async () => {
+    try {
+      
+      const res1 = await request.get("/get-userlist");
+      setListUser(res1);
+     
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div style={styles.container}>
       <h2>Danh sách sản phẩm</h2>
@@ -57,7 +76,7 @@ const ListCustomerAdmin = () => {
           </div>
         </div>
 
-        {listCustomer.map((item) => (
+        {listCustomerAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
               <p>{item.customerId}</p>
