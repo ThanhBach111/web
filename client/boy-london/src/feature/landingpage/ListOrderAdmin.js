@@ -42,28 +42,9 @@ const [listOrderAdmin, setListOrderAdmin] = useState([]);
     getData();
   }, []);
 
-  const setStatus = async (ID) => {
-    try {
-      await request.put(`/update-order/${ID}`)
-      const res2 = await request.get("/get-orderlist");
-      setListOrder(res2);
-    } catch (err) {
-      console.log(err);
-    }
-  }
   
-  const checkStatus = (status, orderID) => {
-    if(status == "Shipped") {
-      return (
-        <div style={styles.data1}>{status}</div>
-      )
-    } else {
-      return(
-        <div style={styles.data1}><button onClick={() => setStatus(orderID)}>{status}</button></div>
-      )
-    }
-  }
-
+  
+  
 const ListOrderAdmin = () => {
   return (
     <div style={styles.container}>
@@ -102,7 +83,7 @@ const ListOrderAdmin = () => {
             <div style={styles.tableElement}>
               <p>{item.shippedDate}</p>
             </div>
-            {checkStatus(item.status, item.orderID)}
+          
           </div>
         ))}
       </div>
