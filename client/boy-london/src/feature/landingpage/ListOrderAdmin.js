@@ -5,26 +5,34 @@ import request from "../../api/request";
 
 const fakeData = [
   {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
+    orderID: "1231312",
+    userID: "1",
+    orderDate: "12/12/2002",
+    shippedDate: "12/12/2121",
+    
   },
   {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
+    orderID: "1231312",
+    userID: "1",
+    orderDate: "12/12/2002",
+    shippedDate: "12/12/2121",
+    
   },
   {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
+    orderID: "1231312",
+    userID: "1",
+    orderDate: "12/12/2002",
+    shippedDate: "12/12/2121",
+    
   },
+  {
+    orderID: "1231312",
+    userID: "1",
+    orderDate: "12/12/2002",
+    shippedDate: "12/12/2121",
+    
+  },
+
 ];
 
 
@@ -94,16 +102,16 @@ const ListOrderAdmin = () => {
 
         {listOrderAdmin.map((item) => (
           <div style={styles.dataTable}>
-            <div style={styles.tableElement}>
+            <div style={styles.data}>
               <p>{item.orderID}</p>
             </div>
-            <div style={styles.tableElement}>
+            <div style={styles.data}>
               <p>{item.userID}</p>
             </div>
-            <div style={styles.tableElement}>
+            <div style={styles.data}>
               <p>{item.orderDate}</p>
             </div>
-            <div style={styles.tableElement}>
+            <div style={styles.data}>
               <p>{item.shippedDate}</p>
             </div>
             {checkStatus(item.status, item.orderID)}
@@ -157,11 +165,15 @@ const styles = {
   tableElement: {
     display: "flex",
     flex: 1,
+    marginLeft: 30,
+    width: "20%",
+    justifyContent: "space-between",
   },
   data: {
     justifyContent: "center",
     width: "20%",
     color: "#2E6BC6",
+    marginLeft: 10,
   },
 };
 
