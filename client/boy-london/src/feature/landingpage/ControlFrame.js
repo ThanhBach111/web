@@ -14,7 +14,7 @@ const ControlFrame = () => {
   const onLogOut = () => {
     try {
       Cookies.remove("token");
-      window.location.href(ROOT_SCREEN.mypage);
+      window.location.href = ROOT_SCREEN.mypage;
     } catch (err) {
       alert(err);
     }

@@ -6,7 +6,7 @@ import Images from "../assets/images";
 import { ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
 const NavBar = () => {
-  const isAdmin = Cookies.get("role") === ROLE_USER.user;
+  const isAdmin = Cookies.get("role") === ROLE_USER.admin;
 
   const onNavigateAuthentication = () => {
     window.location.href = ROOT_SCREEN.mypage;

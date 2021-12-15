@@ -12,10 +12,9 @@ const TYPE_SORT = {
 };
 
 const TYPE_CATEGORY = {
-  tops: 4,
-  sweaters: 5,
-  jeans: 6,
-  accessories: 7,
+  top: 4,
+  bottom: 5,
+  accessories: 6,
 };
 
 const ListProduct = () => {
@@ -109,20 +108,20 @@ const ListProduct = () => {
         <div className="optionBox">
           <p className="titleOption">CATEGORY</p>
           <ItemOption
-            title="Tops"
-            onPress={() => onChangeCategory(TYPE_CATEGORY.tops)}
-            isSelected={listCategories.includes(TYPE_CATEGORY.tops)}
+            title="Top"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.top)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.top)}
           />
           <ItemOption
-            title="Sweaters"
-            onPress={() => onChangeCategory(TYPE_CATEGORY.sweaters)}
-            isSelected={listCategories.includes(TYPE_CATEGORY.sweaters)}
+            title="Bottom"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.bottom)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.bottom)}
           />
-          <ItemOption
+          {/* <ItemOption
             title="Jeans"
             onPress={() => onChangeCategory(TYPE_CATEGORY.jeans)}
             isSelected={listCategories.includes(TYPE_CATEGORY.jeans)}
-          />
+          /> */}
           <ItemOption
             title="Accessories"
             onPress={() => onChangeCategory(TYPE_CATEGORY.accessories)}

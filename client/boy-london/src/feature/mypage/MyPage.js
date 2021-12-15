@@ -98,16 +98,16 @@ const MyPage = () => {
           setValue={setAddress}
         />
 
-        <button style={Style.button1} onClick={() => onChangeInfo}>
+        <button style={Style.button1} onClick={onChangeInfo} className="cursorPointer">
           Cập nhật thông tin
         </button>
 
         <div>
-          <button style={Style.button2} onClick={() => changePassword}>
+          <button style={Style.button2} onClick={changePassword} className="cursorPointer">
             Đổi mật khẩu
           </button>
 
-          <button style={Style.button2} onClick={() => logOut}>
+          <button style={Style.button2} onClick={logOut} className="cursorPointer" >
             Đăng xuất
           </button>
         </div>
