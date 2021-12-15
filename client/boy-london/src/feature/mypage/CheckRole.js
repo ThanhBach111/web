@@ -1,13 +1,10 @@
 import Cookies from "js-cookie";
 import React from "react";
-import { useSelector } from "react-redux";
 import Login from "../user/Login";
 import MyPage from "./MyPage";
 
 const CheckRole = () => {
   const token = Cookies.get("token");
-
-  console.log('token: ', token)
 
   if (!token) {
     return <Login />;

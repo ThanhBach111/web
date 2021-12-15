@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import StyleInput from "../../components/StyleInput";
 import Images from "../../assets/images";
-import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "../../navigation/routes";
+import {
+  ADMIN_ROUTE,
+  ROOT_SCREEN,
+  SHOP_ROUTE,
+  USER_ROUTE,
+} from "../../navigation/routes";
 import request from "../../api/request";
 import Cookies from "js-cookie";
 
-
-const listOrder = [{
-
-}]
+const listOrder = [{}];
 
 const MyPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
-  const [listOrder, setListOrder]= useState([]);
+  const [listOrder, setListOrder] = useState([]);
   const getData = async () => {
     try {
       const res = await request.get("/account");
@@ -23,8 +25,8 @@ const MyPage = () => {
       setEmail(res.email);
       setPhone(res.phoneNumber);
       setAddress(res.address);
-      
-      const res2= await request.get("/get-user-orderlist");
+
+      const res2 = await request.get("/get-user-orderlist");
       setListOrder(res2);
     } catch (err) {
       console.log(err);
@@ -43,31 +45,23 @@ const MyPage = () => {
         phoneNumber: phone,
         address: address,
       });
-      
     } catch (err) {
       alert(err);
     }
   };
 
-  
-
   const logOut = async () => {
     try {
-      Cookies.remove('token')
-      window.location.href = ROOT_SCREEN.mypage;
-    } catch(err){
-      alert(err)
+      Cookies.remove("token");
+      window.location.reload();
+    } catch (err) {
+      alert(err);
     }
-  } 
-  
+  };
 
   const changePassword = () => {
     window.location.href = USER_ROUTE.forgotPass;
-  }
-
-  
-
- 
+  };
 
   return (
     <div style={Style.page}>
@@ -109,39 +103,36 @@ const MyPage = () => {
         </button>
 
         <div>
-        <button style={Style.button2} onClick={() => changePassword}>
-          Đổi mật khẩu
-        </button>
+          <button style={Style.button2} onClick={() => changePassword}>
+            Đổi mật khẩu
+          </button>
 
-        <button style={Style.button2} onClick={() => logOut}>
-          Đăng xuất
-        </button>
+          <button style={Style.button2} onClick={() => logOut}>
+            Đăng xuất
+          </button>
         </div>
       </div>
       <div style={Style.cartinfo}>
-      <h1 style={{marginLeft: 10}}>Danh sách đơn hàng</h1>
+        <h1 style={{ marginLeft: 10 }}>Danh sách đơn hàng</h1>
         <div style={Style.table}>
           <div style={Style.tableHeader}>
             <p style={Style.data1}>MÃ ĐƠN HÀNG</p>
-            
+
             <p style={Style.data1}>SẢN PHẨM</p>
             <p style={Style.data1}>NGÀY ĐẶT HÀNG</p>
             <p style={Style.data1}>NGÀY CHUYỂN HÀNG </p>
             <p style={Style.data1}>TÌNH TRẠNG</p>
           </div>
           <div style={Style.dataView}>
-          {listOrder.map((item) => (
-            <div
-              style={Style.dataTable}
-            >
-
-              <div style={Style.data1}>{item.Orders.orderID}</div>
-              <div style={Style.data1}>{item.Products.name}</div>
-              <div style={Style.data1}>{item.Orders.orderDate}</div>
-              <div style={Style.data1}>{item.Orders.shippedDate}</div>
-              <div style={Style.data1}>{item.Orders.status}</div>
-            </div>
-          ))}
+            {listOrder.map((item) => (
+              <div style={Style.dataTable}>
+                <div style={Style.data1}>{item.Orders.orderID}</div>
+                <div style={Style.data1}>{item.Products.name}</div>
+                <div style={Style.data1}>{item.Orders.orderDate}</div>
+                <div style={Style.data1}>{item.Orders.shippedDate}</div>
+                <div style={Style.data1}>{item.Orders.status}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -150,9 +141,9 @@ const MyPage = () => {
 };
 
 const Style = {
-  dataView:{
+  dataView: {
     overflow: "auto",
-    height:300
+    height: 300,
   },
   table: {
     width: 700,
@@ -162,7 +153,6 @@ const Style = {
     backgroundColor: "#E0DEDE",
     textAlign: "center",
     marginTop: 20,
-    
   },
   tableHeader: {
     borderBottom: 1,
@@ -176,10 +166,8 @@ const Style = {
     paddingRight: 10,
     fontWeight: "bold",
     flex: 1,
-
   },
   dataTable: {
-    
     display: "flex",
     flexDirection: "row",
     paddingTop: 10,
@@ -188,29 +176,26 @@ const Style = {
     paddingRight: 10,
     textAlign: "center",
     justifyContent: "center",
-    
-    
   },
-  
+
   data1: {
     paddingLeft: 10,
     justifyContent: "center",
     width: "20%",
   },
-  
+
   text: {
     border: "solid",
-    
 
     marginTop: 10,
-    borderRadius:10,
+    borderRadius: 10,
     textAlign: "left",
   },
   button2: {
     backgroundColor: "transparent",
     borderWidth: 0,
     marginLeft: 80,
-    marginTop:30,
+    marginTop: 30,
     fontSize: "x-large",
     textDecoration: "underline",
   },
@@ -238,7 +223,7 @@ const Style = {
   },
 
   button1: {
-    width:200,
+    width: 200,
     marginLeft: 145,
     marginTop: 25,
     borderRadius: 50,

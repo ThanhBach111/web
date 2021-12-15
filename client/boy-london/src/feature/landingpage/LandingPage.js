@@ -18,7 +18,7 @@ const ProductStyle = [
 ];
 
 const LandingPage = () => {
-  const isAdmin = Cookies.get("role") === ROLE_USER.user;
+  const isAdmin = Cookies.get("role") === ROLE_USER.admin;
 
   if (isAdmin) {
     return <ControlFrame />;

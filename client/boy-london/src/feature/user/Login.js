@@ -5,7 +5,7 @@ import { accountSliceAction } from "../../app-redux/accountSlice";
 import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
-import { USER_ROUTE } from "../../navigation/routes";
+import { ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,9 +27,7 @@ const Login = () => {
       const info = await apiGetProfile();
       appStore.dispatch(accountSliceAction.setUserInfo(info));
 
-      window.location.reload();
-
-      // onNavgiateLandingPage();
+      window.location.href = ROOT_SCREEN.root;
     } catch (err) {
       setIsFailLogin(true);
       alert(err);
