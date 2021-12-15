@@ -27,7 +27,10 @@ const fakeData = [
   },
 ];
 
-const [listOrderAdmin, setListOrderAdmin] = useState([]);
+
+const ListOrderAdmin = () => {
+
+  const [listOrderAdmin, setListOrderAdmin] = useState([]);
   const getData = async () => {
     try {
       
@@ -44,8 +47,6 @@ const [listOrderAdmin, setListOrderAdmin] = useState([]);
 
   
   
-  
-const ListOrderAdmin = () => {
   return (
     <div style={styles.container}>
       <h2>Danh sách đơn hàng</h2>

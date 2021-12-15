@@ -3,29 +3,7 @@ import Images from "../../assets/images";
 import { useEffect, useState } from "react";
 import request from "../../api/request";
 
-const listCustomer = [
-  {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
-  },
-  {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
-  },
-  {
-    customerId: "1231312",
-    username: "ducdatpham",
-    customerName: "Duc Dat",
-    phoneNumber: "4589349535",
-    address: "56 Nguyen Chi Thanh",
-  },
-];
+
 
 const ListCustomerAdmin = () => {
   const onBlockCustomer = () => {
