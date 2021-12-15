@@ -11,7 +11,7 @@ const SearchProduct = () => {
   const [listSearch, setListSearch] = useState([]);
   
   const [search, setSearch] = useState("");
-  const [alert, setAlert] = useState("Sản phẩm cần tìm:");
+  const [alert, setAlert] = useState("");
  
   
   const getData = async () => {
@@ -27,6 +27,7 @@ const SearchProduct = () => {
 
     const searchList = async () => {
         try {
+          setAlert("")
           const res = await request.get(`/search/${search}`);
           setListSearch(res);
         } catch (err) {
@@ -66,7 +67,7 @@ const SearchProduct = () => {
       </div>
       
       
-      <h1>{alert}</h1>
+      <h1>Sản phẩm cần tìm:{alert}</h1>
       <div style={styles.showProduct}>
       
       {listSearch.map((item) => (
