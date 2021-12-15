@@ -13,6 +13,7 @@ const Admin = () => {
     window.location.href = ADMIN_ROUTE.addProduct;
   }
   const [listProduct, setListProduct] = useState([]);
+  const [search, setSearch]= useState("");
 
   
 
@@ -29,6 +30,16 @@ const Admin = () => {
     getData();
   }, []);
 
+  const searchProduct = async () => {
+    try {
+      
+      const res = await request.get(`/search/${search}`);
+      setListProduct(res);
+    } catch (err) {
+      setListProduct([])
+      
+    }
+  }
     return (
     
         <div style={styles.container}>
@@ -41,8 +52,8 @@ const Admin = () => {
             id="admin-search"
             placeholder="Type your search"
             />
-            <button  style={styles.buttonI} type="submit">
-                <button><img style={styles.submit} src={Images.sea}/></button>
+            <button  style={styles.buttonI} type="submit" value={search} onChange={(evt) => setSearch?.(evt.target.value)}>
+                <button onClick={searchProduct}><img style={styles.submit} src={Images.sea}/></button>
             </button>
             </div>
             <div style={styles.img}>

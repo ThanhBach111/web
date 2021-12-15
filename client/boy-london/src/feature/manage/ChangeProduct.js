@@ -2,23 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { apiGetProductDetail } from "../../api/modules";
 import StyleInput from "../../components/StyleInput";
-import { SHOP_ROUTE } from "../../navigation/routes";
+import { SHOP_ROUTE, ADMIN_ROUTE } from "../../navigation/routes";
 import Images from "../../assets/images";
 import request from "../../api/request";
 
 
-const fakeData = {
-  productID: 1,
-  image1:
-    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_23.jpg",
-  category: "Top",
-  price: 200000,
-  name: "Áo Armor",
-  description: null,
-  image2:
-    "https://storage.googleapis.com/cdn.nhanh.vn/store/29193/ps/20211204/21ST_URBAN_Floral_Wool_Overshirt_35.jpg",
-  quantityInStock: 100,
-};
+
 
 const ChangeProduct = ({ location }) => {
   const { idProduct } = location.state;
@@ -62,10 +51,20 @@ const ChangeProduct = ({ location }) => {
             price,
             
         })
+        window.location.href = ADMIN_ROUTE.controlframe;
     } catch (err) {
-        
+        alert(err)
     }
   };
+
+  const deleteProduct = async () => {
+    try {
+      const res1 = await request.post(`/delete-product/${idProduct}`)
+      window.location.href = ADMIN_ROUTE.controlframe;
+  } catch (err) {
+      alert(err)
+  }
+  }
 
   return (
     <div style={Style.page}>
@@ -111,6 +110,9 @@ const ChangeProduct = ({ location }) => {
             setValue={setPrice}
         />
         <button style={Style.button1} onClick={changeProductInfo}>Lưu thay đổi</button>
+
+        <button style={Style.button1} onClick={deleteProduct}>Xóa sản phẩm</button>
+
       </div>
       <div style={Style.view}>
         <img src={image1} style={Style.imageStyle2}/>
