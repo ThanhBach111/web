@@ -57,7 +57,7 @@ const ListOrderAdmin = () => {
     try {
       await request.put(`/update-order/${ID}`)
       const res2 = await request.get("/get-orderlist");
-      setListOrder(res2);
+      setListOrderAdmin(res2);
     } catch (err) {
       console.log(err);
     }
@@ -66,11 +66,11 @@ const ListOrderAdmin = () => {
   const checkStatus = (status, orderID) => {
     if(status == "Shipped") {
       return (
-        <div style={styles.data1}>{status}</div>
+        <div style={{color:"#05F000"}}>{status}</div>
       )
     } else {
       return(
-        <div style={styles.data1}><button onClick={() => setStatus(orderID)}>{status}</button></div>
+        <div style={{color:"#C7CA2F"}}><button onClick={() => setStatus(orderID)}>{status}</button></div>
       )
     }
   }

@@ -48,7 +48,7 @@ const ControlFrame = () => {
           onClick={onLogOut}
           className="cursorPointer"
         >
-          <p style={{ fontWeight: "bold" }}>Đăng suất</p>
+          <p style={{ fontWeight: "bold" }}>Đăng xuất</p>
         </button>
       </div>
 
