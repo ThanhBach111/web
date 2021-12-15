@@ -5,6 +5,7 @@ import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 import Cookies from "js-cookie";
 
+
 const listOrder = [{
 
 }]
@@ -36,7 +37,7 @@ const MyPage = () => {
 
   const onChangeInfo = async () => {
     try {
-      const res = await apiChangeInfo("/account/change-information", {
+      const res = await request.put("/account/change-information", {
         name: name,
         email: email,
         phoneNumber: phone,
