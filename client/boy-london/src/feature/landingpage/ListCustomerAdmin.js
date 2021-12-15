@@ -76,16 +76,17 @@ const ListCustomerAdmin = () => {
           </div>
         </div>
 
+      
         {listCustomerAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
-              <p>{item.customerId}</p>
+              <p>{item.userID}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.username}</p>
+              <p>{item.email}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.customerName}</p>
+              <p>{item.name}</p>
             </div>
             <div style={styles.tableElement}>
               <p>{item.phoneNumber}</p>
