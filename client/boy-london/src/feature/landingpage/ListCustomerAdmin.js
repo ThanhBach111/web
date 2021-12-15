@@ -49,7 +49,7 @@ const ListCustomerAdmin = () => {
       <button
               style={styles.buttonBox}
               className="cursorpointer"
-              onClick={onBlockCustomer(id)}
+              onClick={() => onBlockCustomer(id)}
             >
               <img src={Images.block} style={{ width: 20 }} />
             </button>
@@ -59,7 +59,7 @@ const ListCustomerAdmin = () => {
       <button
         style={styles.buttonBox}
         className="cursorpointer"
-        onClick={unBlock(id)}
+        onClick={() => unBlock(id)}
       >
         <img src={Images.check} style={{ width: 20 }} />
       </button>
