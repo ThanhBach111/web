@@ -12,13 +12,25 @@ const RegisterScreen = () => {
 
   const onRegister = async () => {
     try {
-      const res = await apiRegister({
+      if (!name || !email || !phone || !address || !password) {
+        alert('Các trường không được bỏ trống !');
+        return;
+      }
+
+      await apiRegister({
         email,
         name,
         phoneNumber: phone,
         password,
         address,
       });
+
+      setName('');
+      setEmail('');
+      setPhone('');
+      setAddress('');
+      setPassword('');
+      alert('Đăng ký thành công!')
     } catch (err) {
       alert(err);
     }

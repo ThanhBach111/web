@@ -3,6 +3,7 @@ import "./index.css";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import request from "../../api/request";
+import {formatMoney } from '../../utilities/format'
 
 
 
@@ -36,11 +37,15 @@ const CartPayment = () => {
   }, []);
   const onFinishPayment = async () => {
     try {
+      if(listProductOrder.length ===0) {
+        alert('Bạn chưa có sản phẩm nào');
+        return;
+      }
       await request.post("/orders/finish", 
         listProductOrder
       );
       setListCart([]);
-      alert("đặt hàng thành công");
+      alert("Đặt hàng thành công");
     } catch (err) {
       console.log(err);
     }
@@ -81,14 +86,14 @@ const CartPayment = () => {
             <div style={styles.productBox}>
             <img src={item.Products.image1} style={styles.imageProduct} />
             <p>{item.Products.name}</p>
-            <p style={styles.textPrice}>{item.Products.price} x {item.Cart.quantityOrdered}</p>
+            <p style={styles.textPrice}>{formatMoney(item.Products.price)} x {item.Cart.quantityOrdered}</p>
             <button style={styles.button} onClick={() => deleteFromCart(item.Products.productID)}>X</button>
           </div>
         ))}
 
         <div style={styles.lineDivide}></div>
 
-        <div style={styles.inputDiscountBox}>
+        {/* <div style={styles.inputDiscountBox}>
           
             <StyleInput
               icon={Images.discount}
@@ -105,21 +110,21 @@ const CartPayment = () => {
           <button style={styles.buttonUseBox} className="buttonUseDiscount">
             <p style={{ color: "white" }}>Use</p>
           </button>
-        </div>
+        </div> */}
 
         <div style={styles.lineDivide}></div>
 
-        <InformationComponent title="Tạm tính" value={orderValue} />
+        <InformationComponent title="Tạm tính" value={formatMoney(orderValue)} />
         <InformationComponent
           title="Phí vận chuyển"
-          value={20000}
+          value={formatMoney(20000)}
         />
 
         <div style={styles.lineDivide}></div>
 
         <InformationComponent
           title="Tổng cộng"
-          value={orderValue + 20000}
+          value={formatMoney(orderValue + 20000)}
           fontSize={17}
         />
 

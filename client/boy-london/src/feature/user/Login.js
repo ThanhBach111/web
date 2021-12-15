@@ -56,11 +56,11 @@ const Login = () => {
 
         {isFailLogin && <p style={styles.textLoginFail}>Đăng nhập thất bại</p>}
 
-        <button style={styles.btnLogin} onClick={onRequestLogin}>
+        <button style={styles.btnLogin} onClick={onRequestLogin} className="cursorPointer">
           ĐĂNG NHẬP
         </button>
 
-        <button style={styles.btnRegister} onClick={onNavigateRegister}>
+        <button style={styles.btnRegister} onClick={onNavigateRegister} className="cursorPointer" >
           <p style={{ fontSize: 16 }}>Đăng ký</p>
         </button>
 
