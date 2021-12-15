@@ -109,9 +109,9 @@ const ChangeProduct = ({ location }) => {
           value={price}
             setValue={setPrice}
         />
-        <button style={Style.button1} onClick={changeProductInfo}>Lưu thay đổi</button>
+        <button style={Style.button1} onClick={changeProductInfo} className="cursorPointer">Lưu thay đổi</button>
 
-        <button style={Style.button1} onClick={deleteProduct}>Xóa sản phẩm</button>
+        <button style={Style.button1} onClick={deleteProduct} className="cursorPointer">Xóa sản phẩm</button>
 
       </div>
       <div style={Style.view}>

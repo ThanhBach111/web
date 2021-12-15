@@ -83,7 +83,7 @@ const AddProduct = () => {
           value={price}
             setValue={setPrice}
         />
-        <button style={Style.button1} onClick={changeProductInfo}>Thêm sản phẩm</button>
+        <button style={Style.button1} onClick={changeProductInfo} className="cursorPointer">Thêm sản phẩm</button>
       </div>
       <div style={Style.view}>
         <img src={image1} style={Style.imageStyle2}/>
