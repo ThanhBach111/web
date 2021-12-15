@@ -43,13 +43,13 @@ const ListCustomerAdmin = () => {
     getData();
   }, []);
 
-  const checkBanAcc = (isActive) => {
+  const checkBanAcc = (isActive, id) => {
     if (isActive == 1) {
       return(
       <button
               style={styles.buttonBox}
               className="cursorpointer"
-              onClick={onBlockCustomer(item.userID)}
+              onClick={onBlockCustomer(id)}
             >
               <img src={Images.block} style={{ width: 20 }} />
             </button>
@@ -59,7 +59,7 @@ const ListCustomerAdmin = () => {
       <button
         style={styles.buttonBox}
         className="cursorpointer"
-        onClick={unBlock(item.userID)}
+        onClick={unBlock(id)}
       >
         <img src={Images.check} style={{ width: 20 }} />
       </button>
@@ -109,7 +109,7 @@ const ListCustomerAdmin = () => {
               <p>{item.address}</p>
             </div>
             <div style={styles.tableElement}>
-            {checkBanAcc(item.isActive)}
+            {checkBanAcc(item.isActive, item.userID)}
             </div>
           </div>
         ))}
