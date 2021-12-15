@@ -23,6 +23,8 @@ import backgroundPolicy from "./img_policy.png";
 import Pen from "./pen.png";
 import SearchIcon from "./search.png";
 import Trash from "./ic_trash.png";
+import block from "./block.png";
+import check from "./check.png"
 
 const Images = {
   discount: discount,
@@ -50,6 +52,8 @@ const Images = {
   addproduct: AddProductIcon,
   sea: SearchIcon,
   trash: Trash,
+  block: block,
+  check: check,
 };
 
 export default Images;
