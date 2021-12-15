@@ -12,7 +12,7 @@ const ItemAdmin = (props) => {
       to={{
         pathname: ADMIN_ROUTE.changeProduct,
         state: {
-          idProduct,
+          idProduct: idProduct ,
         },
       }}
       onClick={onPress}
