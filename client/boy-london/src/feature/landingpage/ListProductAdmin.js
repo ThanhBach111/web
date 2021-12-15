@@ -52,7 +52,7 @@ const Admin = () => {
             id="admin-search"
             placeholder="Type your search"
           />
-          <button style={styles.buttonI} type="submit" value={search} onChange={(evt) => setSearch?.(evt.target.value)}>
+          <button style={styles.buttonI} type="submit" value={search} onChange={(evt) => setSearch(evt.target.value)}>
             <button onClick={searchProduct} className="cursorPointer"><img style={styles.submit} src={Images.sea} /></button>
           </button>
         </div>
