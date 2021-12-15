@@ -49,9 +49,7 @@ const MyPage = () => {
     }
   };
 
-  const gotoMangerPage = () => {
-    window.location.href = ADMIN_ROUTE.productManage;
-  };
+  
 
   const logOut = async () => {
     try {
@@ -106,16 +104,16 @@ const MyPage = () => {
           setValue={setAddress}
         />
 
-        <button style={Style.button1} onClick={onChangeInfo}>
+        <button style={Style.button1} onClick={() => onChangeInfo}>
           Cập nhật thông tin
         </button>
 
         <div>
-        <button style={Style.button2} onClick={changePassword}>
+        <button style={Style.button2} onClick={() => changePassword}>
           Đổi mật khẩu
         </button>
 
-        <button style={Style.button2} onClick={logOut}>
+        <button style={Style.button2} onClick={() => logOut}>
           Đăng xuất
         </button>
         </div>

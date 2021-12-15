@@ -9,7 +9,8 @@ import StyleProduct from "../../components/StyleProduct";
 const SearchProduct = () => {
   const [listSearch, setListSearch] = useState([]);
   
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+  const [alert, setAlert] = useState("");
  
   
   const getData = async () => {
@@ -28,7 +29,7 @@ const SearchProduct = () => {
           const res = await request.get(`/search/${search}`);
           setListSearch(res);
         } catch (err) {
-          
+          setAlert("Không tìm thấy sản phẩm nào")
         }
     }
   
@@ -61,7 +62,7 @@ const SearchProduct = () => {
       
       <h1>Sản phẩm cần tìm:</h1>
       <div style={styles.showProduct}>
-        
+      <h2>{alert}</h2>
       {listSearch.map((item) => (
               <StyleProduct
                 image={item.image1}
