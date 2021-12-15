@@ -45,8 +45,30 @@ const ListOrderAdmin = () => {
     getData();
   }, []);
 
+  const setStatus = async (ID) => {
+    try {
+      await request.put(`/update-order/${ID}`)
+      const res2 = await request.get("/get-orderlist");
+      setListOrder(res2);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   
+  const checkStatus = (status, orderID) => {
+    if(status == "Shipped") {
+      return (
+        <div style={styles.data1}>{status}</div>
+      )
+    } else {
+      return(
+        <div style={styles.data1}><button onClick={() => setStatus(orderID)}>{status}</button></div>
+      )
+    }
+  }
+
   
+
   return (
     <div style={styles.container}>
       <h2>Danh sách đơn hàng</h2>
@@ -84,7 +106,7 @@ const ListOrderAdmin = () => {
             <div style={styles.tableElement}>
               <p>{item.shippedDate}</p>
             </div>
-          
+            {checkStatus(item.status, item.orderID)}
           </div>
         ))}
       </div>
@@ -135,6 +157,11 @@ const styles = {
   tableElement: {
     display: "flex",
     flex: 1,
+  },
+  data: {
+    justifyContent: "center",
+    width: "20%",
+    color: "#2E6BC6",
   },
 };
 
