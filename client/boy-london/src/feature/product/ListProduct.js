@@ -7,8 +7,6 @@ import request from "../../api/request";
 const TYPE_SORT = {
   aToZ: 0,
   zToA: 1,
-  // latest: 2,
-  // popular: 3,
 };
 
 const TYPE_CATEGORY = {
@@ -25,25 +23,31 @@ const ListProduct = () => {
 
   const onChangeSort = (typeSort) => {
     const index = listSorts.indexOf(typeSort);
+
+    // press the indexing
     if (index !== -1) {
       const temp = [...listSorts];
       temp.pop(index);
       setListSorts(temp);
-    } else {
+      getData();
+    }
+
+    // press another type
+    else {
       setListSorts([typeSort]);
       if (typeSort === TYPE_SORT.aToZ) {
         const temp = [...listProducts];
         temp.sort((a, b) => {
-          if (a < b) return -1;
-          if (a > b) return 1;
+          if (a.name < b.name) return -1;
+          if (a.name > b.name) return 1;
           return 0;
         });
         setListProducts(temp);
       } else {
         const temp = [...listProducts];
         temp.sort((a, b) => {
-          if (a > b) return -1;
-          if (a < b) return 1;
+          if (a.name > b.name) return -1;
+          if (a.name < b.name) return 1;
           return 0;
         });
         setListProducts(temp);
@@ -92,16 +96,6 @@ const ListProduct = () => {
             onPress={() => onChangeSort(TYPE_SORT.zToA)}
             isSelected={listSorts.includes(TYPE_SORT.zToA)}
           />
-          {/* <ItemOption
-            title="Latest"
-            onPress={() => onChangeSort(TYPE_SORT.latest)}
-            isSelected={listSorts.includes(TYPE_SORT.latest)}
-          />
-          <ItemOption
-            title="Popular"
-            onPress={() => onChangeSort(TYPE_SORT.popular)}
-            isSelected={listSorts.includes(TYPE_SORT.popular)}
-          /> */}
         </div>
 
         {/* category */}
@@ -117,11 +111,6 @@ const ListProduct = () => {
             onPress={() => onChangeCategory(TYPE_CATEGORY.bottom)}
             isSelected={listCategories.includes(TYPE_CATEGORY.bottom)}
           />
-          {/* <ItemOption
-            title="Jeans"
-            onPress={() => onChangeCategory(TYPE_CATEGORY.jeans)}
-            isSelected={listCategories.includes(TYPE_CATEGORY.jeans)}
-          /> */}
           <ItemOption
             title="Accessories"
             onPress={() => onChangeCategory(TYPE_CATEGORY.accessories)}
