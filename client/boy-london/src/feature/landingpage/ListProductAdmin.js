@@ -51,9 +51,11 @@ const Admin = () => {
             type="text"
             id="admin-search"
             placeholder="Type your search"
+            value={search} 
+            onChange={(evt) => setSearch(evt.target.value)}
           />
-          <button style={styles.buttonI} type="submit" value={search} onChange={setSearch(value)}>
-            <button onClick={searchProduct} className="cursorPointer"><img style={styles.submit} src={Images.sea} /></button>
+          <button style={styles.buttonI} type="submit"  onClick={searchProduct} className="cursorPointer" >
+            <img style={styles.submit} src={Images.sea} />
           </button>
         </div>
         <div style={styles.img}>
