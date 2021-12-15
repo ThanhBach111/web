@@ -36,7 +36,7 @@ const ProductDetail = ({ location }) => {
         quantityOrdered: numberOrders,
       });
       alert("Thêm vào giỏ hàng thành công");
-      window.location.reload();
+      setNumberOrders(1);
     } catch (err) {
       alert(err);
     }
@@ -91,13 +91,13 @@ const ProductDetail = ({ location }) => {
           </button>
 
           <p style={{ marginTop: 40 }}>Trạng thái: {status}</p>
-          <button style={{ backgroundColor: "transparent", borderWidth: 0 }}>
+          {/* <button style={{ backgroundColor: "transparent", borderWidth: 0 }}>
             <p style={styles.textEditProduct}>Edit product</p>
           </button>
 
           <button style={styles.buttonDeleteBox} onClick={onDeleteProduct}>
             <p style={{ color: "white" }}>Delete product</p>
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
