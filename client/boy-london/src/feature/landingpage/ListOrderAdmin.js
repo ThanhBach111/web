@@ -27,6 +27,43 @@ const fakeData = [
   },
 ];
 
+const [listOrderAdmin, setListOrderAdmin] = useState([]);
+  const getData = async () => {
+    try {
+      
+      const res2 = await request.get("/get-orderlist");
+      setListOrderAdmin(res2);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const setStatus = async (ID) => {
+    try {
+      await request.put(`/update-order/${ID}`)
+      const res2 = await request.get("/get-orderlist");
+      setListOrder(res2);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  
+  const checkStatus = (status, orderID) => {
+    if(status == "Shipped") {
+      return (
+        <div style={styles.data1}>{status}</div>
+      )
+    } else {
+      return(
+        <div style={styles.data1}><button onClick={() => setStatus(orderID)}>{status}</button></div>
+      )
+    }
+  }
+
 const ListOrderAdmin = () => {
   return (
     <div style={styles.container}>
@@ -51,23 +88,21 @@ const ListOrderAdmin = () => {
           </div>
         </div>
 
-        {fakeData.map((item) => (
+        {listOrderAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
-              <p>{item.customerId}</p>
+              <p>{item.orderID}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.username}</p>
+              <p>{item.userID}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.customerName}</p>
+              <p>{item.orderDate}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.phoneNumber}</p>
+              <p>{item.shippedDate}</p>
             </div>
-            <div style={styles.tableElement}>
-              <p>{item.address}</p>
-            </div>
+            {checkStatus(item.status, item.orderID)}
           </div>
         ))}
       </div>
