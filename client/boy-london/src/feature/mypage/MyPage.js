@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StyleInput from "../../components/StyleInput";
 import Images from "../../assets/images";
-import { ADMIN_ROUTE, ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
+import { ADMIN_ROUTE, ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "../../navigation/routes";
 import request from "../../api/request";
 import Cookies from "js-cookie";
 
@@ -54,7 +54,7 @@ const MyPage = () => {
   const logOut = async () => {
     try {
       Cookies.remove('token')
-      window.location.reload()
+      window.location.href = ROOT_SCREEN.mypage;
     } catch(err){
       alert(err)
     }

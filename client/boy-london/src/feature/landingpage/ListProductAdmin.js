@@ -3,6 +3,7 @@ import Images from "../../assets/images";
 import { useEffect, useState } from "react";
 import request from "../../api/request";
 import ItemAdmin from "../../components/ItemAdmin";
+import { ADMIN_ROUTE } from "../../navigation/routes";
 
 const data = [
     {
@@ -44,8 +45,28 @@ const data = [
 
   
 const Admin = () => {
+  const goToAddProduct = () => {
+    window.location.href = ADMIN_ROUTE.addProduct;
+  }
+  const [listProduct, setListProduct] = useState([]);
+
+  
+
+  const getData = async () => {
+    try {
+      const res = await request.get("/get-landing-page");
+      setListProduct(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
     return (
-    <div>
+    
         <div style={styles.container}>
             
             
@@ -57,36 +78,40 @@ const Admin = () => {
             placeholder="Type your search"
             />
             <button  style={styles.buttonI} type="submit">
-                <img style={styles.submit} src={Images.sea}/>
+                <button><img style={styles.submit} src={Images.sea}/></button>
             </button>
             </div>
             <div style={styles.img}>
+              <button onClick={goToAddProduct}>
             <img src={Images.addproduct} style={styles.button}/>
+            </button>
             </div>
             <div style={{borderTopStyle: "solid", borderColor: "#DEDEDE", borderTopWidth: 3, borderSize: 0,marginTop: 10,}}>
             <div style={styles.view}>
-            {data.map((item) => (
+            {listProduct.map((item) => (
              <ItemAdmin
+            ID = {item.id}
             image={item.image}
             name={item.name}
             price={item.price}
-            onPress={() => onGoToDetailProduct(item.id)}/>))}
+           />))}
             </div>
             </div>
             </div>
             
         </div>
-    </div>
+    
     );
 }
 
 const styles = {
   container: {
+    width: "100%",
     display: "flex",
     flex: 1,
     backgroundColor: "white",
     paddingLeft: 70,
-    paddingRight: 140,
+    paddingRight: 70,
     flexDirection: "column",
     borderRadius: 10,
   },
