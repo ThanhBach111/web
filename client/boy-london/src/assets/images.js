@@ -22,6 +22,7 @@ import Logo from "./img_logo.png";
 import backgroundPolicy from "./img_policy.png";
 import Pen from "./pen.png";
 import SearchIcon from "./search.png";
+import Trash from "./ic_trash.png";
 
 const Images = {
   discount: discount,
@@ -48,6 +49,7 @@ const Images = {
   del: Delete,
   addproduct: AddProductIcon,
   sea: SearchIcon,
+  trash: Trash,
 };
 
 export default Images;

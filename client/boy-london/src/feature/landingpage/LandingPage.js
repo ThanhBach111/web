@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import request from "../../api/request";
+import { ROLE_USER } from "../../assets/enums";
 import StyleProduct from "../../components/StyleProduct";
 import ControlFrame from "./ControlFrame";
 
@@ -17,9 +18,9 @@ const ProductStyle = [
 ];
 
 const LandingPage = () => {
-  const isUser = Cookies.get("role") !== "user";
+  const isAdmin = Cookies.get("role") === ROLE_USER.user;
 
-  if (isUser) {
+  if (isAdmin) {
     return <ControlFrame />;
   }
 

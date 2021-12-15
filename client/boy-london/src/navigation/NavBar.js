@@ -6,7 +6,7 @@ import Images from "../assets/images";
 import { ROOT_SCREEN, SHOP_ROUTE, USER_ROUTE } from "./routes";
 
 const NavBar = () => {
-  const isUser = Cookies.get("role") === ROLE_USER.user;
+  const isAdmin = Cookies.get("role") === ROLE_USER.user;
 
   const onNavigateAuthentication = () => {
     window.location.href = ROOT_SCREEN.mypage;
@@ -36,11 +36,15 @@ const NavBar = () => {
 
   return (
     <div style={styles.container}>
-      <button style={styles.logoView} onClick={onNavigateRoot}>
+      <button
+        style={styles.logoView}
+        onClick={onNavigateRoot}
+        className="cursorpointer"
+      >
         <img src={Images.logo} height="77" weight="102" alt="logo" />
       </button>
 
-      {isUser && (
+      {!isAdmin && (
         <div style={styles.elementChoiceView}>
           <div style={styles.elementChoiceBox}>
             <button onClick={onNavigateShop}>
@@ -68,7 +72,7 @@ const NavBar = () => {
         </div>
       )}
 
-      {isUser && (
+      {!isAdmin && (
         <div style={styles.iconOptionView}>
           <button
             style={styles.iconNavMenu}

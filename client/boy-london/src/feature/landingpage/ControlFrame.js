@@ -3,6 +3,9 @@ import ItemControl from "../../components/ItemControl";
 import Images from "../../assets/images";
 import { TYPE_CONTROL } from "../../assets/enums";
 import Cookies from "js-cookie";
+import ListCustomerAdmin from "./ListCustomerAdmin";
+import ListOrderAdmin from "./ListOrderAdmin";
+import { ROOT_SCREEN } from "../../navigation/routes";
 
 const ControlFrame = () => {
   const [controlSelected, setControlSelected] = useState(TYPE_CONTROL.product);
@@ -10,7 +13,7 @@ const ControlFrame = () => {
   const onLogOut = () => {
     try {
       Cookies.remove("token");
-      window.location.reload();
+      window.location.href(ROOT_SCREEN.mypage);
     } catch (err) {
       alert(err);
     }
@@ -49,6 +52,9 @@ const ControlFrame = () => {
       </div>
 
       {/* product view */}
+      {controlSelected === TYPE_CONTROL.customer && <ListCustomerAdmin />}
+
+      {controlSelected === TYPE_CONTROL.order && <ListOrderAdmin />}
     </div>
   );
 };
