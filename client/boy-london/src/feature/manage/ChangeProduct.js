@@ -22,6 +22,7 @@ const ChangeProduct = ({ location }) => {
       setImage2(res.image2);
       setCategory(res.category);
       onChangeCategory(category)
+      listCategories.includes(category)
       setName(res.name);
       setPrice(res.price);
     } catch (err) {
