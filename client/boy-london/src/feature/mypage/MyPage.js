@@ -33,12 +33,13 @@ const MyPage = () => {
 
   const onChangeInfo = async () => {
     try {
-      const res = await request.put("/account/change-information", {
+      await request.put("/account/change-information", {
         name: name,
         email: email,
         phoneNumber: phone,
         address: address,
       });
+      Toastify.alert('Đổi thông tin thành công !')
     } catch (err) {
       Toastify.error(err);
     }

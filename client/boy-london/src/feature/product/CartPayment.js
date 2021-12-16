@@ -4,6 +4,7 @@ import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import request from "../../api/request";
 import {formatMoney } from '../../utilities/format'
+import Toastify from '../../utilities/useToastify'
 
 
 
@@ -38,14 +39,14 @@ const CartPayment = () => {
   const onFinishPayment = async () => {
     try {
       if(listProductOrder.length ===0) {
-        alert('Bạn chưa có sản phẩm nào');
+        Toastify.error('Bạn chưa có sản phẩm nào');
         return;
       }
       await request.post("/orders/finish", 
         listProductOrder
       );
       setListCart([]);
-      alert("Đặt hàng thành công");
+      Toastify.alert("Đặt hàng thành công");
     } catch (err) {
       console.log(err);
     }

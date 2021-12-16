@@ -14,12 +14,18 @@ request.interceptors.request.use(
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  (error) => Promise.reject(error)
+  (error) => {
+    console.log('error request: ', error);
+    return Promise.reject(error);
+  }
 );
 
 request.interceptors.response.use(
   (response) => response.data,
-  async (error) => Promise.reject(error)
+  async (error) => {
+    console.log('error resonse: ', error);
+    return Promise.reject(error);
+  }
 );
 
 export default request;

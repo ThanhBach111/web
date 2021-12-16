@@ -39,7 +39,7 @@ const ProductDetail = ({ location }) => {
       alert("Thêm vào giỏ hàng thành công");
       setNumberOrders(1);
     } catch (err) {
-      Toastify.error(err);
+      Toastify.error('Bạn chưa đăng ký tài khoản');
     }
   };
 
