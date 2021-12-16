@@ -17,7 +17,9 @@ const ForgotPass = () => {
         confirmPassword,
       });
       Toastify.alert("Đổi mật khẩu thành công");
-      window.location.reload();
+      setOldPassword('');
+      setPassword('');
+      setConfirmPassword('');
     } catch (err) {
       Toastify.error(err);
     }
