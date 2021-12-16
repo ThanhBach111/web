@@ -10,15 +10,16 @@ const TYPE_SORT = {
 };
 
 const TYPE_CATEGORY = {
-  top: 4,
-  bottom: 5,
-  accessories: 6,
+  top: 'Top',
+  bottom: 'Bottom',
+  accessories: 'Accessories',
 };
 
 const ListProduct = () => {
   const [listSorts, setListSorts] = useState([]);
   const [listCategories, setListCategories] = useState([]);
 
+  const [oldList, setOldList] = useState([]);
   const [listProducts, setListProducts] = useState([]);
 
   const onChangeSort = (typeSort) => {
@@ -29,7 +30,6 @@ const ListProduct = () => {
       const temp = [...listSorts];
       temp.pop(index);
       setListSorts(temp);
-      getData();
     }
 
     // press another type
@@ -38,16 +38,20 @@ const ListProduct = () => {
       if (typeSort === TYPE_SORT.aToZ) {
         const temp = [...listProducts];
         temp.sort((a, b) => {
-          if (a.name < b.name) return -1;
-          if (a.name > b.name) return 1;
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA < nameB) return -1;
+          if (nameA > nameB) return 1;
           return 0;
         });
         setListProducts(temp);
       } else {
         const temp = [...listProducts];
         temp.sort((a, b) => {
-          if (a.name > b.name) return -1;
-          if (a.name < b.name) return 1;
+          const nameA = a.name.toUpperCase();
+          const nameB = b.name.toUpperCase();
+          if (nameA > nameB) return -1;
+          if (nameA < nameB) return 1;
           return 0;
         });
         setListProducts(temp);
@@ -61,8 +65,11 @@ const ListProduct = () => {
       const temp = [...listCategories];
       temp.pop(index);
       setListCategories(temp);
+      setListProducts(oldList)
     } else {
-      setListCategories(listCategories.concat(typeCategory));
+      setListCategories([typeCategory]);
+      const temp = oldList.filter(item => item.category === typeCategory);
+      setListProducts(temp);
     }
   };
 
@@ -70,6 +77,7 @@ const ListProduct = () => {
     try {
       const res = await request.get("/get-landing-page");
       setListProducts(res);
+      setOldList(res)
     } catch (err) {
       alert(err);
     }
@@ -78,6 +86,8 @@ const ListProduct = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  console.log(listProducts);
 
   return (
     <div className="container">

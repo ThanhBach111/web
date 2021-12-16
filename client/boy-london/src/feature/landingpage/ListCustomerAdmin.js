@@ -6,9 +6,21 @@ import request from "../../api/request";
 
 
 const ListCustomerAdmin = () => {
-  const onBlockCustomer = () => {
+  const onBlockCustomer = async (id) => {
     try {
-      console.log(err);
+      const res = await request.put(`/ban-acc/${id}`)
+      const res1 = await request.get("/get-userlist");
+      setListCustomerAdmin(res1);
+    } catch (err) {
+      alert(err);
+    }
+  };
+
+  const unBlock = async (id) => {
+    try {
+      const res = await request.put(`/free-acc/${id}`)
+      const res1 = await request.get("/get-userlist");
+      setListCustomerAdmin(res1);
     } catch (err) {
       alert(err);
     }
@@ -30,6 +42,30 @@ const ListCustomerAdmin = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const checkBanAcc = (isActive, id) => {
+    if (isActive == 1) {
+      return(
+      <button
+              style={styles.buttonBox}
+              className="cursorpointer"
+              onClick={() => onBlockCustomer(id)}
+            >
+              <img src={Images.block} style={{ width: 20 }} />
+            </button>
+      )
+    } else {
+      return(
+      <button
+        style={styles.buttonBox}
+        className="cursorpointer"
+        onClick={() => unBlock(id)}
+      >
+        <img src={Images.check} style={{ width: 20 }} />
+      </button>
+      )
+    }
+  }
 
   return (
     <div style={styles.container}>
@@ -72,13 +108,9 @@ const ListCustomerAdmin = () => {
             <div style={styles.tableElement}>
               <p>{item.address}</p>
             </div>
-            <button
-              style={styles.buttonBox}
-              className="cursorpointer"
-              onClick={onBlockCustomer}
-            >
-              <img src={Images.trash} style={{ width: 50 }} />
-            </button>
+            <div style={styles.tableElement}>
+            {checkBanAcc(item.isActive, item.userID)}
+            </div>
           </div>
         ))}
       </div>

@@ -62,7 +62,7 @@ const LandingPage = () => {
           <p>
             <b>NEW ARRIVAL</b>
           </p>
-          <button style={Style.showmore} onClick={openListProduct}>
+          <button style={Style.showmore} onClick={openListProduct} className="cursorPointer">
             show more
           </button>
         </div>
@@ -82,7 +82,7 @@ const LandingPage = () => {
           <p>
             <b>Best Sale Product</b>
           </p>
-          <button style={Style.showmore} onClick={openListProduct}>
+          <button style={Style.showmore} onClick={openListProduct} className="cursorPointer">
             show more
           </button>
         </div>
