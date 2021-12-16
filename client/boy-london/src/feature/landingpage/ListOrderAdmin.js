@@ -1,47 +1,10 @@
-import React from "react";
-import Images from "../../assets/images";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import request from "../../api/request";
 
-const fakeData = [
-  {
-    orderID: "1231312",
-    userID: "1",
-    orderDate: "12/12/2002",
-    shippedDate: "12/12/2121",
-    
-  },
-  {
-    orderID: "1231312",
-    userID: "1",
-    orderDate: "12/12/2002",
-    shippedDate: "12/12/2121",
-    
-  },
-  {
-    orderID: "1231312",
-    userID: "1",
-    orderDate: "12/12/2002",
-    shippedDate: "12/12/2121",
-    
-  },
-  {
-    orderID: "1231312",
-    userID: "1",
-    orderDate: "12/12/2002",
-    shippedDate: "12/12/2121",
-    
-  },
-
-];
-
-
 const ListOrderAdmin = () => {
-
   const [listOrderAdmin, setListOrderAdmin] = useState([]);
   const getData = async () => {
     try {
-      
       const res2 = await request.get("/get-orderlist");
       setListOrderAdmin(res2);
     } catch (err) {
@@ -55,27 +18,24 @@ const ListOrderAdmin = () => {
 
   const setStatus = async (ID) => {
     try {
-      await request.put(`/update-order/${ID}`)
+      await request.put(`/update-order/${ID}`);
       const res2 = await request.get("/get-orderlist");
       setListOrderAdmin(res2);
     } catch (err) {
       console.log(err);
     }
-  }
-  
-  const checkStatus = (status, orderID) => {
-    if(status == "Shipped") {
-      return (
-        <div style={{color:"#05F000"}}>{status}</div>
-      )
-    } else {
-      return(
-        <div style={{color:"#C7CA2F"}}><button onClick={() => setStatus(orderID)}>{status}</button></div>
-      )
-    }
-  }
+  };
 
-  
+  const checkStatus = (status, orderID) => {
+    if (status == "Shipped") {
+      return <div style={{ color: "#05F000", ...styles.data }}>{status}</div>;
+    }
+    return (
+      <div style={{ color: "#C7CA2F", ...styles.data }}>
+        <button onClick={() => setStatus(orderID)}>{status}</button>
+      </div>
+    );
+  };
 
   return (
     <div style={styles.container}>
@@ -165,15 +125,13 @@ const styles = {
   tableElement: {
     display: "flex",
     flex: 1,
-    marginLeft: 30,
-    width: "20%",
-    justifyContent: "space-between",
   },
   data: {
-    justifyContent: "center",
-    width: "20%",
+    display: "flex",
+    flex: 1,
+    justifyContent: "flex-start",
     color: "#2E6BC6",
-    marginLeft: 10,
+    paddingLeft: 20,
   },
 };
 
