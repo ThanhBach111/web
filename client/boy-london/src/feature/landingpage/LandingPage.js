@@ -26,9 +26,7 @@ const LandingPage = () => {
 
   const [listProduct, setListProduct] = useState([]);
 
-  const openListProduct = () => {
-    window.location.href = ROOT_SCREEN.shop;
-  };
+  
 
   const onGoToDetailProduct = (productID) => {
     return productID;
@@ -62,9 +60,7 @@ const LandingPage = () => {
           <p>
             <b>NEW ARRIVAL</b>
           </p>
-          <button style={Style.showmore} onClick={openListProduct} className="cursorPointer">
-            show more
-          </button>
+          
         </div>
         <div style={Style.newarrival}>
           {listProduct.slice(0, 4).map((item) => (
@@ -82,9 +78,7 @@ const LandingPage = () => {
           <p>
             <b>Best Sale Product</b>
           </p>
-          <button style={Style.showmore} onClick={openListProduct} className="cursorPointer">
-            show more
-          </button>
+          
         </div>
         <div style={Style.bestSale}>
           <div style={Style.bestsaleproduct}>
