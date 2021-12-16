@@ -97,7 +97,7 @@ const ListCustomerAdmin = () => {
           </div>
         </div>
 
-        {ListCustomerAdmin.map((item) => (
+        {listCustomerAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
               <p style={styles.data}>{item.userID}</p>
