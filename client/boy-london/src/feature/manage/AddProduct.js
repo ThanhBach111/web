@@ -36,6 +36,7 @@ const AddProduct = () => {
 
 
   const onChangeCategory = (typeCategory) => {
+    setCategory(typeCategory)
     const index = listCategories.indexOf(typeCategory);
     if (index !== -1) {
       const temp = [...listCategories];
@@ -44,7 +45,6 @@ const AddProduct = () => {
     
     } else {
       setListCategories([typeCategory]);
-      setCategory(typeCategory);
       
     }
   };

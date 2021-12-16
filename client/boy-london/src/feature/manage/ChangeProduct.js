@@ -20,6 +20,7 @@ const ChangeProduct = ({ location }) => {
       setImage1(res.image1);
       setImage2(res.image2);
       setCategory(res.category);
+      onChangeCategory(category)
       setName(res.name);
       setPrice(res.price);
     } catch (err) {
@@ -65,6 +66,7 @@ const ChangeProduct = ({ location }) => {
 
 
   const onChangeCategory = (typeCategory) => {
+    setCategory(typeCategory);
     const index = listCategories.indexOf(typeCategory);
     if (index !== -1) {
       const temp = [...listCategories];
@@ -73,7 +75,7 @@ const ChangeProduct = ({ location }) => {
     
     } else {
       setListCategories([typeCategory]);
-      setCategory(typeCategory);
+      
       
     }
   };
