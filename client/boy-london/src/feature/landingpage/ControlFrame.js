@@ -15,6 +15,7 @@ const ControlFrame = () => {
   const onLogOut = () => {
     try {
       Cookies.remove("token");
+      Cookies.remove('role');
       window.location.href = ROOT_SCREEN.mypage;
     } catch (err) {
       Toastify.error(err);

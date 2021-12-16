@@ -47,6 +47,7 @@ const MyPage = () => {
   const logOut = async () => {
     try {
       Cookies.remove("token");
+      Cookies.remove('role');
       window.location.reload();
     } catch (err) {
       Toastify.error(err);
