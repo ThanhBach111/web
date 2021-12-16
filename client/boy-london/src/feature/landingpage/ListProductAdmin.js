@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import request from "../../api/request";
 import ItemAdmin from "../../components/ItemAdmin";
 import { ADMIN_ROUTE } from "../../navigation/routes";
-
+import ItemOption from "../../components/ItemOption";
 
 
 
@@ -15,12 +15,34 @@ const Admin = () => {
   const [listProduct, setListProduct] = useState([]);
   const [search, setSearch] = useState("");
 
+  const TYPE_CATEGORY = {
+    top: "Top",
+    bottom: "Bottom",
+    accessories: "Accessories",
+  };
+  const [listCategories, setListCategories] = useState([]);
+  const [oldList, setOldList] = useState([]);
+  const [listProducts, setListProducts] = useState([]);
 
+  const onChangeCategory = (typeCategory) => {
+    const index = listCategories.indexOf(typeCategory);
+    if (index !== -1) {
+      const temp = [...listCategories];
+      temp.pop(index);
+      setListCategories(temp);
+      setListProducts(oldList);
+    } else {
+      setListCategories([typeCategory]);
+      const temp = oldList.filter((item) => item.category === typeCategory);
+      setListProducts(temp);
+    }
+  };
 
   const getData = async () => {
     try {
       const res = await request.get("/get-landing-page");
       setListProduct(res);
+      setOldList(res);
     } catch (err) {
       console.log(err);
     }
@@ -57,6 +79,24 @@ const Admin = () => {
           <button style={styles.buttonI} onClick={searchProduct} className="cursorPointer" >
             <img style={styles.submit} src={Images.sea} />
           </button>
+          <div style={{marginLeft: "20",display:"flex", marginTop: "30"}}>
+          
+          <ItemOption
+            title="Top"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.top)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.top)}
+          />
+          <ItemOption
+            title="Bottom"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.bottom)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.bottom)}
+          />
+          <ItemOption
+            title="Accessories"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.accessories)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.accessories)}
+          />
+        </div>
         </div>
         <div style={styles.img}>
           <button onClick={goToAddProduct} className="cursorPointer">
