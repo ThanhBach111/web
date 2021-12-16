@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { apiRegister } from "../../api/modules";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
+import Toastify from "../../utilities/useToastify";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -13,7 +14,7 @@ const RegisterScreen = () => {
   const onRegister = async () => {
     try {
       if (!name || !email || !phone || !address || !password) {
-        alert('Các trường không được bỏ trống !');
+        Toastify.error("Các trường không được bỏ trống !");
         return;
       }
 
@@ -25,14 +26,14 @@ const RegisterScreen = () => {
         address,
       });
 
-      setName('');
-      setEmail('');
-      setPhone('');
-      setAddress('');
-      setPassword('');
-      alert('Đăng ký thành công!')
+      setName("");
+      setEmail("");
+      setPhone("");
+      setAddress("");
+      setPassword("");
+      Toastify.alert("Đăng ký thành công!");
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 

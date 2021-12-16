@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiAddToCart, apiGetProductDetail } from "../../api/modules";
+import Toastify from "../../utilities/useToastify";
 import "./index.css";
 
 const ProductDetail = ({ location }) => {
@@ -15,7 +16,7 @@ const ProductDetail = ({ location }) => {
       const res = await apiGetProductDetail(idProduct);
       setProductDetail(res);
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 
@@ -38,7 +39,7 @@ const ProductDetail = ({ location }) => {
       alert("Thêm vào giỏ hàng thành công");
       setNumberOrders(1);
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 

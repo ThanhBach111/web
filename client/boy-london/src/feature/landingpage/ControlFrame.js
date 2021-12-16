@@ -7,6 +7,7 @@ import ListCustomerAdmin from "./ListCustomerAdmin";
 import ListOrderAdmin from "./ListOrderAdmin";
 import Admin from "./ListProductAdmin";
 import { ROOT_SCREEN } from "../../navigation/routes";
+import Toastify from "../../utilities/useToastify";
 
 const ControlFrame = () => {
   const [controlSelected, setControlSelected] = useState(TYPE_CONTROL.product);
@@ -16,7 +17,7 @@ const ControlFrame = () => {
       Cookies.remove("token");
       window.location.href = ROOT_SCREEN.mypage;
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 

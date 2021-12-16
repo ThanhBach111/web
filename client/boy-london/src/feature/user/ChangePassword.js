@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { apiChangePassword } from "../../api/modules";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
+import Toastify from "../../utilities/useToastify";
 
 const ForgotPass = () => {
   const [oldPassword, setOldPassword] = useState("");
@@ -18,7 +19,7 @@ const ForgotPass = () => {
       alert("Đổi mật khẩu thành công");
       window.location.reload();
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 

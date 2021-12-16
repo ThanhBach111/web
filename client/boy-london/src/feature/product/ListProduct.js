@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./index.css";
-import ItemProduct from "../../components/ItemProduct";
-import ItemOption from "../../components/ItemOption";
 import request from "../../api/request";
+import ItemOption from "../../components/ItemOption";
+import ItemProduct from "../../components/ItemProduct";
+import Toastify from "../../utilities/useToastify";
+import "./index.css";
 
 const TYPE_SORT = {
   aToZ: 0,
@@ -10,9 +11,9 @@ const TYPE_SORT = {
 };
 
 const TYPE_CATEGORY = {
-  top: 'Top',
-  bottom: 'Bottom',
-  accessories: 'Accessories',
+  top: "Top",
+  bottom: "Bottom",
+  accessories: "Accessories",
 };
 
 const ListProduct = () => {
@@ -65,10 +66,10 @@ const ListProduct = () => {
       const temp = [...listCategories];
       temp.pop(index);
       setListCategories(temp);
-      setListProducts(oldList)
+      setListProducts(oldList);
     } else {
       setListCategories([typeCategory]);
-      const temp = oldList.filter(item => item.category === typeCategory);
+      const temp = oldList.filter((item) => item.category === typeCategory);
       setListProducts(temp);
     }
   };
@@ -77,9 +78,9 @@ const ListProduct = () => {
     try {
       const res = await request.get("/get-landing-page");
       setListProducts(res);
-      setOldList(res)
+      setOldList(res);
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 

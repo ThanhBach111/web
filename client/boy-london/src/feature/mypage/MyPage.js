@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from "react";
-import StyleInput from "../../components/StyleInput";
-import Images from "../../assets/images";
-import {
-  ADMIN_ROUTE,
-  ROOT_SCREEN,
-  SHOP_ROUTE,
-  USER_ROUTE,
-} from "../../navigation/routes";
-import request from "../../api/request";
 import Cookies from "js-cookie";
-
-const listOrder = [{}];
+import React, { useEffect, useState } from "react";
+import request from "../../api/request";
+import Images from "../../assets/images";
+import StyleInput from "../../components/StyleInput";
+import { USER_ROUTE } from "../../navigation/routes";
+import Toastify from "../../utilities/useToastify";
 
 const MyPage = () => {
   const [name, setName] = useState("");
@@ -46,7 +40,7 @@ const MyPage = () => {
         address: address,
       });
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 
@@ -55,7 +49,7 @@ const MyPage = () => {
       Cookies.remove("token");
       window.location.reload();
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 
@@ -98,16 +92,28 @@ const MyPage = () => {
           setValue={setAddress}
         />
 
-        <button style={Style.button1} onClick={onChangeInfo} className="cursorPointer">
+        <button
+          style={Style.button1}
+          onClick={onChangeInfo}
+          className="cursorPointer"
+        >
           Cập nhật thông tin
         </button>
 
         <div>
-          <button style={Style.button2} onClick={changePassword} className="cursorPointer">
+          <button
+            style={Style.button2}
+            onClick={changePassword}
+            className="cursorPointer"
+          >
             Đổi mật khẩu
           </button>
 
-          <button style={Style.button2} onClick={logOut} className="cursorPointer" >
+          <button
+            style={Style.button2}
+            onClick={logOut}
+            className="cursorPointer"
+          >
             Đăng xuất
           </button>
         </div>

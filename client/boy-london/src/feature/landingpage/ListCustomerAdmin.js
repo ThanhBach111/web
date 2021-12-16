@@ -2,27 +2,26 @@ import React from "react";
 import Images from "../../assets/images";
 import { useEffect, useState } from "react";
 import request from "../../api/request";
-
-
+import Toastify from "../../utilities/useToastify";
 
 const ListCustomerAdmin = () => {
   const onBlockCustomer = async (id) => {
     try {
-      const res = await request.put(`/ban-acc/${id}`)
+      const res = await request.put(`/ban-acc/${id}`);
       const res1 = await request.get("/get-userlist");
       setListCustomerAdmin(res1);
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 
   const unBlock = async (id) => {
     try {
-      const res = await request.put(`/free-acc/${id}`)
+      const res = await request.put(`/free-acc/${id}`);
       const res1 = await request.get("/get-userlist");
       setListCustomerAdmin(res1);
     } catch (err) {
-      alert(err);
+      Toastify.error(err);
     }
   };
 
@@ -30,10 +29,8 @@ const ListCustomerAdmin = () => {
 
   const getData = async () => {
     try {
-      
       const res1 = await request.get("/get-userlist");
       setListCustomerAdmin(res1);
-     
     } catch (err) {
       console.log(err);
     }
@@ -45,27 +42,27 @@ const ListCustomerAdmin = () => {
 
   const checkBanAcc = (isActive, id) => {
     if (isActive == 1) {
-      return(
-      <button
-              style={styles.buttonBox}
-              className="cursorpointer"
-              onClick={() => onBlockCustomer(id)}
-            >
-              <img src={Images.block} style={{ width: 20 }} />
-            </button>
-      )
+      return (
+        <button
+          style={styles.buttonBox}
+          className="cursorpointer"
+          onClick={() => onBlockCustomer(id)}
+        >
+          <img src={Images.block} style={{ width: 20 }} />
+        </button>
+      );
     } else {
-      return(
-      <button
-        style={styles.buttonBox}
-        className="cursorpointer"
-        onClick={() => unBlock(id)}
-      >
-        <img src={Images.check} style={{ width: 20 }} />
-      </button>
-      )
+      return (
+        <button
+          style={styles.buttonBox}
+          className="cursorpointer"
+          onClick={() => unBlock(id)}
+        >
+          <img src={Images.check} style={{ width: 20 }} />
+        </button>
+      );
     }
-  }
+  };
 
   return (
     <div style={styles.container}>
@@ -90,7 +87,6 @@ const ListCustomerAdmin = () => {
           </div>
         </div>
 
-      
         {listCustomerAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
@@ -109,7 +105,7 @@ const ListCustomerAdmin = () => {
               <p>{item.address}</p>
             </div>
             <div style={styles.tableElement}>
-            {checkBanAcc(item.isActive, item.userID)}
+              {checkBanAcc(item.isActive, item.userID)}
             </div>
           </div>
         ))}

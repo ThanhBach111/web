@@ -6,6 +6,7 @@ import appStore from "../../app-redux/store";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import { ROOT_SCREEN, USER_ROUTE } from "../../navigation/routes";
+import Toastify from "../../utilities/useToastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,7 @@ const Login = () => {
       window.location.href = ROOT_SCREEN.root;
     } catch (err) {
       setIsFailLogin(true);
-      alert(err);
+      Toastify.error(err);
     }
   };
 
@@ -56,11 +57,19 @@ const Login = () => {
 
         {isFailLogin && <p style={styles.textLoginFail}>Đăng nhập thất bại</p>}
 
-        <button style={styles.btnLogin} onClick={onRequestLogin} className="cursorPointer">
+        <button
+          style={styles.btnLogin}
+          onClick={onRequestLogin}
+          className="cursorPointer"
+        >
           ĐĂNG NHẬP
         </button>
 
-        <button style={styles.btnRegister} onClick={onNavigateRegister} className="cursorPointer" >
+        <button
+          style={styles.btnRegister}
+          onClick={onNavigateRegister}
+          className="cursorPointer"
+        >
           <p style={{ fontSize: 16 }}>Đăng ký</p>
         </button>
 
