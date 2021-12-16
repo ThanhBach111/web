@@ -1,4 +1,5 @@
 export const formatMoney = (price) => {
+  if (!price) return ''
   return `${price.toLocaleString()} đ`;
 };
 

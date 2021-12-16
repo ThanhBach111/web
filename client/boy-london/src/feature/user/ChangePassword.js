@@ -54,7 +54,7 @@ const ForgotPass = () => {
           type="password"
         />
 
-        <button style={styles.buttonLogin} onClick={onChangePassword}>
+        <button style={styles.buttonLogin} onClick={onChangePassword} className="cursorPointer">
           ĐỔI MẬT KHẨU
         </button>
       </div>
