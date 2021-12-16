@@ -21,8 +21,8 @@ const ChangeProduct = ({ location }) => {
       setImage1(res.image1);
       setImage2(res.image2);
       setCategory(res.category);
-      onChangeCategory(category)
-      listCategories.includes(category)
+      onChangeCategory(res.category)
+     
       setName(res.name);
       setPrice(res.price);
     } catch (err) {
@@ -44,6 +44,7 @@ const ChangeProduct = ({ location }) => {
         price,
       });
       window.location.href = ADMIN_ROUTE.controlframe;
+      Toastify.alert("Cập nhật sản phẩm thành công");
     } catch (err) {
       Toastify.error(err);
     }
@@ -51,8 +52,9 @@ const ChangeProduct = ({ location }) => {
 
   const deleteProduct = async () => {
     try {
-      const res1 = await request.post(`/delete-product/${idProduct}`);
+      const res1 = await request.delete(`/delete-product/${idProduct}`);
       window.location.href = ADMIN_ROUTE.controlframe;
+      Toastify.alert("Xóa sản phẩm thành công");
     } catch (err) {
       Toastify.error(err);
     }
@@ -72,7 +74,7 @@ const ChangeProduct = ({ location }) => {
 
 
   const onChangeCategory = (typeCategory) => {
-    setCategory(typeCategory);
+    
     const index = listCategories.indexOf(typeCategory);
     if (index !== -1) {
       const temp = [...listCategories];
@@ -81,7 +83,7 @@ const ChangeProduct = ({ location }) => {
     
     } else {
       setListCategories([typeCategory]);
-      
+      setCategory(typeCategory);
       
     }
   };
