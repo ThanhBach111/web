@@ -114,7 +114,7 @@ const ListCustomerAdmin = () => {
             <div style={styles.tableElement}>
               <p style={{marginLeft: "0"}}>{item.address}</p>
             </div>
-            <div style={{marginLeft: "0"}}>
+            <div style={{marginLeft: "0", marginTop: -10}}>
               {checkBanAcc(item.isActive, item.userID)}
             </div>
           </div>
