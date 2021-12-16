@@ -37,6 +37,7 @@ const styles = {
     marginRight: 20,
     marginTop: 10,
     textDecoration: "none",
+    marginBottom: 20,
   },
   imageView: {
     width: "100%",
