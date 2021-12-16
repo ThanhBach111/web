@@ -56,7 +56,7 @@ const SearchProduct = () => {
           value={search}
           setValue={setSearch}
         />
-        <button style={styles.button} onClick={searchList}>
+        <button style={styles.button} onClick={searchList} className="cursorPointer">
           Tìm
         </button>
       </div>
@@ -73,7 +73,7 @@ const SearchProduct = () => {
           />
         ))}
       </div>
-      <button style={styles.button2} onClick={goToShop}>
+      <button style={styles.button2} onClick={goToShop} className="cursorPointer">
         xem thêm sản phẩm khác
       </button>
     </div>
