@@ -43,8 +43,9 @@ const ChangeProduct = ({ location }) => {
         name,
         price,
       });
-      window.location.href = ADMIN_ROUTE.controlframe;
       Toastify.alert("Cập nhật sản phẩm thành công");
+      window.location.href = ADMIN_ROUTE.controlframe;
+      
     } catch (err) {
       Toastify.error(err);
     }
@@ -53,8 +54,9 @@ const ChangeProduct = ({ location }) => {
   const deleteProduct = async () => {
     try {
       const res1 = await request.delete(`/delete-product/${idProduct}`);
-      window.location.href = ADMIN_ROUTE.controlframe;
       Toastify.alert("Xóa sản phẩm thành công");
+      window.location.href = ADMIN_ROUTE.controlframe;
+      
     } catch (err) {
       Toastify.error(err);
     }

@@ -21,7 +21,9 @@ const AddProduct = () => {
         name,
         price,
       });
+      Toastify.alert("Thêm sản phẩm thành công")
       window.location.href = ADMIN_ROUTE.controlframe;
+      
     } catch (err) {
       Toastify.error(err);
     }
