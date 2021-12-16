@@ -3,6 +3,7 @@ import { apiRegister } from "../../api/modules";
 import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import Toastify from "../../utilities/useToastify";
+import { checkEmail, checkPhone } from '../../utilities/format'
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -15,6 +16,14 @@ const RegisterScreen = () => {
     try {
       if (!name || !email || !phone || !address || !password) {
         Toastify.error("Các trường không được bỏ trống !");
+        return;
+      }
+      if (!checkPhone(phone)) {
+        Toastify.error("Số điện thoại không hợp lệ !");
+        return;
+      }
+      if (!checkEmail(email)) {
+        Toastify.error("Email không hợp lệ !");
         return;
       }
 
@@ -33,7 +42,7 @@ const RegisterScreen = () => {
       setPassword("");
       Toastify.alert("Đăng ký thành công!");
     } catch (err) {
-      Toastify.error(err);
+      Toastify.error('Email hcjfdfsdf');
     }
   };
 
@@ -82,7 +91,7 @@ const RegisterScreen = () => {
           setValue={setPassword}
         />
 
-        <button style={styles.btnLogin} onClick={onRegister}>
+        <button style={styles.btnLogin} onClick={onRegister} className="cursorPointer" >
           ĐĂNG KÝ
         </button>
       </div>

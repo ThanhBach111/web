@@ -23,8 +23,7 @@ request.interceptors.request.use(
 request.interceptors.response.use(
   (response) => response.data,
   async (error) => {
-    console.log('error resonse: ', error);
-    return Promise.reject(error);
+    return Promise.reject(String(error));
   }
 );
 

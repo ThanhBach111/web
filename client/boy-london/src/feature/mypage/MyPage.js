@@ -5,6 +5,7 @@ import Images from "../../assets/images";
 import StyleInput from "../../components/StyleInput";
 import { USER_ROUTE } from "../../navigation/routes";
 import Toastify from "../../utilities/useToastify";
+import { checkEmail, checkPhone } from '../../utilities/format'
 
 const MyPage = () => {
   const [name, setName] = useState("");
@@ -14,6 +15,8 @@ const MyPage = () => {
   const [listOrder, setListOrder] = useState([]);
   const getData = async () => {
     try {
+
+
       const res = await request.get("/account");
       setName(res.name);
       setEmail(res.email);
@@ -31,7 +34,23 @@ const MyPage = () => {
     getData();
   }, []);
 
+
+
   const onChangeInfo = async () => {
+    console.log('i have : ', email)
+    if (!name || !email || !phone || !address) {
+      Toastify.error("Các trường không được bỏ trống !");
+      return;
+    }
+    if (!checkPhone(phone)) {
+      Toastify.error("Số điện thoại không hợp lệ !");
+      return;
+    }
+    if (!checkEmail(email)) {
+      Toastify.error("Email không hợp lệ !");
+      return;
+    }
+
     try {
       await request.put("/account/change-information", {
         name: name,
