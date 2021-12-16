@@ -63,7 +63,11 @@ const ChangeProduct = ({ location }) => {
     bottom: "Bottom",
     accessories: "Accessories",
   };
-  const [listCategories, setListCategories] = useState([]);
+  const [listCategories, setListCategories] = useState([
+    "Top",
+    "Bottom",
+    "Accessories"
+  ]);
   
 
 
