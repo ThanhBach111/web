@@ -55,6 +55,29 @@ const ChangeProduct = ({ location }) => {
     }
   };
 
+  const TYPE_CATEGORY = {
+    top: "Top",
+    bottom: "Bottom",
+    accessories: "Accessories",
+  };
+  const [listCategories, setListCategories] = useState([]);
+  
+
+
+  const onChangeCategory = (typeCategory) => {
+    const index = listCategories.indexOf(typeCategory);
+    if (index !== -1) {
+      const temp = [...listCategories];
+      temp.pop(index);
+      setListCategories(temp);
+    
+    } else {
+      setListCategories([typeCategory]);
+      setCategory(typeCategory);
+      
+    }
+  };
+
   return (
     <div style={Style.page}>
       <div style={Style.view}>
@@ -66,11 +89,24 @@ const ChangeProduct = ({ location }) => {
         <StyleInput placeholder="Image2" value={image2} setValue={setImage2} />
         <div style={{ marginTop: 40 }}></div>
         <h2>Category:</h2>
-        <StyleInput
-          placeholder="Category"
-          value={category}
-          setValue={setCategory}
-        />
+        <div style={{marginLeft: "20",display:"flex", marginTop: "30", width: 450}}>
+          
+          <ItemOption
+            title="Top"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.top)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.top)}
+          />
+          <ItemOption
+            title="Bottom"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.bottom)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.bottom)}
+          />
+          <ItemOption
+            title="Accessories"
+            onPress={() => onChangeCategory(TYPE_CATEGORY.accessories)}
+            isSelected={listCategories.includes(TYPE_CATEGORY.accessories)}
+          />
+        </div>
         <div style={{ marginTop: 40 }}></div>
         <h2>Tên sản phẩm:</h2>
         <StyleInput placeholder="name" value={name} setValue={setName} />
@@ -84,7 +120,7 @@ const ChangeProduct = ({ location }) => {
         >
           Lưu thay đổi
         </button>
-
+        <div></div>
         <button
           style={Style.button1}
           onClick={deleteProduct}
