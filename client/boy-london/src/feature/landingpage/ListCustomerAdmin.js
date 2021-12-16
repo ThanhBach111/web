@@ -4,6 +4,16 @@ import { useEffect, useState } from "react";
 import request from "../../api/request";
 import Toastify from "../../utilities/useToastify";
 
+
+const fakeData = [
+  {userID: 1,
+  email: "something@gmail.com",
+  name: "Nguyexn tung duoejsfbas",
+  phoneNumber: "109209129020",
+  address: "hanoi, bac tu liem",
+  }
+];
+
 const ListCustomerAdmin = () => {
   const onBlockCustomer = async (id) => {
     try {
@@ -87,24 +97,24 @@ const ListCustomerAdmin = () => {
           </div>
         </div>
 
-        {listCustomerAdmin.map((item) => (
+        {ListCustomerAdmin.map((item) => (
           <div style={styles.dataTable}>
             <div style={styles.tableElement}>
-              <p>{item.userID}</p>
+              <p style={styles.data}>{item.userID}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.email}</p>
+              <p style={{marginLeft: "0"}}>{item.email}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.name}</p>
+              <p style={{marginLeft: "0"}}>{item.name}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.phoneNumber}</p>
+              <p style={{marginLeft: "0"}}>{item.phoneNumber}</p>
             </div>
             <div style={styles.tableElement}>
-              <p>{item.address}</p>
+              <p style={{marginLeft: "0"}}>{item.address}</p>
             </div>
-            <div style={styles.tableElement}>
+            <div style={{marginLeft: "0"}}>
               {checkBanAcc(item.isActive, item.userID)}
             </div>
           </div>
@@ -157,11 +167,18 @@ const styles = {
   tableElement: {
     display: "flex",
     flex: 1,
+    
+
   },
   buttonBox: {
     position: "absolute",
     right: 100,
   },
+  data: {
+    justifyContent: "center",
+    width: "20%",
+    paddingLeft: 60,
+  }
 };
 
 export default ListCustomerAdmin;

@@ -81,7 +81,7 @@ const Admin = () => {
           <button style={styles.buttonI} onClick={searchProduct} className="cursorPointer" >
             <img style={styles.submit} src={Images.sea} />
           </button>
-          <div style={{marginLeft: "20",display:"flex", marginTop: "30"}}>
+          <div style={styles.checkbox}>
           
           <ItemOption
             title="Top"
@@ -179,6 +179,11 @@ const styles = {
     marginTop: 30,
     marginLeft: 30,
 
+  },
+  checkbox: {
+    marginLeft: "190",
+    display:"flex", 
+    marginTop: "30"
   },
 }
 
