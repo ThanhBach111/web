@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiAddToCart, apiGetProductDetail } from "../../api/modules";
 import Toastify from "../../utilities/useToastify";
+import { formatMoney } from '../../utilities/format'
 import "./index.css";
 
 const ProductDetail = ({ location }) => {
@@ -36,7 +37,7 @@ const ProductDetail = ({ location }) => {
         productId: idProduct,
         quantityOrdered: numberOrders,
       });
-      alert("Thêm vào giỏ hàng thành công");
+      Toastify.alert("Thêm vào giỏ hàng thành công");
       setNumberOrders(1);
     } catch (err) {
       Toastify.error('Bạn chưa đăng ký tài khoản');
@@ -56,8 +57,8 @@ const ProductDetail = ({ location }) => {
 
       <div style={styles.priceOrderView}>
         <div>
-          <p>{productDetail?.name}</p>
-          <p>{productDetail?.price}</p>
+          <h2>{productDetail?.name}</h2>
+          <p>{formatMoney(productDetail?.price)}</p> 
 
           <div style={styles.lineDivide}></div>
 
@@ -123,6 +124,7 @@ const styles = {
   image: {
     width: "48%",
     marginBottom: 30,
+    borderRadius: 10,
   },
   priceOrderView: {
     flex: 0.8,
