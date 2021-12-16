@@ -12,7 +12,7 @@ const Admin = () => {
   const goToAddProduct = () => {
     window.location.href = ADMIN_ROUTE.addProduct;
   }
-  const [listProduct, setListProduct] = useState([]);
+  const [listProduct, setListProducts] = useState([]);
   const [search, setSearch] = useState("");
 
   const TYPE_CATEGORY = {
@@ -22,7 +22,9 @@ const Admin = () => {
   };
   const [listCategories, setListCategories] = useState([]);
   const [oldList, setOldList] = useState([]);
-  const [listProducts, setListProducts] = useState([]);
+  
+
+  console.log(listProduct);
 
   const onChangeCategory = (typeCategory) => {
     const index = listCategories.indexOf(typeCategory);
@@ -41,7 +43,7 @@ const Admin = () => {
   const getData = async () => {
     try {
       const res = await request.get("/get-landing-page");
-      setListProduct(res);
+      setListProducts(res);
       setOldList(res);
     } catch (err) {
       console.log(err);
@@ -56,9 +58,9 @@ const Admin = () => {
     try {
 
       const res = await request.get(`/search/${search}`);
-      setListProduct(res);
+      setListProducts(res);
     } catch (err) {
-      setListProduct([])
+      setListProducts([])
 
     }
   }
